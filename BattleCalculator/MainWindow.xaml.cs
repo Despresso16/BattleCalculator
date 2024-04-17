@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup.Localizer;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -1480,16 +1481,65 @@ namespace BattleCalculator
                         numOfUnits = Convert.ToInt32(army1TextboxList[i].Text);
                         switch (army1CheckBoxList[i].Content)
                         {
+                            //jednostki startowe
                             case "Pikinierzy":
-                                LandUnit Pikemen1 = new LandUnit(unitName, 0, 0, 0, 5, 25, 25, 0, 4, 170, 100, 4, "Infantry", numOfUnits);
+                                LandUnit Pikemen1 = new LandUnit(unitName, 0, 0, 0, 5, 15, 30, 0, 4, 170, 100, 4, "MeleeInfantry", numOfUnits);
                                 army1UnitsList.Add(Pikemen1);
                                 break;
+                            case "Arkebuzerzy":
+                                LandUnit Arquebusiers1 = new LandUnit(unitName, 0, 10, 20, 0, 8, 0, 0, 4, 160, 100, 4, "RangerInfantry", numOfUnits);
+                                army1UnitsList.Add(Arquebusiers1);
+                                break;
+                            case "Łucznicy":
+                                LandUnit Archers1 = new LandUnit(unitName, 0, 13, 15, 0, 8, 0, 0, 4, 150, 100, 4, "RangerInfantry", numOfUnits);
+                                army1UnitsList.Add(Archers1);
+                                break;
+                            case "Kusznicy":
+                                LandUnit Crossbowmen1 = new LandUnit(unitName, 0, 11, 17, 0, 8, 0, 5, 4, 160, 100, 4, "RangerInfantry", numOfUnits);
+                                army1UnitsList.Add(Crossbowmen1);
+                                break;
+                            case "Rycerze":
+                                LandUnit Knights1 = new LandUnit(unitName, 0, 0, 0, 25, 22, 5, 10, 6, 190, 110, 6, "ChargeCavalry", numOfUnits);
+                                army1UnitsList.Add(Knights1);
+                                break;
+                            case "Konnica":
+                                LandUnit Horsemen1 = new LandUnit(unitName, 0, 0, 0, 15, 20, 5, 10, 6, 165, 100, 6, "ChargeCavalry", numOfUnits);
+                                army1UnitsList.Add(Horsemen1);
+                                break;
+                            case "Bombarda":
+                                LandUnit Bombard1 = new LandUnit(unitName, 12, 10, 0, 0, 4, 0, 10, 1, 180, 100, 1, "SiegeArtillery", numOfUnits);
+                                army1UnitsList.Add(Bombard1);
+                                break;
+                            //epoka eksploracji
+                            case "Piki i arkebuzerzy":
+                                LandUnit PikeAndShotArq1 = new LandUnit(unitName, 0, 10, 20, 5, 15, 0, 0, 4, 180, 100, 4, "RangerInfantry", numOfUnits);
+                                army1UnitsList.Add(PikeAndShotArq1);
+                                break;
+                            case "Ciężcy husarze":
+                                LandUnit HeavyHussars1 = new LandUnit(unitName, 0, 0, 0, 30, 25, 5, 10, 6, 180, 110, 6, "ChargeCavalry", numOfUnits);
+                                army1UnitsList.Add(HeavyHussars1);
+                                break;
+                            case "Reiterzy":
+                                LandUnit Reiters1 = new LandUnit(unitName, 0, 0, 14, 10, 18, 5, 10, 6, 190, 110, 6, "RangerCavalry", numOfUnits);
+                                army1UnitsList.Add(Reiters1);
+                                break;
+                            case "Tarabany":
+                                LandUnit Tarabanas1 = new LandUnit(unitName, 0, 0, 18, 0, 16, 40, 0, 4, 160, 100, 4, "MeleeInfantry", numOfUnits);
+                                army1UnitsList.Add(Tarabanas1);
+                                break;
+                            case "Armata polowa":
+                                LandUnit FieldCannon1 = new LandUnit(unitName, 10, 20, 30, 0, 4, 0, 10, 2, 180, 100, 2, "FieldGuns", numOfUnits);
+                                army1UnitsList.Add(FieldCannon1);
+                                break;
+                            case "Ciężka armata":
+                                LandUnit HeavyCannon1 = new LandUnit(unitName, 18, 22, 12, 5, 13, 30, 0, 4, 180, 100, 4, "SiegeArtillery", numOfUnits);
+                                army1UnitsList.Add(HeavyCannon1);
+                                break;
+                            //epoka ekspansji
 
                         }
                     }
-
                 }
-
             }
             else
             {
@@ -1525,15 +1575,15 @@ namespace BattleCalculator
         int Morale;
         int Speed;
 
-        string Tactic;
+        string Type;
 
         int NumberOf;
 
-        public LandUnit(string UnitName, int UnitLongRange, int UnitMedRange, int UnitLowRange, int UnitShockAttack, int UnitMelee, int UnitShockDef, int UnitArtDef, int UnitInitiative, int UnitHealth, int UnitMorale, int UnitSpeed, string UnitTactic, int UnitNumberOf)
+        public LandUnit(string UnitName, int UnitLongRange, int UnitMidRange, int UnitLowRange, int UnitShockAttack, int UnitMelee, int UnitShockDef, int UnitArtDef, int UnitInitiative, int UnitHealth, int UnitMorale, int UnitSpeed, string UnitType, int UnitNumberOf)
         {
             Name = UnitName;
             LongRange = UnitLongRange;
-            MediumRange = UnitMedRange;
+            MediumRange = UnitMidRange;
             LowRange = UnitLowRange;
             ShockAttack = UnitShockAttack;
             Melee = UnitMelee;
@@ -1544,7 +1594,7 @@ namespace BattleCalculator
             MaxMorale = UnitMorale;
             Morale = UnitMorale;
             Speed = UnitSpeed;
-            Tactic = UnitTactic;
+            Type = UnitType;
             NumberOf = UnitNumberOf;
 
         }
