@@ -151,10 +151,6 @@
                                         <TextBox x:Name="tbxArmy1Reiters" Text="0" IsEnabled="False" LostFocus="tbxArmy1Reiters_LostFocus"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Height="17">
-                                        <CheckBox Content="Tarabany" x:Name="ckArmy1Tarabanas" Width="150" Click="ckArmy1Tarabanas_Click"/>
-                                        <TextBox x:Name="tbxArmy1Tarabanas" Text="0" IsEnabled="False" LostFocus="tbxArmy1Tarabanas_LostFocus"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Height="17">
                                         <CheckBox Content="Armata polowa" x:Name="ckArmy1FieldCannon" Width="150" Click="ckArmy1FieldCannon_Click"/>
                                         <TextBox x:Name="tbxArmy1FieldCannon" Text="0" IsEnabled="False" LostFocus="tbxArmy1FieldCannon_LostFocus"/>
                                     </StackPanel>
@@ -199,6 +195,10 @@
                                     <StackPanel Orientation="Horizontal" Height="17">
                                         <CheckBox Content="Fusilierzy" x:Name="ckArmy1Fusiliers" Width="150" Click="ckArmy1Fusiliers_Click"/>
                                         <TextBox x:Name="tbxArmy1Fusiliers" Text="0" IsEnabled="False" LostFocus="tbxArmy1Fusiliers_LostFocus"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Height="17">
+                                        <CheckBox Content="Grenadierzy" x:Name="ckArmy1Grenadiers" Width="150" Click="ckArmy1Grenadiers_Click"/>
+                                        <TextBox x:Name="tbxArmy1Grenadiers" Text="0" IsEnabled="False" LostFocus="tbxArmy1Grenadiers_LostFocus"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Height="17">
                                         <CheckBox Content="Milicja" x:Name="ckArmy1Militia" Width="150" Click="ckArmy1Militia_Click"/>
@@ -473,6 +473,10 @@
                                     <StackPanel Orientation="Horizontal" Height="17">
                                         <CheckBox Content="Fusilierzy" x:Name="ckArmy2Fusiliers" Width="150" Click="ckArmy2Fusiliers_Click"/>
                                         <TextBox x:Name="tbxArmy2Fusiliers" Text="0" IsEnabled="False" LostFocus="tbxArmy2Fusiliers_LostFocus"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Height="17">
+                                        <CheckBox Content="Grenadierzy" x:Name="ckArmy2Grenadiers" Width="150" Click="ckArmy2Grenadiers_Click"/>
+                                        <TextBox x:Name="tbxArmy2Grenadiers" Text="0" IsEnabled="False" LostFocus="tbxArmy2Grenadiers_LostFocus"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Height="17">
                                         <CheckBox Content="Milicja" x:Name="ckArmy2Militia" Width="150" Click="ckArmy2Militia_Click"/>
