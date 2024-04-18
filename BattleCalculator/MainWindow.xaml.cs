@@ -865,6 +865,15 @@ namespace BattleCalculator
         {
             verifyUnit(tbxArmy1TribalHorsemen);
         }
+        private void tbxArmy1HorseArcher_LostFocus(object sender, RoutedEventArgs e)
+        {
+            addUnitToArmy(ckArmy1HorseArcher, tbxArmy1HorseArcher, army1CheckBoxList, army1TextboxList);
+        }
+
+        private void ckArmy1HorseArcher_Click(object sender, RoutedEventArgs e)
+        {
+            verifyUnit(tbxArmy1HorseArcher);
+        }
         // dla floty 1
         private void ckFleet1Carrack_Click(object sender, RoutedEventArgs e)
         {
@@ -1321,6 +1330,15 @@ namespace BattleCalculator
         {
             verifyUnit(tbxArmy2TribalHorsemen);
         }
+        private void ckArmy2HorseArcher_Click(object sender, RoutedEventArgs e)
+        {
+            addUnitToArmy(ckArmy2HorseArcher, tbxArmy2HorseArcher, army2CheckBoxList, army2TextboxList);
+        }
+
+        private void tbxArmy2HorseArcher_LostFocus(object sender, RoutedEventArgs e)
+        {
+            verifyUnit(tbxArmy2HorseArcher);
+        }
         // flota 2
         private void ckFleet2Carrack_Click(object sender, RoutedEventArgs e)
         {
@@ -1331,9 +1349,6 @@ namespace BattleCalculator
         {
             verifyUnit(tbxFleet2Carrack);
         }
-
-
-
         private void ckFleet2Caravel_Click(object sender, RoutedEventArgs e)
         {
             addUnitToArmy(ckFleet2Caravel, tbxFleet2Caravel, fleet2CheckBoxList, fleet2TextboxList);
@@ -1616,6 +1631,10 @@ namespace BattleCalculator
                             case "Konnica tubylców":
                                 LandUnit TribalHorsemen1 = new LandUnit(unitName, 0, 0, 0, 12, 13, 0, 5, 6, 130, 90, 6, "ChargeCavalry", numOfUnits);
                                 army1UnitsList.Add(TribalHorsemen1);
+                                break;
+                            case "Łucznicy konni":
+                                LandUnit HorseArchers1 = new LandUnit(unitName, 0, 13, 15, 5, 18, 0, 5, 4, 160, 100, 6, "RangerInfantry", numOfUnits);
+                                army1UnitsList.Add(HorseArchers1);
                                 break;
                         }
                     }

@@ -259,6 +259,10 @@
                                         <TextBox x:Name="tbxArmy1TribalWarriors" Text="0" IsEnabled="False" LostFocus="tbxArmy1TribalWarriors_LostFocus"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Height="17">
+                                        <CheckBox Content="Łucznicy konni" x:Name="ckArmy1HorseArcher" Width="150" Click="ckArmy1HorseArcher_Click"/>
+                                        <TextBox x:Name="tbxArmy1HorseArcher" Text="0" IsEnabled="False" LostFocus="tbxArmy1HorseArcher_LostFocus"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Height="17">
                                         <CheckBox Content="Tubylcy strzelcy" x:Name="ckArmy1TribalRanger" Width="150" Click="ckArmy1TribalRanger_Click"/>
                                         <TextBox x:Name="tbxArmy1TribalRanger" Text="0" IsEnabled="False" LostFocus="tbxArmy1TribalRanger_LostFocus"/>
                                     </StackPanel>
@@ -425,10 +429,6 @@
                                         <TextBox x:Name="tbxArmy2Reiters" Text="0" IsEnabled="False" LostFocus="tbxArmy2Reiters_LostFocus"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Height="17">
-                                        <CheckBox Content="Tarabany" x:Name="ckArmy2Tarabanas" Width="150" Click="ckArmy2Tarabanas_Click"/>
-                                        <TextBox x:Name="tbxArmy2Tarabanas" Text="0" IsEnabled="False" LostFocus="tbxArmy2Tarabanas_LostFocus"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Height="17">
                                         <CheckBox Content="Armata polowa" x:Name="ckArmy2FieldCannon" Width="150" Click="ckArmy2FieldCannon_Click"/>
                                         <TextBox x:Name="tbxArmy2FieldCannon" Text="0" IsEnabled="False" LostFocus="tbxArmy2FieldCannon_LostFocus"/>
                                     </StackPanel>
@@ -531,6 +531,10 @@
                                     <StackPanel Orientation="Horizontal" Height="17">
                                         <CheckBox Content="Kozacy" x:Name="ckArmy2Cossacks" Width="150" Click="ckArmy2Cossacks_Click"/>
                                         <TextBox x:Name="tbxArmy2Cossacks" Text="0" IsEnabled="False" LostFocus="tbxArmy2Cossacks_LostFocus"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Height="17">
+                                        <CheckBox Content="Łucznicy konni" x:Name="ckArmy2HorseArcher" Width="150" Click="ckArmy2HorseArcher_Click"/>
+                                        <TextBox x:Name="tbxArmy2HorseArcher" Text="0" IsEnabled="False" LostFocus="tbxArmy2HorseArcher_LostFocus"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Height="17">
                                         <CheckBox Content="Tubylcy wojownicy" x:Name="ckArmy2TribalWarriors" Width="150" Click="ckArmy2TribalWarriors_Click"/>
