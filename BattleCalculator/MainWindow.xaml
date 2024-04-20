@@ -255,12 +255,12 @@
                                         <TextBox x:Name="tbxArmy1Cossacks" Text="0" IsEnabled="False" LostFocus="tbxArmy1Cossacks_LostFocus"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Height="17">
-                                        <CheckBox Content="Tubylcy wojownicy" x:Name="ckArmy1TribalWarriors" Width="150" Click="ckArmy1TribalWarriors_Click"/>
-                                        <TextBox x:Name="tbxArmy1TribalWarriors" Text="0" IsEnabled="False" LostFocus="tbxArmy1TribalWarriors_LostFocus"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Height="17">
                                         <CheckBox Content="Łucznicy konni" x:Name="ckArmy1HorseArcher" Width="150" Click="ckArmy1HorseArcher_Click"/>
                                         <TextBox x:Name="tbxArmy1HorseArcher" Text="0" IsEnabled="False" LostFocus="tbxArmy1HorseArcher_LostFocus"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Height="17">
+                                        <CheckBox Content="Tubylcy wojownicy" x:Name="ckArmy1TribalWarriors" Width="150" Click="ckArmy1TribalWarriors_Click"/>
+                                        <TextBox x:Name="tbxArmy1TribalWarriors" Text="0" IsEnabled="False" LostFocus="tbxArmy1TribalWarriors_LostFocus"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Height="17">
                                         <CheckBox Content="Tubylcy strzelcy" x:Name="ckArmy1TribalRanger" Width="150" Click="ckArmy1TribalRanger_Click"/>
