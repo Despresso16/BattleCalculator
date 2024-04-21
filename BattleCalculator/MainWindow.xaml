@@ -6,6 +6,6 @@
         xmlns:local="clr-namespace:BattleCalculator"
         mc:Ignorable="d"
         Title="Battle Calculator" Height="500" Width="800">
-    <Frame x:Name="frame" NavigationUIVisibility="Hidden"/>
+    <Frame x:Name="frame" NavigationUIVisibility="Hidden" Padding="0" Margin="0"/>
 
 </Window>

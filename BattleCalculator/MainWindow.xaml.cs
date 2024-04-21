@@ -97,7 +97,9 @@ namespace BattleCalculator
         int sternFirepower;
         int mortarFirepower;
 
-        public Ship(string shipName, int shipType, int shipHullShallow, int shipHull, int shipCrew, int shipSpeed, int shipManeuver, int shipBroadside, int shipFrontal, int shipStern, int shipMortars)
+        int numberOf;
+
+        public Ship(string shipName, int shipType, int shipHullShallow, int shipHull, int shipCrew, int shipSpeed, int shipManeuver, int shipBroadside, int shipFrontal, int shipStern, int shipMortars, int numberOfShips)
         {
             name = shipName;
             type = shipType;
@@ -112,6 +114,7 @@ namespace BattleCalculator
             frontalFirepower = shipFrontal;
             sternFirepower = shipStern;
             mortarFirepower = shipMortars;
+            numberOf = numberOfShips;
         }
     }
     public class TerrainType //typy terenu
