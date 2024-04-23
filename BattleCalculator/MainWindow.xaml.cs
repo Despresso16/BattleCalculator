@@ -34,27 +34,27 @@ namespace BattleCalculator
     }
     public class LandUnit //jednostki ladowe
     {
-        string Name;
+        public string Name;
 
-        int LongRange;
-        int MediumRange;
-        int LowRange;
+        public int LongRange;
+        public int MediumRange;
+        public int LowRange;
 
-        int ShockAttack;
-        int Melee;
-        int ShockDef;
-        int ArtilleryDef;
+        public int ShockAttack;
+        public int Melee;
+        public int ShockDef;
+        public int ArtilleryDef;
 
-        int initiative;
+        public int initiative;
 
-        int Health;
-        int MaxMorale;
-        int Morale;
-        int Speed;
+        public int Health;
+        public int MaxMorale;
+        public int Morale;
+        public int Speed;
 
-        string Type;
+        public string Type;
 
-        int NumberOf;
+        public int NumberOf;
 
         public LandUnit(string UnitName, int UnitLongRange, int UnitMidRange, int UnitLowRange, int UnitShockAttack, int UnitMelee, int UnitShockDef, int UnitArtDef, int UnitInitiative, int UnitHealth, int UnitMorale, int UnitSpeed, string UnitType, int UnitNumberOf)
         {

@@ -1429,6 +1429,38 @@ namespace BattleCalculator
             verifyUnit(tbxFleet2AsianShip);
         }
         // wszystko po kliknieciu start
+        void applyTerrainEffects(List<LandUnit> armyList)
+        {
+            foreach (LandUnit unit in armyList)
+            {
+                unit.Speed = unit.Speed - terrain[0].Mud - terrain[0].HighDiff;
+                if (unit.Type == "SiegeArtillery" && unit.Speed < 1)
+                {
+                    unit.Speed = 1;
+                }
+                else if (unit.Speed < 2)
+                {
+                    unit.Speed = 2;
+                }
+                unit.ArtilleryDef += terrain[0].Concealment;
+                if(unit.MediumRange > 0)
+                {
+                    unit.MediumRange -= terrain[0].HighDiff;
+                    if (unit.MediumRange < 0) unit.MediumRange = 5;
+                }
+                if (unit.LongRange > 0)
+                {
+                    unit.LongRange -= terrain[0].HighDiff;
+                    if (unit.LongRange < 0) unit.LongRange = 4;
+                }
+                if(unit.LowRange > 0)
+                {
+                    unit.LowRange -= terrain[0].Obstacles;
+                    if (unit.LowRange < 0) unit.LowRange = 6;
+                }
+            }
+        }
+
         void verifyInputLists(List<CheckBox> ckList, List<TextBox> tbxList)
         {
             string input;
@@ -1810,9 +1842,9 @@ namespace BattleCalculator
                             break;
                     }
                     // glowne dzialanie
+                    applyTerrainEffects(army1UnitsList);
+                    applyTerrainEffects(army2UnitsList);
                     changePageToResults(sender, e);
-
-
                 }
             }
             else
@@ -1887,7 +1919,7 @@ namespace BattleCalculator
                                 break;
                         }
                     }
-                    //dodanie jednostek do floty 1
+                    //dodanie jednostek do floty 2
                     for (int i = 0; i < fleet2CheckBoxList.Count; i++)
                     {
                         unitName = Convert.ToString(fleet2CheckBoxList[i].Content);
