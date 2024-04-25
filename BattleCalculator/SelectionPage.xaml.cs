@@ -139,7 +139,6 @@ namespace BattleCalculator
         {
             activateStartButton();
         }
-        // rozwijanie epok dla armii 1
         private void btnFortLevelMinus_Click(object sender, RoutedEventArgs e)
         {
             if (fortLevel > 0)
@@ -157,6 +156,7 @@ namespace BattleCalculator
                 tbFortLevel.Text = $"Poziom fortu: {fortLevel}";
             }
         }
+        // rozwijanie epok dla armii 1
         private void btnStartUnits1_Click(object sender, RoutedEventArgs e)
         {
             if (!startUnits1)
@@ -1460,6 +1460,130 @@ namespace BattleCalculator
                 }
             }
         }
+        void fillArmyList(List<CheckBox> ckList, List<TextBox> tbxList, List<LandUnit> armyList)
+        {
+            string unitName;
+            int numOfUnits;
+            for(int i = 0; i < ckList.Count; i++)
+            {
+                unitName = Convert.ToString(ckList[i].Content);
+                numOfUnits = Convert.ToInt32(tbxList[i].Text);
+                switch (unitName)
+                {
+                    //jednostki startowe
+                    case "Pikinierzy":
+                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 5, 15, 30, 0, 4, 170, 100, 4, "MeleeInfantry", numOfUnits));
+                        break;
+                    case "Arkebuzerzy":
+                        armyList.Add(new LandUnit(unitName, 0, 10, 20, 0, 8, 0, 0, 4, 160, 100, 4, "RangerInfantry", numOfUnits));
+                        break;
+                    case "Łucznicy":
+                        armyList.Add(new LandUnit(unitName, 0, 13, 15, 0, 8, 0, 0, 4, 150, 100, 4, "RangerInfantry", numOfUnits));
+                        break;
+                    case "Kusznicy":
+                        armyList.Add(new LandUnit(unitName, 0, 11, 17, 0, 8, 0, 5, 4, 160, 100, 4, "RangerInfantry", numOfUnits));
+                        break;
+                    case "Rycerze":
+                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 25, 22, 5, 10, 6, 200, 110, 6, "ChargeCavalry", numOfUnits));
+                        break;
+                    case "Konnica":
+                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 15, 20, 5, 10, 6, 165, 100, 6, "ChargeCavalry", numOfUnits));
+                        break;
+                    case "Bombarda":
+                        armyList.Add(new LandUnit(unitName, 12, 10, 0, 0, 4, 0, 10, 1, 150, 100, 1, "SiegeArtillery", numOfUnits));
+                        break;
+                    //epoka eksploracji
+                    case "Piki i arkebuzerzy":
+                        armyList.Add(new LandUnit(unitName, 0, 10, 20, 5, 16, 30, 0, 4, 180, 100, 4, "RangerInfantry", numOfUnits));
+                        break;
+                    case "Ciężcy husarze":
+                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 30, 25, 5, 10, 6, 190, 110, 6, "ChargeCavalry", numOfUnits));
+                        break;
+                    case "Reiterzy":
+                        armyList.Add(new LandUnit(unitName, 0, 0, 14, 10, 18, 5, 10, 6, 200, 110, 6, "RangerCavalry", numOfUnits));
+                        break;
+                    case "Armata polowa":
+                        armyList.Add(new LandUnit(unitName, 0, 22, 38, 0, 4, 0, 10, 2, 150, 100, 2, "FieldGuns", numOfUnits));
+                        break;
+                    case "Ciężka armata":
+                        armyList.Add(new LandUnit(unitName, 20, 24, 12, 0, 4, 0, 10, 1, 150, 100, 1, "SiegeArtillery", numOfUnits));
+                        break;
+                    //epoka ekspansji
+                    case "Piki i muszkieterzy":
+                        armyList.Add(new LandUnit(unitName, 0, 17, 28, 5, 16, 30, 0, 4, 180, 100, 4, "RangerInfantry", numOfUnits));
+                        break;
+                    case "Wcześni fusilierzy":
+                        armyList.Add(new LandUnit(unitName, 0, 25, 34, 0, 13, 0, 10, 4, 160, 110, 4, "RangerInfantry", numOfUnits));
+                        break;
+                    case "Wcześni kirasjerzy":
+                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 16, 25, 5, 10, 6, 185, 110, 6, "ChargeCavalry", numOfUnits));
+                        break;
+                    case "Harkebuzerzy":
+                        armyList.Add(new LandUnit(unitName, 0, 12, 23, 10, 18, 5, 10, 6, 170, 100, 6, "RangerCavalry", numOfUnits));
+                        break;
+                    case "Lansjerzy":
+                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 23, 26, 5, 10, 6, 170, 100, 6, "ChargeCavalry", numOfUnits));
+                        break;
+                    case "Haubica oblężnicza":
+                        armyList.Add(new LandUnit(unitName, 28, 34, 14, 0, 4, 0, 10, 1, 150, 100, 1, "SiegeArtillery", numOfUnits));
+                        break;
+                    //epoka imperiow
+                    case "Fusilierzy":
+                        armyList.Add(new LandUnit(unitName, 0, 28, 36, 8, 20, 15, 15, 4, 180, 100, 4, "RangerInfantry", numOfUnits));
+                        break;
+                    case "Grenadierzy":
+                        armyList.Add(new LandUnit(unitName, 0, 28, 44, 12, 26, 17, 15, 4, 180, 110, 4, "RangerInfantry", numOfUnits));
+                        break;
+                    case "Milicja":
+                        armyList.Add(new LandUnit(unitName, 0, 25, 32, 4, 18, 5, 18, 4, 150, 80, 4, "RangerInfantry", numOfUnits));
+                        break;
+                    case "Karbinerzy":
+                        armyList.Add(new LandUnit(unitName, 0, 24, 30, 10, 19, 5, 10, 6, 170, 100, 6, "RangerCavalry", numOfUnits));
+                        break;
+                    case "Dragoni":
+                        armyList.Add(new LandUnit(unitName, 0, 28, 36, 8, 20, 5, 14, 4, 170, 100, 6, "MobileRangerInfantry", numOfUnits));
+                        break;
+                    case "Huzarzy":
+                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 16, 27, 5, 14, 6, 170, 100, 6, "ChargeCavalry", numOfUnits));
+                        break;
+                    case "Kirasjerzy":
+                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 16, 29, 5, 14, 6, 185, 110, 6, "ChargeCavalry", numOfUnits));
+                        break;
+                    case "Działa polowe":
+                        armyList.Add(new LandUnit(unitName, 0, 34, 51, 0, 6, 0, 12, 2, 150, 100, 2, "FieldGuns", numOfUnits));
+                        break;
+                    case "Moździerze":
+                        armyList.Add(new LandUnit(unitName, 35, 32, 0, 0, 4, 0, 12, 1, 150, 100, 1, "SiegeArtillery", numOfUnits));
+                        break;
+                    //epoka rewolucji
+                    case "Lekka piechota":
+                        armyList.Add(new LandUnit(unitName, 0, 30, 39, 5, 22, 9, 23, 4, 170, 100, 4, "RangerInfantry", numOfUnits));
+                        break;
+                    case "Piechota liniowa":
+                        armyList.Add(new LandUnit(unitName, 0, 31, 42, 8, 22, 15, 15, 4, 180, 100, 4, "RangerInfantry", numOfUnits));
+                        break;
+                    case "Haubice polowe":
+                        armyList.Add(new LandUnit(unitName, 23, 42, 54, 0, 6, 0, 12, 2, 150, 100, 2, "FieldGuns", numOfUnits));
+                        break;
+                    //jednostki unikalne
+                    case "Kozacy":
+                        armyList.Add(new LandUnit(unitName, 0, 0, 10, 15, 25, 3, 10, 6, 160, 100, 6, "ChargeCavalry", numOfUnits));
+                        break;
+                    case "Tubylcy wojownicy":
+                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 5, 10, 0, 0, 4, 125, 80, 4, "MeleeInfantry", numOfUnits));
+                        break;
+                    case "Tubylcy strzelcy":
+                        armyList.Add(new LandUnit(unitName, 0, 5, 13, 0, 9, 0, 0, 4, 120, 80, 4, "RangerInfantry", numOfUnits));
+                        break;
+                    case "Konnica tubylców":
+                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 12, 13, 0, 5, 6, 130, 90, 6, "ChargeCavalry", numOfUnits));
+                        break;
+                    case "Łucznicy konni":
+                        armyList.Add(new LandUnit(unitName, 0, 13, 15, 5, 18, 0, 5, 4, 160, 100, 6, "RangerInfantry", numOfUnits));
+                        break;
+                }
+            }
+        }
 
         void verifyInputLists(List<CheckBox> ckList, List<TextBox> tbxList)
         {
@@ -1491,354 +1615,37 @@ namespace BattleCalculator
                     army1UnitsList.Clear();
                     army2UnitsList.Clear();
                     //tworzenie armii
-                    //armia 1
-                    for (int i = 0; i < army1CheckBoxList.Count; i++)
-                    {
-                        unitName = Convert.ToString(army1CheckBoxList[i].Content);
-                        numOfUnits = Convert.ToInt32(army1TextboxList[i].Text);
-                        switch (unitName)
-                        {
-                            //jednostki startowe
-                            case "Pikinierzy":
-                                LandUnit Pikemen1 = new LandUnit(unitName, 0, 0, 0, 5, 15, 30, 0, 4, 170, 100, 4, "MeleeInfantry", numOfUnits);
-                                army1UnitsList.Add(Pikemen1);
-                                break;
-                            case "Arkebuzerzy":
-                                LandUnit Arquebusiers1 = new LandUnit(unitName, 0, 10, 20, 0, 8, 0, 0, 4, 160, 100, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(Arquebusiers1);
-                                break;
-                            case "Łucznicy":
-                                LandUnit Archers1 = new LandUnit(unitName, 0, 13, 15, 0, 8, 0, 0, 4, 150, 100, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(Archers1);
-                                break;
-                            case "Kusznicy":
-                                LandUnit Crossbowmen1 = new LandUnit(unitName, 0, 11, 17, 0, 8, 0, 5, 4, 160, 100, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(Crossbowmen1);
-                                break;
-                            case "Rycerze":
-                                LandUnit Knights1 = new LandUnit(unitName, 0, 0, 0, 25, 22, 5, 10, 6, 200, 110, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(Knights1);
-                                break;
-                            case "Konnica":
-                                LandUnit Horsemen1 = new LandUnit(unitName, 0, 0, 0, 15, 20, 5, 10, 6, 165, 100, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(Horsemen1);
-                                break;
-                            case "Bombarda":
-                                LandUnit Bombard1 = new LandUnit(unitName, 12, 10, 0, 0, 4, 0, 10, 1, 150, 100, 1, "SiegeArtillery", numOfUnits);
-                                army1UnitsList.Add(Bombard1);
-                                break;
-                            //epoka eksploracji
-                            case "Piki i arkebuzerzy":
-                                LandUnit PikeAndShotArq1 = new LandUnit(unitName, 0, 10, 20, 5, 16, 30, 0, 4, 180, 100, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(PikeAndShotArq1);
-                                break;
-                            case "Ciężcy husarze":
-                                LandUnit HeavyHussars1 = new LandUnit(unitName, 0, 0, 0, 30, 25, 5, 10, 6, 190, 110, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(HeavyHussars1);
-                                break;
-                            case "Reiterzy":
-                                LandUnit Reiters1 = new LandUnit(unitName, 0, 0, 14, 10, 18, 5, 10, 6, 200, 110, 6, "RangerCavalry", numOfUnits);
-                                army1UnitsList.Add(Reiters1);
-                                break;
-                            case "Armata polowa":
-                                LandUnit FieldCannon1 = new LandUnit(unitName, 0, 22, 38, 0, 4, 0, 10, 2, 150, 100, 2, "FieldGuns", numOfUnits);
-                                army1UnitsList.Add(FieldCannon1);
-                                break;
-                            case "Ciężka armata":
-                                LandUnit HeavyCannon1 = new LandUnit(unitName, 20, 24, 12, 0, 4, 0, 10, 1, 150, 100, 1, "SiegeArtillery", numOfUnits);
-                                army1UnitsList.Add(HeavyCannon1);
-                                break;
-                            //epoka ekspansji
-                            case "Piki i muszkieterzy":
-                                LandUnit PikeAndShotMusk1 = new LandUnit(unitName, 0, 17, 28, 5, 16, 30, 0, 4, 180, 100, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(PikeAndShotMusk1);
-                                break;
-                            case "Wcześni fusilierzy":
-                                LandUnit EarlyFusiliers1 = new LandUnit(unitName, 0, 25, 34, 0, 13, 0, 10, 4, 160, 110, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(EarlyFusiliers1);
-                                break;
-                            case "Wcześni kirasjerzy":
-                                LandUnit EarlyCuirassier1 = new LandUnit(unitName, 0, 0, 0, 16, 25, 5, 10, 6, 185, 110, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(EarlyCuirassier1);
-                                break;
-                            case "Harkebuzerzy":
-                                LandUnit Harquebusers1 = new LandUnit(unitName, 0, 12, 23, 10, 18, 5, 10, 6, 170, 100, 6, "RangerCavalry", numOfUnits);
-                                army1UnitsList.Add(Harquebusers1);
-                                break;
-                            case "Lansjerzy":
-                                LandUnit Lancers1 = new LandUnit(unitName, 0, 0, 0, 23, 26, 5, 10, 6, 170, 100, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(Lancers1);
-                                break;
-                            case "Haubica oblężnicza":
-                                LandUnit SiegeHowitzer1 = new LandUnit(unitName, 28, 34, 14, 0, 4, 0, 10, 1, 150, 100, 1, "SiegeArtillery", numOfUnits);
-                                army1UnitsList.Add(SiegeHowitzer1);
-                                break;
-                            //epoka imperiow
-                            case "Fusilierzy":
-                                LandUnit Fusiliers1 = new LandUnit(unitName, 0, 28, 36, 8, 20, 15, 15, 4, 180, 100, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(Fusiliers1);
-                                break;
-                            case "Grenadierzy":
-                                LandUnit Grenadiers1 = new LandUnit(unitName, 0, 28, 44, 12, 26, 17, 15, 4, 180, 110, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(Grenadiers1);
-                                break;
-                            case "Milicja":
-                                LandUnit Militia1 = new LandUnit(unitName, 0, 25, 32, 4, 18, 5, 18, 4, 150, 80, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(Militia1);
-                                break;
-                            case "Karbinerzy":
-                                LandUnit CarbineCavalry1 = new LandUnit(unitName, 0, 24, 30, 10, 19, 5, 10, 6, 170, 100, 6, "RangerCavalry", numOfUnits);
-                                army1UnitsList.Add(CarbineCavalry1);
-                                break;
-                            case "Dragoni":
-                                LandUnit Dragoons1 = new LandUnit(unitName, 0, 28, 36, 8, 20, 5, 14, 4, 170, 100, 6, "MobileRangerInfantry", numOfUnits);
-                                army1UnitsList.Add(Dragoons1);
-                                break;
-                            case "Huzarzy":
-                                LandUnit Hussars1 = new LandUnit(unitName, 0, 0, 0, 16, 27, 5, 14, 6, 170, 100, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(Hussars1);
-                                break;
-                            case "Kirasjerzy":
-                                LandUnit Cuirassier1 = new LandUnit(unitName, 0, 0, 0, 16, 29, 5, 14, 6, 185, 110, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(Cuirassier1);
-                                break;
-                            case "Działa polowe":
-                                LandUnit FieldGun1 = new LandUnit(unitName, 0, 34, 51, 0, 6, 0, 12, 2, 150, 100, 2, "FieldGuns", numOfUnits);
-                                army1UnitsList.Add(FieldGun1);
-                                break;
-                            case "Moździerze":
-                                LandUnit Mortars1 = new LandUnit(unitName, 35, 32, 0, 0, 4, 0, 12, 1, 150, 100, 1, "SiegeArtillery", numOfUnits);
-                                army1UnitsList.Add(Mortars1);
-                                break;
-                            //epoka rewolucji
-                            case "Lekka piechota":
-                                LandUnit LightInfantry1 = new LandUnit(unitName, 0, 30, 39, 5, 22, 9, 23, 4, 170, 100, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(LightInfantry1);
-                                break;
-                            case "Piechota liniowa":
-                                LandUnit LineInfantry1 = new LandUnit(unitName, 0, 31, 42, 8, 22, 15, 15, 4, 180, 100, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(LineInfantry1);
-                                break;
-                            case "Haubice polowe":
-                                LandUnit FieldHowitzer1 = new LandUnit(unitName, 23, 42, 54, 0, 6, 0, 12, 2, 150, 100, 2, "FieldGuns", numOfUnits);
-                                army1UnitsList.Add(FieldHowitzer1);
-                                break;
-                            //jednostki unikalne
-                            case "Kozacy":
-                                LandUnit Cossacks1 = new LandUnit(unitName, 0, 0, 10, 15, 25, 3, 10, 6, 160, 100, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(Cossacks1);
-                                break;
-                            case "Tubylcy wojownicy":
-                                LandUnit TribalWarriors1 = new LandUnit(unitName, 0, 0, 0, 5, 10, 0, 0, 4, 125, 80, 4, "MeleeInfantry", numOfUnits);
-                                army1UnitsList.Add(TribalWarriors1);
-                                break;
-                            case "Tubylcy strzelcy":
-                                LandUnit TribalRangers1 = new LandUnit(unitName, 0, 5, 13, 0, 9, 0, 0, 4, 120, 80, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(TribalRangers1);
-                                break;
-                            case "Konnica tubylców":
-                                LandUnit TribalHorsemen1 = new LandUnit(unitName, 0, 0, 0, 12, 13, 0, 5, 6, 130, 90, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(TribalHorsemen1);
-                                break;
-                            case "Łucznicy konni":
-                                LandUnit HorseArchers1 = new LandUnit(unitName, 0, 13, 15, 5, 18, 0, 5, 4, 160, 100, 6, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(HorseArchers1);
-                                break;
-                        }
-                    }
-                    //armia 2
-                    for (int i = 0; i < army2CheckBoxList.Count; i++)
-                    {
-                        unitName = Convert.ToString(army2CheckBoxList[i].Content);
-                        numOfUnits = Convert.ToInt32(army2TextboxList[i].Text);
-                        switch (unitName)
-                        {
-                            //jednostki startowe
-                            case "Pikinierzy":
-                                LandUnit Pikemen2 = new LandUnit(unitName, 0, 0, 0, 5, 15, 30, 0, 4, 170, 100, 4, "MeleeInfantry", numOfUnits);
-                                army1UnitsList.Add(Pikemen2);
-                                break;
-                            case "Arkebuzerzy":
-                                LandUnit Arquebusiers2 = new LandUnit(unitName, 0, 10, 20, 0, 8, 0, 0, 4, 160, 100, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(Arquebusiers2);
-                                break;
-                            case "Łucznicy":
-                                LandUnit Archers2 = new LandUnit(unitName, 0, 13, 15, 0, 8, 0, 0, 4, 150, 100, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(Archers2);
-                                break;
-                            case "Kusznicy":
-                                LandUnit Crossbowmen2 = new LandUnit(unitName, 0, 11, 17, 0, 8, 0, 5, 4, 160, 100, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(Crossbowmen2);
-                                break;
-                            case "Rycerze":
-                                LandUnit Knights2 = new LandUnit(unitName, 0, 0, 0, 25, 22, 5, 10, 6, 200, 110, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(Knights2);
-                                break;
-                            case "Konnica":
-                                LandUnit Horsemen2 = new LandUnit(unitName, 0, 0, 0, 15, 20, 5, 10, 6, 165, 100, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(Horsemen2);
-                                break;
-                            case "Bombarda":
-                                LandUnit Bombard2 = new LandUnit(unitName, 12, 10, 0, 0, 4, 0, 10, 1, 150, 100, 1, "SiegeArtillery", numOfUnits);
-                                army1UnitsList.Add(Bombard2);
-                                break;
-                            //epoka eksploracji
-                            case "Piki i arkebuzerzy":
-                                LandUnit PikeAndShotArq2 = new LandUnit(unitName, 0, 10, 20, 5, 16, 30, 0, 4, 180, 100, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(PikeAndShotArq2);
-                                break;
-                            case "Ciężcy husarze":
-                                LandUnit HeavyHussars2 = new LandUnit(unitName, 0, 0, 0, 30, 25, 5, 10, 6, 190, 110, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(HeavyHussars2);
-                                break;
-                            case "Reiterzy":
-                                LandUnit Reiters2 = new LandUnit(unitName, 0, 0, 14, 10, 18, 5, 10, 6, 200, 110, 6, "RangerCavalry", numOfUnits);
-                                army1UnitsList.Add(Reiters2);
-                                break;
-                            case "Armata polowa":
-                                LandUnit FieldCannon2 = new LandUnit(unitName, 0, 22, 38, 0, 4, 0, 10, 2, 150, 100, 2, "FieldGuns", numOfUnits);
-                                army1UnitsList.Add(FieldCannon2);
-                                break;
-                            case "Ciężka armata":
-                                LandUnit HeavyCannon2 = new LandUnit(unitName, 20, 24, 12, 0, 4, 0, 10, 1, 150, 100, 1, "SiegeArtillery", numOfUnits);
-                                army1UnitsList.Add(HeavyCannon2);
-                                break;
-                            //epoka ekspansji
-                            case "Piki i muszkieterzy":
-                                LandUnit PikeAndShotMusk2 = new LandUnit(unitName, 0, 17, 28, 5, 16, 30, 0, 4, 180, 100, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(PikeAndShotMusk2);
-                                break;
-                            case "Wcześni fusilierzy":
-                                LandUnit EarlyFusiliers2 = new LandUnit(unitName, 0, 25, 34, 0, 13, 0, 10, 4, 160, 110, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(EarlyFusiliers2);
-                                break;
-                            case "Wcześni kirasjerzy":
-                                LandUnit EarlyCuirassier2 = new LandUnit(unitName, 0, 0, 0, 16, 25, 5, 10, 6, 185, 110, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(EarlyCuirassier2);
-                                break;
-                            case "Harkebuzerzy":
-                                LandUnit Harquebusers2 = new LandUnit(unitName, 0, 12, 23, 10, 18, 5, 10, 6, 170, 100, 6, "RangerCavalry", numOfUnits);
-                                army1UnitsList.Add(Harquebusers2);
-                                break;
-                            case "Lansjerzy":
-                                LandUnit Lancers2 = new LandUnit(unitName, 0, 0, 0, 23, 26, 5, 10, 6, 170, 100, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(Lancers2);
-                                break;
-                            case "Haubica oblężnicza":
-                                LandUnit SiegeHowitzer2 = new LandUnit(unitName, 28, 34, 14, 0, 4, 0, 10, 1, 150, 100, 1, "SiegeArtillery", numOfUnits);
-                                army1UnitsList.Add(SiegeHowitzer2);
-                                break;
-                            //epoka imperiow
-                            case "Fusilierzy":
-                                LandUnit Fusiliers2 = new LandUnit(unitName, 0, 28, 36, 8, 20, 15, 15, 4, 180, 100, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(Fusiliers2);
-                                break;
-                            case "Grenadierzy":
-                                LandUnit Grenadiers2 = new LandUnit(unitName, 0, 28, 44, 12, 26, 17, 15, 4, 180, 110, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(Grenadiers2);
-                                break;
-                            case "Milicja":
-                                LandUnit Militia2 = new LandUnit(unitName, 0, 25, 32, 4, 18, 5, 18, 4, 150, 80, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(Militia2);
-                                break;
-                            case "Karbinerzy":
-                                LandUnit CarbineCavalry2 = new LandUnit(unitName, 0, 24, 30, 10, 19, 5, 10, 6, 170, 100, 6, "RangerCavalry", numOfUnits);
-                                army1UnitsList.Add(CarbineCavalry2);
-                                break;
-                            case "Dragoni":
-                                LandUnit Dragoons2 = new LandUnit(unitName, 0, 28, 36, 8, 20, 5, 14, 4, 170, 100, 6, "MobileRangerInfantry", numOfUnits);
-                                army1UnitsList.Add(Dragoons2);
-                                break;
-                            case "Huzarzy":
-                                LandUnit Hussars2 = new LandUnit(unitName, 0, 0, 0, 16, 27, 5, 14, 6, 170, 100, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(Hussars2);
-                                break;
-                            case "Kirasjerzy":
-                                LandUnit Cuirassier2 = new LandUnit(unitName, 0, 0, 0, 16, 29, 5, 14, 6, 185, 110, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(Cuirassier2);
-                                break;
-                            case "Działa polowe":
-                                LandUnit FieldGun2 = new LandUnit(unitName, 0, 34, 51, 0, 6, 0, 12, 2, 150, 100, 2, "FieldGuns", numOfUnits);
-                                army1UnitsList.Add(FieldGun2);
-                                break;
-                            case "Moździerze":
-                                LandUnit Mortars2 = new LandUnit(unitName, 35, 32, 0, 0, 4, 0, 12, 1, 150, 100, 1, "SiegeArtillery", numOfUnits);
-                                army1UnitsList.Add(Mortars2);
-                                break;
-                            //epoka rewolucji
-                            case "Lekka piechota":
-                                LandUnit LightInfantry2 = new LandUnit(unitName, 0, 30, 39, 5, 22, 9, 23, 4, 170, 100, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(LightInfantry2);
-                                break;
-                            case "Piechota liniowa":
-                                LandUnit LineInfantry2 = new LandUnit(unitName, 0, 31, 42, 8, 22, 15, 15, 4, 180, 100, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(LineInfantry2);
-                                break;
-                            case "Haubice polowe":
-                                LandUnit FieldHowitzer2 = new LandUnit(unitName, 23, 42, 54, 0, 6, 0, 12, 2, 150, 100, 2, "FieldGuns", numOfUnits);
-                                army1UnitsList.Add(FieldHowitzer2);
-                                break;
-                            //jednostki unikalne
-                            case "Kozacy":
-                                LandUnit Cossacks2 = new LandUnit(unitName, 0, 0, 10, 15, 25, 3, 10, 6, 160, 100, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(Cossacks2);
-                                break;
-                            case "Tubylcy wojownicy":
-                                LandUnit TribalWarriors2 = new LandUnit(unitName, 0, 0, 0, 5, 10, 0, 0, 4, 125, 80, 4, "MeleeInfantry", numOfUnits);
-                                army1UnitsList.Add(TribalWarriors2);
-                                break;
-                            case "Tubylcy strzelcy":
-                                LandUnit TribalRangers2 = new LandUnit(unitName, 0, 5, 13, 0, 9, 0, 0, 4, 120, 80, 4, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(TribalRangers2);
-                                break;
-                            case "Konnica tubylców":
-                                LandUnit TribalHorsemen2 = new LandUnit(unitName, 0, 0, 0, 12, 13, 0, 5, 6, 130, 90, 6, "ChargeCavalry", numOfUnits);
-                                army1UnitsList.Add(TribalHorsemen2);
-                                break;
-                            case "Łucznicy konni":
-                                LandUnit HorseArchers2 = new LandUnit(unitName, 0, 13, 15, 5, 18, 0, 5, 4, 160, 100, 6, "RangerInfantry", numOfUnits);
-                                army1UnitsList.Add(HorseArchers2);
-                                break;
-                        }
-                    }
+                    fillArmyList(army1CheckBoxList, army1TextboxList, army1UnitsList);
+                    fillArmyList(army2CheckBoxList, army2TextboxList, army2UnitsList);
                     //teren 
                     switch (cbTerrainType.Text)
                     {
                         case "Łąki":
-                            TerrainType Laki = new TerrainType(cbTerrainType.Text, 2, 0, 2, 0);
-                            terrain[0] = Laki;
+                            terrain[0] = new TerrainType(cbTerrainType.Text, 2, 0, 2, 0);
                             break;
                         case "Wzgórza":
-                            TerrainType Wzgorza = new TerrainType(cbTerrainType.Text, 10, 0, 6, 1);
-                            terrain[0] = Wzgorza;
+                            terrain[0] = new TerrainType(cbTerrainType.Text, 10, 0, 6, 1);
                             break;
                         case "Las":
-                            TerrainType Las = new TerrainType(cbTerrainType.Text, 10, 0, 8, 0);
-                            terrain[0] = Las;
+                            terrain[0] = new TerrainType(cbTerrainType.Text, 10, 0, 8, 0);
                             break;
                         case "Leśne wzgórza":
-                            TerrainType LesneWzgorza = new TerrainType(cbTerrainType.Text, 18, 0, 13, 1);
-                            terrain[0] = LesneWzgorza;
+                            terrain[0] = new TerrainType(cbTerrainType.Text, 18, 0, 13, 1);
                             break;
                         case "Góry":
-                            TerrainType Gory = new TerrainType(cbTerrainType.Text, 17, 0, 13, 4);
-                            terrain[0] = Gory;
+                            terrain[0] = new TerrainType(cbTerrainType.Text, 17, 0, 13, 4);
                             break;
                         case "Bagno":
-                            TerrainType Bagno = new TerrainType(cbTerrainType.Text, 2, 4, 2, 0);
-                            terrain[0] = Bagno;
+                            terrain[0] = new TerrainType(cbTerrainType.Text, 2, 4, 2, 0);
                             break;
                         case "Dżungla":
-                            TerrainType Dzungla = new TerrainType(cbTerrainType.Text, 15, 4, 15, 0);
-                            terrain[0] = Dzungla;
+                            terrain[0] = new TerrainType(cbTerrainType.Text, 15, 4, 15, 0);
                             break;
                         case "Równina":
-                            TerrainType Rownina = new TerrainType(cbTerrainType.Text, 0, 0, 1, 0);
-                            terrain[0] = Rownina;
+                            terrain[0] = new TerrainType(cbTerrainType.Text, 0, 0, 1, 0);
                             break;
                         case "Pustynia":
-                            TerrainType Pustynia = new TerrainType(cbTerrainType.Text, 8, 2, 2, 1);
-                            terrain[0] = Pustynia;
+                            terrain[0] = new TerrainType(cbTerrainType.Text, 8, 2, 2, 1);
                             break;
                     }
                     // glowne dzialanie
