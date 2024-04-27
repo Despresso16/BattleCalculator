@@ -157,322 +157,119 @@ namespace BattleCalculator
             }
         }
         // rozwijanie epok dla armii 1
-        private void btnStartUnits1_Click(object sender, RoutedEventArgs e)
+        void dropdownBtn(ref bool isBtnSelected, StackPanel stackpanel)
         {
-            if (!startUnits1)
+            if (!isBtnSelected)
             {
-                scvStartUnits1.Visibility = Visibility.Visible;
-                startUnits1 = true;
+                stackpanel.Visibility = Visibility.Visible;
+                isBtnSelected = true;
             }
             else
             {
-                scvStartUnits1.Visibility = Visibility.Collapsed;
-                startUnits1 = false;
+                stackpanel.Visibility = Visibility.Collapsed;
+                isBtnSelected = false;
             }
+        }
+        private void btnStartUnits1_Click(object sender, RoutedEventArgs e)
+        {
+            dropdownBtn(ref startUnits1, stpStartUnits1);
         }
         private void btnExplorationEra1_Click(object sender, RoutedEventArgs e)
         {
-            if (!explorationUnits1)
-            {
-                scvExplorationEra1.Visibility = Visibility.Visible;
-                explorationUnits1 = true;
-            }
-            else
-            {
-                scvExplorationEra1.Visibility = Visibility.Collapsed;
-                explorationUnits1 = false;
-            }
+            dropdownBtn(ref explorationUnits1, stpExplorationEra1);
         }
         private void btnExpansionEra1_Click(object sender, RoutedEventArgs e)
         {
-            if (!expansionUnits1)
-            {
-                scvExpansionEra1.Visibility = Visibility.Visible;
-                expansionUnits1 = true;
-            }
-            else
-            {
-                scvExpansionEra1.Visibility = Visibility.Collapsed;
-                expansionUnits1 = false;
-            }
+            dropdownBtn(ref expansionUnits1, stpExpansionEra1);
         }
         private void btnEmpireEra1_Click(object sender, RoutedEventArgs e)
         {
-            if (!empireUnits1)
-            {
-                scvEmpireEra1.Visibility = Visibility.Visible;
-                empireUnits1 = true;
-            }
-            else
-            {
-                scvEmpireEra1.Visibility = Visibility.Collapsed;
-                empireUnits1 = false;
-            }
+            dropdownBtn(ref empireUnits1, stpEmpireEra1);
         }
         private void btnRevolutionEra1_Click(object sender, RoutedEventArgs e)
         {
-            if (!revUnits1)
-            {
-                scvRevolutionEra1.Visibility = Visibility.Visible;
-                revUnits1 = true;
-            }
-            else
-            {
-                scvRevolutionEra1.Visibility = Visibility.Collapsed;
-                revUnits1 = false;
-            }
+            dropdownBtn(ref revUnits1, stpRevolutionEra1);
         }
         private void btnUniqueUnitsEra1_Click(object sender, RoutedEventArgs e)
         {
-            if (!uniqueUnits1)
-            {
-                scvUniqueUnitsEra1.Visibility = Visibility.Visible;
-                uniqueUnits1 = true;
-            }
-            else
-            {
-                scvUniqueUnitsEra1.Visibility = Visibility.Collapsed;
-                uniqueUnits1 = false;
-            }
+            dropdownBtn(ref uniqueUnits1, stpUniqueUnits1);
         }
 
         // rozwijanie epok dla armii 2
         private void btnStartUnits2_Click(object sender, RoutedEventArgs e)
         {
-            if (!startUnits2)
-            {
-                scvStartUnits2.Visibility = Visibility.Visible;
-                startUnits2 = true;
-            }
-            else
-            {
-                scvStartUnits2.Visibility = Visibility.Collapsed;
-                startUnits2 = false;
-            }
+            dropdownBtn(ref startUnits2, stpStartUnits2);
         }
         private void btnExplorationEra2_Click(object sender, RoutedEventArgs e)
         {
-            if (!explorationUnits2)
-            {
-                scvExplorationEra2.Visibility = Visibility.Visible;
-                explorationUnits2 = true;
-            }
-            else
-            {
-                scvExplorationEra2.Visibility = Visibility.Collapsed;
-                explorationUnits2 = false;
-            }
+            dropdownBtn(ref explorationUnits2, stpExplorationEra2);
         }
         private void btnExpansionEra2_Click(object sender, RoutedEventArgs e)
         {
-            if (!expansionUnits2)
-            {
-                scvExpansionEra2.Visibility = Visibility.Visible;
-                expansionUnits2 = true;
-            }
-            else
-            {
-                scvExpansionEra2.Visibility = Visibility.Collapsed;
-                expansionUnits2 = false;
-            }
+            dropdownBtn(ref expansionUnits2, stpExpansionEra2);
         }
         private void btnEmpireEra2_Click(object sender, RoutedEventArgs e)
         {
-            if (!empireUnits2)
-            {
-                scvEmpireEra2.Visibility = Visibility.Visible;
-                empireUnits2 = true;
-            }
-            else
-            {
-                scvEmpireEra2.Visibility = Visibility.Collapsed;
-                empireUnits2 = false;
-            }
+            dropdownBtn(ref empireUnits2, stpEmpireEra2);
         }
         private void btnRevolutionEra2_Click(object sender, RoutedEventArgs e)
         {
-            if (!revUnits2)
-            {
-                scvRevolutionEra2.Visibility = Visibility.Visible;
-                revUnits2 = true;
-            }
-            else
-            {
-                scvRevolutionEra2.Visibility = Visibility.Collapsed;
-                revUnits2 = false;
-            }
+            dropdownBtn(ref revUnits2, stpRevolutionEra2);
         }
         private void btnUniqueUnitsEra2_Click(object sender, RoutedEventArgs e)
         {
-            if (!uniqueUnits2)
-            {
-                scvUniqueUnitsEra2.Visibility = Visibility.Visible;
-                uniqueUnits2 = true;
-            }
-            else
-            {
-                scvUniqueUnitsEra2.Visibility = Visibility.Collapsed;
-                uniqueUnits2 = false;
-            }
+            dropdownBtn(ref uniqueUnits2 , stpUniqueUnits2);
         }
         // rozwijanie epok dla floty 1
         private void btnStartShips1_Click(object sender, RoutedEventArgs e)
         {
-            if (!startShips1)
-            {
-                scvStartShips1.Visibility = Visibility.Visible;
-                startShips1 = true;
-            }
-            else
-            {
-                scvStartShips1.Visibility = Visibility.Collapsed;
-                startShips1 = false;
-            }
+            dropdownBtn(ref startShips1 , stpStartShips1);
         }
         private void btnExplorationEraShips1_Click(object sender, RoutedEventArgs e)
         {
-            if (!explorationShips1)
-            {
-                scvExplorationEraShips1.Visibility = Visibility.Visible;
-                explorationShips1 = true;
-            }
-            else
-            {
-                scvExplorationEraShips1.Visibility = Visibility.Collapsed;
-                explorationShips1 = false;
-            }
+            dropdownBtn(ref explorationShips1 , stpExplorationEraShips1);
         }
 
         private void btnExpansionEraShips1_Click(object sender, RoutedEventArgs e)
         {
-            if (!expansionShips1)
-            {
-                scvExpansionEraShips1.Visibility = Visibility.Visible;
-                expansionShips1 = true;
-            }
-            else
-            {
-                scvExpansionEraShips1.Visibility = Visibility.Collapsed;
-                expansionShips1 = false;
-            }
+            dropdownBtn(ref expansionShips1 , stpExpansionEraShips1);
         }
         private void btnEmpireEraShips1_Click(object sender, RoutedEventArgs e)
         {
-            if (!empireShips1)
-            {
-                scvEmpireEraShips1.Visibility = Visibility.Visible;
-                empireShips1 = true;
-            }
-            else
-            {
-                scvEmpireEraShips1.Visibility = Visibility.Collapsed;
-                empireShips1 = false;
-            }
+            dropdownBtn(ref empireShips1 , stpEmpireEraShips1);
         }
         private void btnRevolutionEraShips1_Click(object sender, RoutedEventArgs e)
         {
-            if (!revShips1)
-            {
-                scvRevolutionEraShips1.Visibility = Visibility.Visible;
-                revShips1 = true;
-            }
-            else
-            {
-                scvRevolutionEraShips1.Visibility = Visibility.Collapsed;
-                revShips1 = false;
-            }
+            dropdownBtn(ref revShips1, stpRevolutionEraShips1);
         }
         private void btnUniqueUnitsShipsEra1_Click(object sender, RoutedEventArgs e)
         {
-            if (!uniqueShips1)
-            {
-                scvUniqueShips1.Visibility = Visibility.Visible;
-                uniqueShips1 = true;
-            }
-            else
-            {
-                scvUniqueShips1.Visibility = Visibility.Collapsed;
-                uniqueShips1 = false;
-            }
+            dropdownBtn(ref uniqueShips1, stpUniqueShips1);
         }
         //rozwijanie epok dla floty 2
         private void btnStartShips2_Click(object sender, RoutedEventArgs e)
         {
-            if (!startShips2)
-            {
-                scvStartShips2.Visibility = Visibility.Visible;
-                startShips2 = true;
-            }
-            else
-            {
-                scvStartShips2.Visibility = Visibility.Collapsed;
-                startShips2 = false;
-            }
+            dropdownBtn(ref startShips2 , stpStartShips2);
         }
         private void btnExplorationEraShips2_Click(object sender, RoutedEventArgs e)
         {
-            if (!explorationShips2)
-            {
-                scvExplorationEraShips2.Visibility = Visibility.Visible;
-                explorationShips2 = true;
-            }
-            else
-            {
-                scvExplorationEraShips2.Visibility = Visibility.Collapsed;
-                explorationShips2 = false;
-            }
+            dropdownBtn(ref explorationShips2 , stpExplorationEraShips2);
         }
         private void btnExpansionEraShips2_Click(object sender, RoutedEventArgs e)
         {
-            if (!expansionShips2)
-            {
-                scvExpansionEraShips2.Visibility = Visibility.Visible;
-                expansionShips2 = true;
-            }
-            else
-            {
-                scvExpansionEraShips2.Visibility = Visibility.Collapsed;
-                expansionShips2 = false;
-            }
+            dropdownBtn(ref expansionShips2 , stpExpansionEraShips2);
         }
         private void btnEmpireEraShips2_Click(object sender, RoutedEventArgs e)
         {
-            if (!empireShips2)
-            {
-                scvEmpireEraShips2.Visibility = Visibility.Visible;
-                empireShips2 = true;
-            }
-            else
-            {
-                scvEmpireEraShips2.Visibility = Visibility.Collapsed;
-                empireShips2 = false;
-            }
+            dropdownBtn(ref empireShips2 , stpEmpireEraShips2);
         }
         private void btnRevolutionEraShips2_Click(object sender, RoutedEventArgs e)
         {
-            if (!revShips2)
-            {
-                scvRevolutionEraShips2.Visibility = Visibility.Visible;
-                revShips2 = true;
-            }
-            else
-            {
-                scvRevolutionEraShips2.Visibility = Visibility.Collapsed;
-                revShips2 = false;
-            }
+            dropdownBtn(ref revShips2, stpRevolutionEraShips2);
         }
         private void btnUniqueUnitsShipsEra2_Click(object sender, RoutedEventArgs e)
         {
-            if (!uniqueShips2)
-            {
-                scvUniqueShips2.Visibility = Visibility.Visible;
-                uniqueShips2 = true;
-            }
-            else
-            {
-                scvUniqueShips2.Visibility = Visibility.Collapsed;
-                uniqueShips2 = false;
-            }
+            dropdownBtn(ref uniqueShips2, stpUniqueShips2);
         }
         //zaznaczanie jednostek i wyznaczanie ich ilosci
         void addUnitToArmy(CheckBox ckUnit, TextBox tbxUnitNum, List<CheckBox> ckList, List<TextBox> tbxList)
@@ -1429,7 +1226,7 @@ namespace BattleCalculator
             verifyUnit(tbxFleet2AsianShip);
         }
         // wszystko po kliknieciu start
-        void applyTerrainEffects(List<LandUnit> armyList)
+        void applyTerrainEffects(ref List<LandUnit> armyList)
         {
             foreach (LandUnit unit in armyList)
             {
@@ -1585,7 +1382,7 @@ namespace BattleCalculator
             }
         }
 
-        void verifyInputLists(List<CheckBox> ckList, List<TextBox> tbxList)
+        void verifyInputLists(ref List<CheckBox> ckList, ref List<TextBox> tbxList)
         {
             string input;
             for (int i = 0; i < ckList.Count; i++)
@@ -1606,8 +1403,8 @@ namespace BattleCalculator
             int numOfUnits;
             if (cbBattleType.Text == "Bitwa lądowa")
             {
-                verifyInputLists(army1CheckBoxList, army1TextboxList);
-                verifyInputLists(army2CheckBoxList, army2TextboxList);
+                verifyInputLists(ref army1CheckBoxList, ref army1TextboxList);
+                verifyInputLists(ref army2CheckBoxList, ref army2TextboxList);
                 activateStartButton();
                 if (btnStart.IsEnabled)
                 {
@@ -1649,15 +1446,15 @@ namespace BattleCalculator
                             break;
                     }
                     // glowne dzialanie
-                    applyTerrainEffects(army1UnitsList);
-                    applyTerrainEffects(army2UnitsList);
+                    applyTerrainEffects(ref army1UnitsList);
+                    applyTerrainEffects(ref army2UnitsList);
                     changePageToResults(sender, e);
                 }
             }
             else
             {
-                verifyInputLists(fleet1CheckBoxList, fleet1TextboxList);
-                verifyInputLists(fleet2CheckBoxList, fleet2TextboxList);
+                verifyInputLists(ref fleet1CheckBoxList, ref fleet1TextboxList);
+                verifyInputLists(ref fleet2CheckBoxList, ref fleet2TextboxList);
                 activateStartButton();
                 if (btnStart.IsEnabled)
                 {

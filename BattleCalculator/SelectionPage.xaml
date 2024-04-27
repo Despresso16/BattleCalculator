@@ -97,7 +97,7 @@
             <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Visible" x:Name="scArmy1Selection">
                 <StackPanel Orientation="Vertical">
                     <Button Content="Jednostki startowe" x:Name="btnStartUnits1" Height="20" Click="btnStartUnits1_Click"/>
-                    <ScrollViewer x:Name="scvStartUnits1" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpStartUnits1" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Pikinierzy" x:Name="ckArmy1Pikemen" Width="150" Click="ckArmy1Pikemen_Click"/>
@@ -128,9 +128,9 @@
                                 <TextBox x:Name="tbxArmy1Bombard" Text="0" IsEnabled="False" LostFocus="tbxArmy1Bombard_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Epoka eksploracji" x:Name="btnExplorationEra1" Height="20" Click="btnExplorationEra1_Click"/>
-                    <ScrollViewer x:Name="scvExplorationEra1" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpExplorationEra1" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Piki i arkebuzerzy" x:Name="ckArmy1PikeShotArq" Width="150" Click="ckArmy1PikeShotArq_Click"/>
@@ -153,9 +153,9 @@
                                 <TextBox x:Name="tbxArmy1HeavyCannon" Text="0" IsEnabled="False" LostFocus="tbxArmy1HeavyCannon_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Epoka ekspansji" x:Name="btnExpansionEra1" Height="20" Click="btnExpansionEra1_Click"/>
-                    <ScrollViewer x:Name="scvExpansionEra1" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpExpansionEra1" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Piki i muszkieterzy" x:Name="ckArmy1PikeShotMusk" Width="150" Click="ckArmy1PikeShotMusk_Click"/>
@@ -182,9 +182,9 @@
                                 <TextBox x:Name="tbxArmy1SiegeHowitzer" Text="0" IsEnabled="False" LostFocus="tbxArmy1SiegeHowitzer_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Epoka imperiów" x:Name="btnEmpireEra1" Height="20" Click="btnEmpireEra1_Click"/>
-                    <ScrollViewer x:Name="scvEmpireEra1" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpEmpireEra1" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Fusilierzy" x:Name="ckArmy1Fusiliers" Width="150" Click="ckArmy1Fusiliers_Click"/>
@@ -223,9 +223,9 @@
                                 <TextBox x:Name="tbxArmy1Mortars" Text="0" IsEnabled="False" LostFocus="tbxArmy1Mortars_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Epoka rewolucji" x:Name="btnRevolutionEra1" Height="20" Click="btnRevolutionEra1_Click"/>
-                    <ScrollViewer x:Name="scvRevolutionEra1" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpRevolutionEra1" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Lekka piechota" x:Name="ckArmy1LightInfantry" Width="150" Click="ckArmy1LightInfantry_Click"/>
@@ -240,9 +240,9 @@
                                 <TextBox x:Name="tbxArmy1FieldHowitzer" Text="0" IsEnabled="False" LostFocus="tbxArmy1FieldHowitzer_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Jednostki unikalne" x:Name="btnUniqueUnitsEra1" Height="20" Click="btnUniqueUnitsEra1_Click"/>
-                    <ScrollViewer x:Name="scvUniqueUnitsEra1" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpUniqueUnits1" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Kozacy" x:Name="ckArmy1Cossacks" Width="150" Click="ckArmy1Cossacks_Click"/>
@@ -265,13 +265,13 @@
                                 <TextBox x:Name="tbxArmy1TribalHorsemen" Text="0" IsEnabled="False" LostFocus="tbxArmy1TribalHorsemen_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                 </StackPanel>
             </ScrollViewer>
             <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Visible" x:Name="scFleet1Selection" Visibility="Hidden">
                 <StackPanel Orientation="Vertical">
                     <Button Content="Jednostki startowe" x:Name="btnStartShips1" Height="20" Click="btnStartShips1_Click"/>
-                    <ScrollViewer x:Name="scvStartShips1" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpStartShips1" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Karak" x:Name="ckFleet1Carrack" Width="150" Click="ckFleet1Carrack_Click"/>
@@ -286,18 +286,18 @@
                                 <TextBox x:Name="tbxFleet1Galley" Text="0" IsEnabled="False" LostFocus="tbxFleet1Galley_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Epoka eksploracji" x:Name="btnExplorationEraShips1" Height="20" Click="btnExplorationEraShips1_Click"/>
-                    <ScrollViewer x:Name="scvExplorationEraShips1" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpExplorationEraShips1" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Galeon" x:Name="ckFleet1Galleon" Width="150" Click="ckFleet1Galleon_Click"/>
                                 <TextBox x:Name="tbxFleet1Galleon" Text="0" IsEnabled="False" LostFocus="tbxFleet1Galleon_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Epoka ekspansji" x:Name="btnExpansionEraShips1" Height="20" Click="btnExpansionEraShips1_Click"/>
-                    <ScrollViewer x:Name="scvExpansionEraShips1" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpExpansionEraShips1" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Szkuner" x:Name="ckFleet1Schooner" Width="150" Click="ckFleet1Schooner_Click"/>
@@ -316,9 +316,9 @@
                                 <TextBox x:Name="tbxFleet1GreatFrigate" Text="0" IsEnabled="False" LostFocus="tbxFleet1GreatFrigate_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Epoka imperiów" x:Name="btnEmpireEraShips1" Height="20" Click="btnEmpireEraShips1_Click"/>
-                    <ScrollViewer x:Name="scvEmpireEraShips1" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpEmpireEraShips1" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Liniowiec" x:Name="ckFleet1ShipOfLine" Width="150" Click="ckFleet1ShipOfLine_Click"/>
@@ -329,25 +329,25 @@
                                 <TextBox x:Name="tbxFleet1Eastindiaman" Text="0" IsEnabled="False" LostFocus="tbxFleet1Eastindiaman_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Epoka rewolucji" x:Name="btnRevolutionEraShips1" Height="20" Click="btnRevolutionEraShips1_Click"/>
-                    <ScrollViewer x:Name="scvRevolutionEraShips1" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpRevolutionEraShips1" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Opancerzona fregata" x:Name="ckFleet1ArmoredFrigate" Width="150" Click="ckFleet1ArmoredFrigate_Click"/>
                                 <TextBox x:Name="tbxFleet1ArmoredFrigate" Text="0" IsEnabled="False" LostFocus="tbxFleet1ArmoredFrigate_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Jednostki unikalne" x:Name="btnUniqueUnitsShips1" Height="20" Click="btnUniqueUnitsShipsEra1_Click"/>
-                    <ScrollViewer x:Name="scvUniqueShips1" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpUniqueShips1" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Azjatycki okręt" x:Name="ckFleet1AsianShip" Width="150" Click="ckFleet1AsianShip_Click"/>
                                 <TextBox x:Name="tbxFleet1AsianShip" Text="0" IsEnabled="False" LostFocus="tbxFleet1AsianShip_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                 </StackPanel>
             </ScrollViewer>
             <Button x:Name="btnLoadArmy1" Content="Załaduj armię" Grid.Column="0" Grid.Row="2" FontSize="9"/>
@@ -355,7 +355,7 @@
             <Button x:Name="btnSaveArmy1" Content="Zapisz armię" Grid.Column="2" Grid.Row="2" FontSize="9"/>
             <Button x:Name="btnResetArmy1" Content="Zresetuj armię" Grid.Column="3" Grid.Row="2" FontSize="9"/>
         </Grid>
-        <!--Wybieranie sklado armii 2-->
+        <!--Wybieranie skladu armii 2-->
         <Grid Grid.Row="1" Grid.Column="2" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
@@ -375,7 +375,7 @@
             <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Visible" x:Name="scArmy2Selection">
                 <StackPanel Orientation="Vertical">
                     <Button Content="Jednostki startowe" x:Name="btnStartUnits2" Height="20" Click="btnStartUnits2_Click"/>
-                    <ScrollViewer x:Name="scvStartUnits2" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpStartUnits2" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Pikinierzy" x:Name="ckArmy2Pikemen" Width="150" Click="ckArmy2Pikemen_Click"/>
@@ -406,9 +406,9 @@
                                 <TextBox x:Name="tbxArmy2Bombard" Text="0" IsEnabled="False" LostFocus="tbxArmy2Bombard_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Epoka eksploracji" x:Name="btnExplorationEra2" Height="20" Click="btnExplorationEra2_Click"/>
-                    <ScrollViewer x:Name="scvExplorationEra2" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpExplorationEra2" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Piki i arkebuzerzy" x:Name="ckArmy2PikeShotArq" Width="150" Click="ckArmy2PikeShotArq_Click"/>
@@ -431,9 +431,9 @@
                                 <TextBox x:Name="tbxArmy2HeavyCannon" Text="0" IsEnabled="False" LostFocus="tbxArmy2HeavyCannon_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Epoka ekspansji" x:Name="btnExpansionEra2" Height="20" Click="btnExpansionEra2_Click"/>
-                    <ScrollViewer x:Name="scvExpansionEra2" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpExpansionEra2" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Piki i muszkieterzy" x:Name="ckArmy2PikeShotMusk" Width="150" Click="ckArmy2PikeShotMusk_Click"/>
@@ -460,9 +460,9 @@
                                 <TextBox x:Name="tbxArmy2SiegeHowitzer" Text="0" IsEnabled="False" LostFocus="tbxArmy2SiegeHowitzer_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Epoka imperiów" x:Name="btnEmpireEra2" Height="20" Click="btnEmpireEra2_Click"/>
-                    <ScrollViewer x:Name="scvEmpireEra2" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpEmpireEra2" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Fusilierzy" x:Name="ckArmy2Fusiliers" Width="150" Click="ckArmy2Fusiliers_Click"/>
@@ -501,9 +501,9 @@
                                 <TextBox x:Name="tbxArmy2Mortars" Text="0" IsEnabled="False" LostFocus="tbxArmy2Mortars_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Epoka rewolucji" x:Name="btnRevolutionEra2" Height="20" Click="btnRevolutionEra2_Click"/>
-                    <ScrollViewer x:Name="scvRevolutionEra2" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpRevolutionEra2" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Lekka piechota" x:Name="ckArmy2LightInfantry" Width="150" Click="ckArmy2LightInfantry_Click"/>
@@ -518,9 +518,9 @@
                                 <TextBox x:Name="tbxArmy2FieldHowitzer" Text="0" IsEnabled="False" LostFocus="tbxArmy2FieldHowitzer_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Jednostki unikalne" x:Name="btnUniqueUnitsEra2" Height="20" Click="btnUniqueUnitsEra2_Click"/>
-                    <ScrollViewer x:Name="scvUniqueUnitsEra2" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpUniqueUnits2" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Kozacy" x:Name="ckArmy2Cossacks" Width="150" Click="ckArmy2Cossacks_Click"/>
@@ -543,13 +543,13 @@
                                 <TextBox x:Name="tbxArmy2TribalHorsemen" Text="0" IsEnabled="False" LostFocus="tbxArmy2TribalHorsemen_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                 </StackPanel>
             </ScrollViewer>
             <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Visible" x:Name="scFleet2Selection" Visibility="Hidden">
                 <StackPanel Orientation="Vertical">
                     <Button Content="Jednostki startowe" x:Name="btnStartShips2" Height="20" Click="btnStartShips2_Click"/>
-                    <ScrollViewer x:Name="scvStartShips2" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpStartShips2" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Karak" x:Name="ckFleet2Carrack" Width="150" Click="ckFleet2Carrack_Click"/>
@@ -564,18 +564,18 @@
                                 <TextBox x:Name="tbxFleet2Galley" Text="0" IsEnabled="False" LostFocus="tbxFleet2Galley_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Epoka eksploracji" x:Name="btnExplorationEraShips2" Height="20" Click="btnExplorationEraShips2_Click"/>
-                    <ScrollViewer x:Name="scvExplorationEraShips2" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpExplorationEraShips2" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Galeon" x:Name="ckFleet2Galleon" Width="150" Click="ckFleet2Galleon_Click"/>
                                 <TextBox x:Name="tbxFleet2Galleon" Text="0" IsEnabled="False" LostFocus="tbxFleet2Galleon_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Epoka ekspansji" x:Name="btnExpansionEraShips2" Height="20" Click="btnExpansionEraShips2_Click"/>
-                    <ScrollViewer x:Name="scvExpansionEraShips2" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpExpansionEraShips2" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Szkuner" x:Name="ckFleet2Schooner" Width="150" Click="ckFleet2Schooner_Click"/>
@@ -594,9 +594,9 @@
                                 <TextBox x:Name="tbxFleet2GreatFrigate" Text="0" IsEnabled="False" LostFocus="tbxFleet2GreatFrigate_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Epoka imperiów" x:Name="btnEmpireEraShips2" Height="20" Click="btnEmpireEraShips2_Click"/>
-                    <ScrollViewer x:Name="scvEmpireEraShips2" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpEmpireEraShips2" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Liniowiec" x:Name="ckFleet2ShipOfLine" Width="150" Click="ckFleet2ShipOfLine_Click"/>
@@ -607,25 +607,25 @@
                                 <TextBox x:Name="tbxFleet2Eastindiaman" Text="0" IsEnabled="False" LostFocus="tbxFleet2Eastindiaman_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Epoka rewolucji" x:Name="btnRevolutionEraShips2" Height="20" Click="btnRevolutionEraShips2_Click"/>
-                    <ScrollViewer x:Name="scvRevolutionEraShips2" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpRevolutionEraShips2" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Opancerzona fregata" x:Name="ckFleet2ArmoredFrigate" Width="150" Click="ckFleet2ArmoredFrigate_Click"/>
                                 <TextBox x:Name="tbxFleet2ArmoredFrigate" Text="0" IsEnabled="False" LostFocus="tbxFleet2ArmoredFrigate_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                     <Button Content="Jednostki unikalne" x:Name="btnUniqueUnitsShipsEra2" Height="20" Click="btnUniqueUnitsShipsEra2_Click"/>
-                    <ScrollViewer x:Name="scvUniqueShips2" VerticalScrollBarVisibility="Visible" Visibility="Collapsed">
+                    <StackPanel x:Name="stpUniqueShips2" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Azjatycki okręt" x:Name="ckFleet2AsianShip" Width="150" Click="ckFleet2AsianShip_Click"/>
                                 <TextBox x:Name="tbxFleet2AsianShip" Text="0" IsEnabled="False" LostFocus="tbxFleet2AsianShip_LostFocus"/>
                             </StackPanel>
                         </StackPanel>
-                    </ScrollViewer>
+                    </StackPanel>
                 </StackPanel>
             </ScrollViewer>
             <Button x:Name="btnLoadArmy2" Content="Załaduj armię" Grid.Column="0" Grid.Row="2" FontSize="9"/>
