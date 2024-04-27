@@ -1257,7 +1257,7 @@ namespace BattleCalculator
                 }
             }
         }
-        void fillArmyList(List<CheckBox> ckList, List<TextBox> tbxList, List<LandUnit> armyList)
+        void fillArmyList(List<CheckBox> ckList, List<TextBox> tbxList, ref List<LandUnit> armyList)
         {
             string unitName;
             int numOfUnits;
@@ -1381,6 +1381,61 @@ namespace BattleCalculator
                 }
             }
         }
+        void fillFleetList(List<CheckBox> ckList, List<TextBox> tbxList, ref List<Ship> fleetList)
+        {
+            string unitName;
+            int numOfUnits;
+            for (int i = 0; i < ckList.Count; i++)
+            {
+                unitName = Convert.ToString(ckList[i].Content);
+                numOfUnits = Convert.ToInt32(tbxList[i].Text);
+                switch (unitName)
+                {
+                    //startowe
+                    case "Galera":
+                        fleet1UnitsList.Add(new Ship(unitName, 1, 1, 100, 80, 5, 7, 5, 45, 0, 0, numOfUnits));
+                        break;
+                    case "Karak":
+                        fleet1UnitsList.Add(new Ship(unitName, 2, 4, 140, 120, 3, 3, 25, 0, 0, 0, numOfUnits));
+                        break;
+                    case "Karawela":
+                        fleet1UnitsList.Add(new Ship(unitName, 2, 3, 110, 100, 5, 4, 15, 5, 0, 0, numOfUnits));
+                        break;
+                    //epoka eksploracji
+                    case "Galleon":
+                        fleet1UnitsList.Add(new Ship(unitName, 2, 4, 160, 150, 3, 3, 35, 5, 0, 0, numOfUnits));
+                        break;
+                    //epoka ekspansji
+                    case "Szkuner":
+                        fleet1UnitsList.Add(new Ship(unitName, 1, 2, 95, 90, 5, 6, 20, 5, 0, 0, numOfUnits));
+                        break;
+                    case "Bryg":
+                        fleet1UnitsList.Add(new Ship(unitName, 1, 2, 115, 105, 5, 6, 25, 5, 5, 0, numOfUnits));
+                        break;
+                    case "Fregata":
+                        fleet1UnitsList.Add(new Ship(unitName, 2, 3, 140, 120, 5, 5, 45, 5, 5, 0, numOfUnits));
+                        break;
+                    case "Ciężka fregata":
+                        fleet1UnitsList.Add(new Ship(unitName, 2, 3, 180, 145, 4, 4, 70, 5, 5, 10, numOfUnits));
+                        break;
+                    //epoka imperiow
+                    case "Liniowiec":
+                        fleet1UnitsList.Add(new Ship(unitName, 3, 4, 290, 250, 3, 3, 100, 10, 10, 20, numOfUnits));
+                        break;
+                    case "Eastindiaman":
+                        fleet1UnitsList.Add(new Ship(unitName, 2, 3, 190, 140, 4, 3, 55, 5, 5, 0, numOfUnits));
+                        break;
+                    //epoka rewolucji
+                    case "Opancerzona fregata":
+                        fleet1UnitsList.Add(new Ship(unitName, 2, 3, 215, 120, 4, 4, 50, 10, 5, 0, numOfUnits));
+                        break;
+                    //unikalne
+                    case "Azjatycki okręt":
+                        fleet1UnitsList.Add(new Ship(unitName, 2, 3, 140, 120, 3, 3, 25, 5, 0, 0, numOfUnits));
+                        break;
+                }
+            }
+        }
 
         void verifyInputLists(ref List<CheckBox> ckList, ref List<TextBox> tbxList)
         {
@@ -1412,8 +1467,8 @@ namespace BattleCalculator
                     army1UnitsList.Clear();
                     army2UnitsList.Clear();
                     //tworzenie armii
-                    fillArmyList(army1CheckBoxList, army1TextboxList, army1UnitsList);
-                    fillArmyList(army2CheckBoxList, army2TextboxList, army2UnitsList);
+                    fillArmyList(army1CheckBoxList, army1TextboxList, ref army1UnitsList);
+                    fillArmyList(army2CheckBoxList, army2TextboxList, ref army2UnitsList);
                     //teren 
                     switch (cbTerrainType.Text)
                     {
@@ -1460,132 +1515,9 @@ namespace BattleCalculator
                 {
                     fleet1UnitsList.Clear();
                     fleet2UnitsList.Clear();
-                    //dodanie jednostek do floty 1
-                    for(int i = 0; i < fleet1CheckBoxList.Count; i++)
-                    {
-                        unitName = Convert.ToString(fleet1CheckBoxList[i].Content);
-                        numOfUnits = Convert.ToInt32(fleet1TextboxList[i].Text);
-                        switch (unitName) 
-                        {
-                            //startowe
-                            case "Galera":
-                                Ship Galley1 = new Ship(unitName, 1, 1, 100, 80, 5, 7, 5, 45, 0, 0, numOfUnits);
-                                fleet1UnitsList.Add(Galley1);
-                                break;
-                            case "Karak":
-                                Ship Carrack1 = new Ship(unitName, 2, 4, 140, 120, 3, 3, 25, 0, 0, 0, numOfUnits);
-                                fleet1UnitsList.Add(Carrack1);
-                                break;
-                            case "Karawela":
-                                Ship Caravel1 = new Ship(unitName, 2, 3, 110, 100, 5, 4, 15, 5, 0, 0, numOfUnits);
-                                fleet1UnitsList.Add(Caravel1);
-                                break;
-                            //epoka eksploracji
-                            case "Galleon":
-                                Ship Galleon1 = new Ship(unitName, 2, 4, 160, 150, 3, 3, 35, 5, 0, 0, numOfUnits);
-                                fleet1UnitsList.Add(Galleon1);
-                                break;
-                            //epoka ekspansji
-                            case "Szkuner":
-                                Ship Schooner1 = new Ship(unitName, 1, 2, 95, 90, 5, 6, 20, 5, 0, 0, numOfUnits);
-                                fleet1UnitsList.Add(Schooner1);
-                                break;
-                            case "Bryg":
-                                Ship Brig1 = new Ship(unitName, 1, 2, 115, 105, 5, 6, 25, 5, 5, 0, numOfUnits);
-                                fleet1UnitsList.Add(Brig1);
-                                break;
-                            case "Fregata":
-                                Ship Frigate1 = new Ship(unitName, 2, 3, 140, 120, 5, 5, 45, 5, 5, 0, numOfUnits);
-                                fleet1UnitsList.Add(Frigate1);
-                                break;
-                            case "Ciężka fregata":
-                                Ship GreatFrigate1 = new Ship(unitName, 2, 3, 180, 145, 4, 4, 70, 5, 5, 10, numOfUnits);
-                                fleet1UnitsList.Add(GreatFrigate1);
-                                break;
-                            //epoka imperiow
-                            case "Liniowiec":
-                                Ship ShipOfTheLine1 = new Ship(unitName, 3, 4, 290, 250, 3, 3, 100, 10, 10, 20, numOfUnits);
-                                fleet1UnitsList.Add(ShipOfTheLine1);
-                                break;
-                            case "Eastindiaman":
-                                Ship EastIndiaman1 = new Ship(unitName, 2, 3, 190, 140, 4, 3, 55, 5, 5, 0, numOfUnits);
-                                fleet1UnitsList.Add(EastIndiaman1);
-                                break;
-                            //epoka rewolucji
-                            case "Opancerzona fregata":
-                                Ship ArmoredFrigate1 = new Ship(unitName, 2, 3, 215, 120, 4, 4, 50, 10, 5, 0, numOfUnits);
-                                fleet1UnitsList.Add(ArmoredFrigate1);
-                                break;
-                            //unikalne
-                            case "Azjatycki okręt":
-                                Ship AsianShip1 = new Ship(unitName, 2, 3, 140, 120, 3, 3, 25, 5, 0, 0, numOfUnits);
-                                fleet1UnitsList.Add(AsianShip1);
-                                break;
-                        }
-                    }
-                    //dodanie jednostek do floty 2
-                    for (int i = 0; i < fleet2CheckBoxList.Count; i++)
-                    {
-                        unitName = Convert.ToString(fleet2CheckBoxList[i].Content);
-                        numOfUnits = Convert.ToInt32(fleet2TextboxList[i].Text);
-                        switch (unitName)
-                        {
-                            //startowe
-                            case "Galera":
-                                Ship Galley2 = new Ship(unitName, 1, 1, 100, 80, 5, 7, 5, 45, 0, 0, numOfUnits);
-                                fleet2UnitsList.Add(Galley2);
-                                break;
-                            case "Karak":
-                                Ship Carrack2 = new Ship(unitName, 2, 4, 140, 120, 3, 3, 25, 0, 0, 0, numOfUnits);
-                                fleet2UnitsList.Add(Carrack2);
-                                break;
-                            case "Karawela":
-                                Ship Caravel2 = new Ship(unitName, 2, 3, 110, 100, 5, 4, 15, 5, 0, 0, numOfUnits);
-                                fleet2UnitsList.Add(Caravel2);
-                                break;
-                            //epoka eksploracji
-                            case "Galleon":
-                                Ship Galleon2 = new Ship(unitName, 2, 4, 160, 150, 3, 3, 35, 5, 0, 0, numOfUnits);
-                                fleet2UnitsList.Add(Galleon2);
-                                break;
-                            //epoka ekspansji
-                            case "Szkuner":
-                                Ship Schooner = new Ship(unitName, 1, 2, 95, 90, 5, 6, 20, 5, 0, 0, numOfUnits);
-                                fleet2UnitsList.Add(Schooner);
-                                break;
-                            case "Bryg":
-                                Ship Brig = new Ship(unitName, 1, 2, 115, 105, 5, 6, 25, 5, 5, 0, numOfUnits);
-                                fleet2UnitsList.Add(Brig);
-                                break;
-                            case "Fregata":
-                                Ship Frigate = new Ship(unitName, 2, 3, 140, 120, 5, 5, 45, 5, 5, 0, numOfUnits);
-                                fleet2UnitsList.Add(Frigate);
-                                break;
-                            case "Ciężka fregata":
-                                Ship GreatFrigate2 = new Ship(unitName, 2, 3, 180, 145, 4, 4, 70, 5, 5, 10, numOfUnits);
-                                fleet1UnitsList.Add(GreatFrigate2);
-                                break;
-                            //epoka imperiow
-                            case "Liniowiec":
-                                Ship ShipOfTheLine2 = new Ship(unitName, 3, 4, 290, 250, 3, 3, 100, 10, 10, 20, numOfUnits);
-                                fleet2UnitsList.Add(ShipOfTheLine2);
-                                break;
-                            case "Eastindiaman":
-                                Ship EastIndiaman2 = new Ship(unitName, 2, 3, 190, 140, 4, 3, 55, 5, 5, 0, numOfUnits);
-                                fleet2UnitsList.Add(EastIndiaman2);
-                                break;
-                            //epoka rewolucji
-                            case "Opancerzona fregata":
-                                Ship ArmoredFrigate2 = new Ship(unitName, 2, 3, 215, 120, 4, 4, 50, 10, 5, 0, numOfUnits);
-                                fleet2UnitsList.Add(ArmoredFrigate2);
-                                break;
-                            //unikalne
-                            case "Azjatycki okręt":
-                                Ship AsianShip2 = new Ship(unitName, 2, 3, 140, 120, 3, 3, 25, 5, 0, 0, numOfUnits);
-                                fleet2UnitsList.Add(AsianShip2);
-                                break;
-                        }
-                    }
+                    //dodanie jednostek do flot
+                    fillFleetList(fleet1CheckBoxList, fleet1TextboxList, ref fleet1UnitsList);
+                    fillFleetList(fleet2CheckBoxList, fleet2TextboxList, ref fleet2UnitsList);
                 }
 
             }
