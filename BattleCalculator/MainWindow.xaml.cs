@@ -26,7 +26,7 @@ namespace BattleCalculator
             selectionPage.btnClick += startBtnClicked;
             frame.Content = selectionPage;
         }
-        private void startBtnClicked(object sender, EventArgs e)
+        private void startBtnClicked(object? sender, EventArgs e)
         {
             frame.Content = new ResultPage();
         }
