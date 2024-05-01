@@ -75,7 +75,6 @@ namespace BattleCalculator
             NumberOf = UnitNumberOf;
 
         }
-
     }
     class Ship //statki
     {
