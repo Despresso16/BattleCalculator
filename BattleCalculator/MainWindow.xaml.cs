@@ -48,6 +48,7 @@ namespace BattleCalculator
         public int initiative;
 
         public int Health;
+        public int MaxHealth;
         public int MaxMorale;
         public int Morale;
         public int Speed;
@@ -68,6 +69,7 @@ namespace BattleCalculator
             ArtilleryDef = UnitArtDef;
             initiative = UnitInitiative;
             Health = UnitHealth;
+            MaxHealth = UnitHealth;
             MaxMorale = UnitMorale;
             Morale = UnitMorale;
             Speed = UnitSpeed;

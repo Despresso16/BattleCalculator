@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -1273,19 +1274,19 @@ namespace BattleCalculator
                         armyList.Add(new LandUnit(unitName, 0, 0, 0, 5, 15, 30, 0, 4, 170, 100, 4, "MeleeInfantry", numOfUnits));
                         break;
                     case "Arkebuzerzy":
-                        armyList.Add(new LandUnit(unitName, 0, 10, 20, 0, 8, 0, 0, 4, 160, 100, 4, "RangerInfantry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 10, 20, 0, 8, 0, 0, 3, 160, 100, 4, "RangerInfantry", numOfUnits));
                         break;
                     case "Łucznicy":
-                        armyList.Add(new LandUnit(unitName, 0, 13, 15, 0, 8, 0, 0, 4, 150, 100, 4, "RangerInfantry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 13, 15, 0, 8, 0, 0, 3, 150, 100, 4, "RangerInfantry", numOfUnits));
                         break;
                     case "Kusznicy":
-                        armyList.Add(new LandUnit(unitName, 0, 11, 17, 0, 8, 0, 5, 4, 160, 100, 4, "RangerInfantry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 11, 17, 0, 8, 0, 5, 3, 160, 100, 4, "RangerInfantry", numOfUnits));
                         break;
                     case "Rycerze":
-                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 25, 22, 5, 10, 6, 200, 110, 6, "ChargeCavalry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 25, 23, 5, 10, 6, 200, 110, 6, "ChargeCavalry", numOfUnits));
                         break;
                     case "Konnica":
-                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 15, 20, 5, 10, 6, 165, 100, 6, "ChargeCavalry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 15, 19, 5, 10, 6, 165, 100, 6, "ChargeCavalry", numOfUnits));
                         break;
                     case "Bombarda":
                         armyList.Add(new LandUnit(unitName, 12, 10, 0, 0, 4, 0, 10, 1, 150, 100, 1, "SiegeArtillery", numOfUnits));
@@ -1314,7 +1315,7 @@ namespace BattleCalculator
                         armyList.Add(new LandUnit(unitName, 0, 25, 34, 0, 13, 0, 10, 4, 160, 110, 4, "RangerInfantry", numOfUnits));
                         break;
                     case "Wcześni kirasjerzy":
-                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 16, 25, 5, 10, 6, 185, 110, 6, "ChargeCavalry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 18, 26, 5, 10, 6, 185, 110, 6, "ChargeCavalry", numOfUnits));
                         break;
                     case "Harkebuzerzy":
                         armyList.Add(new LandUnit(unitName, 0, 12, 23, 10, 18, 5, 10, 6, 170, 100, 6, "RangerCavalry", numOfUnits));
@@ -1327,25 +1328,25 @@ namespace BattleCalculator
                         break;
                     //epoka imperiow
                     case "Fusilierzy":
-                        armyList.Add(new LandUnit(unitName, 0, 28, 36, 8, 20, 15, 15, 4, 180, 100, 4, "RangerInfantry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 28, 36, 13, 20, 23, 15, 4, 180, 100, 4, "RangerInfantry", numOfUnits));
                         break;
                     case "Grenadierzy":
-                        armyList.Add(new LandUnit(unitName, 0, 28, 44, 12, 26, 17, 15, 4, 180, 110, 4, "RangerInfantry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 28, 44, 14, 26, 24, 15, 4, 180, 110, 4, "RangerInfantry", numOfUnits));
                         break;
                     case "Milicja":
-                        armyList.Add(new LandUnit(unitName, 0, 25, 32, 4, 18, 5, 18, 4, 150, 80, 4, "RangerInfantry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 25, 32, 7, 18, 5, 18, 4, 150, 80, 4, "RangerInfantry", numOfUnits));
                         break;
                     case "Karbinerzy":
                         armyList.Add(new LandUnit(unitName, 0, 24, 30, 10, 19, 5, 10, 6, 170, 100, 6, "RangerCavalry", numOfUnits));
                         break;
                     case "Dragoni":
-                        armyList.Add(new LandUnit(unitName, 0, 28, 36, 8, 20, 5, 14, 4, 170, 100, 6, "MobileRangerInfantry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 28, 36, 11, 20, 5, 14, 4, 170, 100, 6, "MobileRangerInfantry", numOfUnits));
                         break;
                     case "Huzarzy":
-                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 16, 27, 5, 14, 6, 170, 100, 6, "ChargeCavalry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 17, 27, 5, 14, 6, 170, 100, 6, "ChargeCavalry", numOfUnits));
                         break;
                     case "Kirasjerzy":
-                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 16, 29, 5, 14, 6, 185, 110, 6, "ChargeCavalry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 0, 0, 18, 29, 5, 14, 6, 185, 110, 6, "ChargeCavalry", numOfUnits));
                         break;
                     case "Działa polowe":
                         armyList.Add(new LandUnit(unitName, 0, 34, 51, 0, 6, 0, 12, 2, 150, 100, 2, "FieldGuns", numOfUnits));
@@ -1355,10 +1356,10 @@ namespace BattleCalculator
                         break;
                     //epoka rewolucji
                     case "Lekka piechota":
-                        armyList.Add(new LandUnit(unitName, 0, 30, 39, 5, 22, 9, 23, 4, 170, 100, 4, "RangerInfantry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 30, 39, 10, 22, 9, 23, 4, 170, 100, 4, "RangerInfantry", numOfUnits));
                         break;
                     case "Piechota liniowa":
-                        armyList.Add(new LandUnit(unitName, 0, 31, 42, 8, 22, 15, 15, 4, 180, 100, 4, "RangerInfantry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 31, 42, 13, 22, 15, 15, 4, 180, 100, 4, "RangerInfantry", numOfUnits));
                         break;
                     case "Haubice polowe":
                         armyList.Add(new LandUnit(unitName, 23, 42, 54, 0, 6, 0, 12, 2, 150, 100, 2, "FieldGuns", numOfUnits));
@@ -1575,7 +1576,6 @@ namespace BattleCalculator
                 }
             }
         }
-
         void mergeLandUnits(ref List<LandUnit> armyList)
         {
             for (int i = 0; i < armyList.Count; i++)
@@ -1588,6 +1588,180 @@ namespace BattleCalculator
                         armyList.RemoveAt(j);
                     }
                 }
+            }
+        }
+        // mozliwe opcje dla typu damage'u dla ponizszej funkcji
+        public enum TypeOfDamage
+        {
+            LongRange,
+            MidRange,
+            LowRange,
+            ChargeMelee,
+            Melee
+        }
+        void attackLandUnits(ref List<LandUnit> attackerList, ref List<LandUnit> defenderList, TypeOfDamage typeOfdamage)
+        {
+            if(Enum.IsDefined(typeof(TypeOfDamage), typeOfdamage)) throw new ArgumentException();
+            string damageType = typeOfdamage.ToString();
+            int attackerDamage = 0;
+            int defenderDamage = 0;
+            int avgAttackerInit = 0, avgDefenderInit = 0;
+            if (damageType == "LongRange")
+            {
+                foreach(LandUnit unit in attackerList)
+                {
+                    attackerDamage += unit.LongRange;
+                }
+                if(attackerDamage > 0) attackerDamage /= defenderList.Count;
+                foreach(LandUnit unit in defenderList)
+                {
+                    if (attackerDamage - unit.ArtilleryDef > 0)
+                    {
+                        unit.Health -= attackerDamage - unit.ArtilleryDef;
+                        unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
+                    }
+                    if(unit.Health <= 0)
+                    {
+                        while(unit.Health <= 0 && unit.NumberOf > 0)
+                        {
+                            unit.Health += unit.MaxHealth;
+                            unit.NumberOf--;
+                            unit.Morale -= 5;
+                        }
+                    }
+                    if (unit.Morale <= 0) unit.Morale = 0;
+                }
+            }
+            else if (damageType == "MidRange")
+            {
+                foreach (LandUnit unit in attackerList)
+                {
+                    attackerDamage += unit.MediumRange;
+                }
+                if (attackerDamage > 0) attackerDamage /= defenderList.Count;
+                foreach (LandUnit unit in defenderList)
+                {
+                    if (attackerDamage - unit.ArtilleryDef > 0)
+                    {
+                        unit.Health -= attackerDamage - unit.ArtilleryDef;
+                        unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
+                    }
+                    if (unit.Health <= 0)
+                    {
+                        while (unit.Health <= 0 && unit.NumberOf > 0)
+                        {
+                            unit.Health += unit.MaxHealth;
+                            unit.NumberOf--;
+                            unit.Morale -= 5;
+                        }
+                    }
+                    if(unit.Morale <= 0) unit.Morale = 0;
+                }
+            }
+            else if(damageType == "LowRange")
+            {
+                foreach (LandUnit unit in defenderList)
+                {
+                    defenderDamage += unit.LowRange;
+                    avgDefenderInit += unit.initiative;
+                }
+                if (defenderDamage > 0) defenderDamage /= attackerList.Count;
+                avgDefenderInit /= defenderList.Count;
+                foreach (LandUnit unit in attackerList)
+                {
+                    attackerDamage += unit.LowRange;
+                    avgAttackerInit += unit.initiative;
+                }
+                avgAttackerInit /= attackerList.Count;
+                if (attackerDamage > 0) attackerDamage /= defenderList.Count;
+                if(avgAttackerInit > avgDefenderInit)
+                {
+                    foreach (LandUnit unit in defenderList)
+                    {
+                        if (attackerDamage - unit.ArtilleryDef > 0)
+                        {
+                            unit.Health -= attackerDamage - unit.ArtilleryDef;
+                            unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
+                        }
+                        if (unit.Health <= 0)
+                        {
+                            while (unit.Health <= 0 && unit.NumberOf > 0)
+                            {
+                                unit.Health += unit.MaxHealth;
+                                unit.NumberOf--;
+                                unit.Morale -= 5;
+                            }
+                        }
+                        if (unit.Morale <= 0) unit.Morale = 0;
+                    }
+                    foreach (LandUnit unit in attackerList)
+                    {
+                        if (defenderDamage - unit.ArtilleryDef > 0)
+                        {
+                            unit.Health -= defenderDamage - unit.ArtilleryDef;
+                            unit.Morale -= (defenderDamage - unit.ArtilleryDef) / 2;
+                        }
+                        if (unit.Health <= 0)
+                        {
+                            while (unit.Health <= 0 && unit.NumberOf > 0)
+                            {
+                                unit.Health += unit.MaxHealth;
+                                unit.NumberOf--;
+                                unit.Morale -= 5;
+                            }
+                        }
+                        if (unit.Morale <= 0) unit.Morale = 0;
+                    }
+                }
+                else
+                {
+                    foreach (LandUnit unit in attackerList)
+                    {
+                        if (defenderDamage - unit.ArtilleryDef > 0)
+                        {
+                            unit.Health -= defenderDamage - unit.ArtilleryDef;
+                            unit.Morale -= (defenderDamage - unit.ArtilleryDef) / 2;
+                        }
+                        if (unit.Health <= 0)
+                        {
+                            while (unit.Health <= 0 && unit.NumberOf > 0)
+                            {
+                                unit.Health += unit.MaxHealth;
+                                unit.NumberOf--;
+                                unit.Morale -= 5;
+                            }
+                        }
+                        if (unit.Morale <= 0) unit.Morale = 0;
+                    }
+                    foreach (LandUnit unit in defenderList)
+                    {
+                        if (attackerDamage - unit.ArtilleryDef > 0)
+                        {
+                            unit.Health -= attackerDamage - unit.ArtilleryDef;
+                            unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
+                        }
+                        if (unit.Health <= 0)
+                        {
+                            while (unit.Health <= 0 && unit.NumberOf > 0)
+                            {
+                                unit.Health += unit.MaxHealth;
+                                unit.NumberOf--;
+                                unit.Morale -= 5;
+                            }
+                        }
+                        if (unit.Morale <= 0) unit.Morale = 0;
+                    }
+                }
+                
+            }
+            else if(damageType == "ChargeMelee")
+            {
+                foreach (LandUnit unit in attackerList)
+                {
+                    attackerDamage += unit.LowRange + unit.ShockAttack;
+                }
+                defenderList.Sort((x, y) => y.ShockDef.CompareTo(x.ShockDef)); // sortowanie broniacych sie po obronie przeciw szarży
+                // to do
             }
         }
         void fillFleetList(List<CheckBox> ckList, List<TextBox> tbxList, ref List<Ship> fleetList)
