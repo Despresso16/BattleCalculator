@@ -1393,6 +1393,7 @@ namespace BattleCalculator
             maxUnitCount /= 6;
             int numOfAttackers = 0;
             int i = 0;
+            bool quitLoop = false;
             while( numOfAttackers < maxUnitCount )
             {
                 foreach(LandUnit unit in mainArmyList)
@@ -1404,7 +1405,7 @@ namespace BattleCalculator
                     }
                     else if (i >= mainArmyList.Count - 1)
                     {
-                        numOfAttackers = maxUnitCount++;//zakonczenie poszukiwania jednostek atakujacych ze wzgledu na brak jednostek spelniajacyh warunki
+                        quitLoop = true;
                         break;
                     }
                     if ( numOfAttackers > maxUnitCount)
@@ -1417,7 +1418,7 @@ namespace BattleCalculator
                     }
                     i++;
                 }
-                if (numOfAttackers >= maxUnitCount)
+                if (numOfAttackers >= maxUnitCount || quitLoop)
                 {
                     break;
                 }
@@ -1439,18 +1440,19 @@ namespace BattleCalculator
             maxUnitCount /= 6;
             int numOfDefenders = 0;
             int i = 0;
+            bool quitLoop = false;
             while (numOfDefenders < maxUnitCount)
             {
                 foreach (LandUnit unit in mainArmyList)
                 {
-                    if (!defendingUnits.Contains(unit) && unit.initiative > 0 && unit.NumberOf > 0)
+                    if (!defendingUnits.Contains(unit) && unit.initiative > 0 && unit.NumberOf > 0 && unit.Name == "ChargeCavalry" && unit.Name == "RangerCavalry")
                     {
                         defendingUnits.Add(unit);
                         numOfDefenders += unit.NumberOf;
                     }
                     else if (i >= mainArmyList.Count - 1)
                     {
-                        numOfDefenders = maxUnitCount++;//zakonczenie poszukiwania jednostek atakujacych ze wzgledu na brak jednostek spelniajacyh warunki
+                        quitLoop = true;
                         break;
                     }
                     if (numOfDefenders > maxUnitCount)
@@ -1463,40 +1465,27 @@ namespace BattleCalculator
                     }
                     i++;
                 }
-                if(armyHasCannons && !defendersHaveCannons)
+                if (numOfDefenders >= maxUnitCount || quitLoop)
                 {
-                    LandUnit lastlyAddedUnitCopyUnit = defendingUnits[defendingUnits.Count - 1];
-                    int maxMinusLastUnit = 5;
-                    while (true)
-                    {
-                        if(maxMinusLastUnit >= lastlyAddedUnitCopyUnit.NumberOf)
-                        {
-                            maxMinusLastUnit--;
-                        }
-                        else
-                        {
-                            if (maxMinusLastUnit <= 0)
-                            {
-                                defendingUnits.RemoveAt(defendingUnits.Count - 1);
-                                maxMinusLastUnit = 1;
-                            }
-                            break;
-                        }
-                    }
-                    mainArmyList.Add(new LandUnit(lastlyAddedUnitCopyUnit.Name, lastlyAddedUnitCopyUnit.LongRange, lastlyAddedUnitCopyUnit.MediumRange, lastlyAddedUnitCopyUnit.LowRange, lastlyAddedUnitCopyUnit.ShockAttack, lastlyAddedUnitCopyUnit.Melee, lastlyAddedUnitCopyUnit.ShockDef, lastlyAddedUnitCopyUnit.ArtilleryDef, lastlyAddedUnitCopyUnit.initiative, lastlyAddedUnitCopyUnit.Health, lastlyAddedUnitCopyUnit.Morale, lastlyAddedUnitCopyUnit.Speed, lastlyAddedUnitCopyUnit.Type, lastlyAddedUnitCopyUnit.NumberOf - (lastlyAddedUnitCopyUnit.NumberOf - maxMinusLastUnit)));
-                    lastlyAddedUnitCopyUnit.NumberOf -= numOfDefenders - maxMinusLastUnit;
-                    numOfDefenders -= maxMinusLastUnit;
-                    i = 0;
+                    break;
+                }
+            }
+            if(numOfDefenders < maxUnitCount) // jesli nie ma wystarczajaco duzo obroncow wybierze tez kawalerie
+            {
+                quitLoop = false;
+                i = 0;
+                while (numOfDefenders < maxUnitCount)
+                {
                     foreach (LandUnit unit in mainArmyList)
                     {
-                        if (!defendingUnits.Contains(unit) && unit.initiative > 0 && unit.NumberOf > 0 && (unit.Name == "SiegeArtillery" || unit.Name == "FieldGuns"))
+                        if (!defendingUnits.Contains(unit) && unit.initiative > 0 && unit.NumberOf > 0)
                         {
                             defendingUnits.Add(unit);
                             numOfDefenders += unit.NumberOf;
                         }
                         else if (i >= mainArmyList.Count - 1)
                         {
-                            numOfDefenders = maxUnitCount++;//zakonczenie poszukiwania jednostek atakujacych ze wzgledu na brak jednostek spelniajacyh warunki
+                            quitLoop = true;
                             break;
                         }
                         if (numOfDefenders > maxUnitCount)
@@ -1509,14 +1498,69 @@ namespace BattleCalculator
                         }
                         i++;
                     }
+                    if (numOfDefenders >= maxUnitCount || quitLoop)
+                    {
+                        break;
+                    }
                 }
-                if (numOfDefenders >= maxUnitCount)
+            }
+            if (armyHasCannons && !defendersHaveCannons)
+            {
+                LandUnit lastlyAddedUnitCopyUnit = defendingUnits[defendingUnits.Count - 1];
+                int maxMinusLastUnit = 5;
+                while (true)
                 {
-                    break;
+                    if (maxMinusLastUnit >= lastlyAddedUnitCopyUnit.NumberOf)
+                    {
+                        maxMinusLastUnit--;
+                    }
+                    else
+                    {
+                        if (maxMinusLastUnit <= 0)
+                        {
+                            defendingUnits.RemoveAt(defendingUnits.Count - 1);
+                            maxMinusLastUnit = 1;
+                        }
+                        break;
+                    }
+                }
+                mainArmyList.Add(new LandUnit(lastlyAddedUnitCopyUnit.Name, lastlyAddedUnitCopyUnit.LongRange, lastlyAddedUnitCopyUnit.MediumRange, lastlyAddedUnitCopyUnit.LowRange, lastlyAddedUnitCopyUnit.ShockAttack, lastlyAddedUnitCopyUnit.Melee, lastlyAddedUnitCopyUnit.ShockDef, lastlyAddedUnitCopyUnit.ArtilleryDef, lastlyAddedUnitCopyUnit.initiative, lastlyAddedUnitCopyUnit.Health, lastlyAddedUnitCopyUnit.Morale, lastlyAddedUnitCopyUnit.Speed, lastlyAddedUnitCopyUnit.Type, lastlyAddedUnitCopyUnit.NumberOf - (lastlyAddedUnitCopyUnit.NumberOf - maxMinusLastUnit)));
+                lastlyAddedUnitCopyUnit.NumberOf -= numOfDefenders - maxMinusLastUnit;
+                numOfDefenders -= maxMinusLastUnit;
+                i = 0;
+                quitLoop = false;
+                while(true)
+                {
+                    foreach (LandUnit unit in mainArmyList)
+                    {
+                        if (!defendingUnits.Contains(unit) && unit.initiative > 0 && unit.NumberOf > 0 && (unit.Name == "SiegeArtillery" || unit.Name == "FieldGuns"))
+                        {
+                            defendingUnits.Add(unit);
+                            numOfDefenders += unit.NumberOf;
+                        }
+                        else if (i >= mainArmyList.Count - 1)
+                        {
+                            quitLoop = true;
+                            break;
+                        }
+                        if (numOfDefenders > maxUnitCount)
+                        {
+                            //odzielamy liczbe jednostek nieuzywanych
+                            mainArmyList.Add(new LandUnit(unit.Name, unit.LongRange, unit.MediumRange, unit.LowRange, unit.ShockAttack, unit.Melee, unit.ShockDef, unit.ArtilleryDef, unit.initiative, unit.Health, unit.Morale, unit.Speed, unit.Type, numOfDefenders - maxUnitCount));
+                            unit.NumberOf -= numOfDefenders - maxUnitCount;
+                            numOfDefenders = maxUnitCount;
+                            break;
+                        }
+                        i++;
+                        if (numOfDefenders >= maxUnitCount || quitLoop)
+                        {
+                            break;
+                        }
+                    }
                 }
             }
         }
-        void selectBombardingUnits(ref List<LandUnit> mainArmyList, List<LandUnit> bombardingUnits, bool allowFieldGuns)
+        void selectBombardingUnits(ref List<LandUnit> mainArmyList, ref List<LandUnit> bombardingUnits, bool allowFieldGuns)
         {
             bombardingUnits.Clear();
             foreach (LandUnit unit in  mainArmyList)
@@ -1528,6 +1572,21 @@ namespace BattleCalculator
                 else if(unit.Type == "SiegeArtillery")
                 {
                     bombardingUnits.Add(unit);
+                }
+            }
+        }
+
+        void mergeLandUnits(ref List<LandUnit> armyList)
+        {
+            for (int i = 0; i < armyList.Count; i++)
+            {
+                for(int j = 0; j < armyList.Count; j++) 
+                {
+                    if (armyList[i].Name == armyList[j].Name && j != i)
+                    {
+                        armyList[i].NumberOf += armyList[j].NumberOf;
+                        armyList.RemoveAt(j);
+                    }
                 }
             }
         }
