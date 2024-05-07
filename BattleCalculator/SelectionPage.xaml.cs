@@ -1293,7 +1293,7 @@ namespace BattleCalculator
                         break;
                     //epoka eksploracji
                     case "Piki i arkebuzerzy":
-                        armyList.Add(new LandUnit(unitName, 0, 10, 20, 5, 16, 30, 0, 4, 180, 100, 4, "RangerInfantry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 10, 20, 5, 16, 30, 0, 4, 180, 100, 4, "LineInfantry", numOfUnits));
                         break;
                     case "Ciężcy husarze":
                         armyList.Add(new LandUnit(unitName, 0, 0, 0, 30, 25, 5, 10, 6, 190, 110, 6, "ChargeCavalry", numOfUnits));
@@ -1309,7 +1309,7 @@ namespace BattleCalculator
                         break;
                     //epoka ekspansji
                     case "Piki i muszkieterzy":
-                        armyList.Add(new LandUnit(unitName, 0, 17, 28, 5, 16, 30, 0, 4, 180, 100, 4, "RangerInfantry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 17, 28, 5, 16, 30, 0, 4, 180, 100, 4, "LineInfantry", numOfUnits));
                         break;
                     case "Wcześni fusilierzy":
                         armyList.Add(new LandUnit(unitName, 0, 25, 34, 0, 13, 0, 10, 4, 160, 110, 4, "RangerInfantry", numOfUnits));
@@ -1328,13 +1328,13 @@ namespace BattleCalculator
                         break;
                     //epoka imperiow
                     case "Fusilierzy":
-                        armyList.Add(new LandUnit(unitName, 0, 28, 36, 13, 20, 23, 15, 4, 180, 100, 4, "RangerInfantry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 28, 36, 13, 20, 23, 15, 4, 180, 100, 4, "LineInfantry", numOfUnits));
                         break;
                     case "Grenadierzy":
-                        armyList.Add(new LandUnit(unitName, 0, 28, 44, 14, 26, 24, 15, 4, 180, 110, 4, "RangerInfantry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 28, 44, 14, 26, 24, 15, 4, 180, 110, 4, "LineInfantry", numOfUnits));
                         break;
                     case "Milicja":
-                        armyList.Add(new LandUnit(unitName, 0, 25, 32, 7, 18, 5, 18, 4, 150, 80, 4, "RangerInfantry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 25, 32, 7, 18, 5, 18, 4, 150, 80, 4, "LineInfantry", numOfUnits));
                         break;
                     case "Karbinerzy":
                         armyList.Add(new LandUnit(unitName, 0, 24, 30, 10, 19, 5, 10, 6, 170, 100, 6, "RangerCavalry", numOfUnits));
@@ -1359,7 +1359,7 @@ namespace BattleCalculator
                         armyList.Add(new LandUnit(unitName, 0, 30, 39, 10, 22, 9, 23, 4, 170, 100, 4, "RangerInfantry", numOfUnits));
                         break;
                     case "Piechota liniowa":
-                        armyList.Add(new LandUnit(unitName, 0, 31, 42, 13, 22, 15, 15, 4, 180, 100, 4, "RangerInfantry", numOfUnits));
+                        armyList.Add(new LandUnit(unitName, 0, 31, 42, 13, 22, 15, 15, 4, 180, 100, 4, "LineInfantry", numOfUnits));
                         break;
                     case "Haubice polowe":
                         armyList.Add(new LandUnit(unitName, 23, 42, 54, 0, 6, 0, 12, 2, 150, 100, 2, "FieldGuns", numOfUnits));
@@ -1758,10 +1758,190 @@ namespace BattleCalculator
             {
                 foreach (LandUnit unit in attackerList)
                 {
-                    attackerDamage += unit.LowRange + unit.ShockAttack;
+                    attackerDamage += unit.Melee + unit.ShockAttack;
+                    if (unit.LowRange > 0) attackerDamage += unit.LowRange / 2;
                 }
-                defenderList.Sort((x, y) => y.ShockDef.CompareTo(x.ShockDef)); // sortowanie broniacych sie po obronie przeciw szarży
-                // to do
+                defenderList.Sort((x, y) => y.ShockDef.CompareTo(x.ShockDef)); // sortowanie broniacych sie po obronie przeciw szarże
+                List<LandUnit> defensiveCharge = new List<LandUnit>();
+                foreach (LandUnit unit in defenderList)
+                {
+                    if(unit.Type == "ChargeCavalry")
+                    {
+                        defensiveCharge.Add(unit);
+                        defenderDamage += unit.Melee + unit.ShockAttack;
+                        if(unit.LowRange > 0) defenderDamage += unit.LowRange / 2;
+                    }
+                }
+                if(defensiveCharge.Count > 0)
+                {
+                    defenderDamage /= attackerList.Count;
+                    int localAttackerDamage = attackerDamage / defensiveCharge.Count;
+                    for (int i = 0; i < defensiveCharge.Count; i++)
+                    {
+                        defensiveCharge[i].Health -= localAttackerDamage - defensiveCharge[i].ShockDef;
+                        defensiveCharge[i].Morale -= (localAttackerDamage - defensiveCharge[i].ShockDef) / 2;
+                        if (defensiveCharge[i].Health <= 0)
+                        {
+                            while(defensiveCharge[i].Health <= 0 && defensiveCharge[i].NumberOf > 0)
+                            {
+                                defensiveCharge[i].Health += defensiveCharge[i].MaxHealth;
+                                defensiveCharge[i].NumberOf--;
+                                defensiveCharge[i].Morale -= 5;
+                            }
+                        }
+                        if (defensiveCharge[i].Morale < 0) defensiveCharge[i].Morale = 0;
+                        if (i < attackerList.Count)
+                        {
+                            attackerList[i].Health -= defenderDamage; // zada tylko czesci armii ale moze byc
+                            attackerList[i].Morale -= (defenderDamage - attackerList[i].ShockDef) / 2;
+                            if (attackerList[i].Health <= 0)
+                            {
+                                while (attackerList[i].Health <= 0 && attackerList[i].NumberOf > 0)
+                                {
+                                    attackerList[i].Health += attackerList[i].MaxHealth;
+                                    attackerList[i].NumberOf--;
+                                    attackerList[i].Morale -= 5;
+                                }
+                            }
+                            if (attackerList[i].Morale < 0) attackerList[i].Morale = 0;
+                        }
+                    }
+                }
+                List<LandUnit> frontDefense = new List<LandUnit>();
+                int frontDefenseCount = 0;
+                defenderDamage = 0;
+                foreach (LandUnit unit in defenderList)
+                {
+                    if (unit.Type == "MeleeInfantry" || unit.Type == "LineInfantry")
+                    {
+                        frontDefense.Add(unit);
+                        defenderDamage += unit.Melee + unit.LowRange;
+                        if (unit.ShockDef > 0) defenderDamage += unit.ShockDef / 2;
+                        frontDefenseCount += unit.NumberOf;
+                    }
+                }
+                if(frontDefenseCount > defenderList.Count / 3)
+                {
+                    attackerDamage /= frontDefenseCount;
+                    foreach (LandUnit unit in frontDefense)
+                    {
+                        unit.Health -= attackerDamage - unit.ShockDef;
+                        unit.Morale -= (attackerDamage - unit.ShockDef) / 2;
+                        if (unit.Health <= 0)
+                        {
+                            while (unit.Health <= 0 && unit.NumberOf > 0)
+                            {
+                                unit.Health += unit.MaxHealth;
+                                unit.NumberOf--;
+                                unit.Morale -= 5;
+                            }
+                        }
+                        if (unit.Morale <= 0) unit.Morale = 0;
+                    }
+                    foreach (LandUnit unit in attackerList)
+                    {
+                        unit.Health -= defenderDamage - unit.ShockDef;
+                        unit.Morale -= (defenderDamage - unit.ShockDef) / 2;
+                        if (unit.Health <= 0)
+                        {
+                            while (unit.Health <= 0 && unit.NumberOf > 0)
+                            {
+                                unit.Health += unit.MaxHealth;
+                                unit.NumberOf--;
+                                unit.Morale -= 5;
+                            }
+                        }
+                        if (unit.Morale <= 0) unit.Morale = 0;
+                    }
+                }
+                else
+                {
+                    defenderDamage = 0;
+                    attackerDamage /= defenderList.Count;
+                    foreach (LandUnit unit in defenderList)
+                    {
+                        defenderDamage += unit.Melee + unit.LowRange;
+                        if (unit.ShockDef > 0) defenderDamage += unit.ShockDef / 2;
+                        frontDefenseCount += unit.NumberOf;
+                    }
+                    foreach (LandUnit unit in defenderList)
+                    {
+                        unit.Health -= attackerDamage - unit.ShockDef;
+                        unit.Morale -= (attackerDamage - unit.ShockDef) / 2;
+                        if (unit.Health <= 0)
+                        {
+                            while (unit.Health <= 0 && unit.NumberOf > 0)
+                            {
+                                unit.Health += unit.MaxHealth;
+                                unit.NumberOf--;
+                                unit.Morale -= 5;
+                            }
+                        }
+                        if (unit.Morale <= 0) unit.Morale = 0;
+                    }
+                    foreach (LandUnit unit in attackerList)
+                    {
+                        unit.Health -= defenderDamage - unit.ShockDef;
+                        unit.Morale -= (defenderDamage - unit.ShockDef) / 2;
+                        if (unit.Health <= 0)
+                        {
+                            while (unit.Health <= 0 && unit.NumberOf > 0)
+                            {
+                                unit.Health += unit.MaxHealth;
+                                unit.NumberOf--;
+                                unit.Morale -= 5;
+                            }
+                        }
+                        if (unit.Morale <= 0) unit.Morale = 0;
+                    }
+                }
+            }
+            else if(damageType == "Melee")
+            {
+                foreach(LandUnit unit in attackerList)
+                {
+                    attackerDamage += unit.Melee;
+                    if(unit.LowRange > 0) attackerDamage += unit.LowRange / 3;
+                    if (unit.ShockAttack > 0) attackerDamage += unit.ShockAttack / 3;
+                }
+                attackerDamage /= defenderList.Count;
+                foreach (LandUnit unit in defenderList)
+                {
+                    defenderDamage += unit.Melee;
+                    if (unit.LowRange > 0) defenderDamage += unit.LowRange / 3;
+                    if (unit.ShockAttack > 0) defenderDamage += unit.ShockAttack / 3;
+                }
+                defenderDamage /= attackerList.Count;
+                foreach (LandUnit unit in defenderList)
+                {
+                    unit.Health -= attackerDamage - unit.ShockDef;
+                    unit.Morale -= (attackerDamage - unit.ShockDef) / 2;
+                    if (unit.Health <= 0)
+                    {
+                        while (unit.Health <= 0 && unit.NumberOf > 0)
+                        {
+                            unit.Health += unit.MaxHealth;
+                            unit.NumberOf--;
+                            unit.Morale -= 5;
+                        }
+                    }
+                    if (unit.Morale <= 0) unit.Morale = 0;
+                }
+                foreach (LandUnit unit in attackerList)
+                {
+                    unit.Health -= defenderDamage - unit.ShockDef;
+                    unit.Morale -= (defenderDamage - unit.ShockDef) / 2;
+                    if (unit.Health <= 0)
+                    {
+                        while (unit.Health <= 0 && unit.NumberOf > 0)
+                        {
+                            unit.Health += unit.MaxHealth;
+                            unit.NumberOf--;
+                            unit.Morale -= 5;
+                        }
+                    }
+                    if (unit.Morale <= 0) unit.Morale = 0;
+                }
             }
         }
         void fillFleetList(List<CheckBox> ckList, List<TextBox> tbxList, ref List<Ship> fleetList)
@@ -1903,5 +2083,4 @@ namespace BattleCalculator
         }
 
     }
-    
 }
