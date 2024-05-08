@@ -30,7 +30,6 @@ namespace BattleCalculator
         {
             frame.Content = new ResultPage();
         }
-
     }
     public class LandUnit //jednostki ladowe
     {

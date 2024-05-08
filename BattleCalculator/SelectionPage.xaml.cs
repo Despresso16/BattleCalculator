@@ -29,7 +29,7 @@ namespace BattleCalculator
         }
 
 
-        private void changePageToResults(object sender, RoutedEventArgs e)
+        private void ChangePageToResults(object sender, RoutedEventArgs e)
         {
             btnClick?.Invoke(this, EventArgs.Empty);
         }
@@ -62,7 +62,7 @@ namespace BattleCalculator
         List<TextBox> fleet1TextboxList = new List<TextBox>();
         List<TextBox> fleet2TextboxList = new List<TextBox>();
         //sprawdzenie czy wybrano wszystko potrzebne do bitwy
-        void activateStartButton()
+        void ActivateStartButton()
         {
             if (cbSkirmishVariant.Text != "Wybierz rodzaj spotkania")
             {
@@ -121,7 +121,7 @@ namespace BattleCalculator
                 ckArmy1Condition.Content = "Ten kraj wynalazł taktyki nelsońskie";
                 ckArmy2Condition.Content = "Ten kraj wynalazł taktyki nelsońskie";
             }
-            activateStartButton();
+            ActivateStartButton();
         }
 
         private void cbSkirmishVariant_LostFocus(object sender, RoutedEventArgs e)
@@ -134,11 +134,11 @@ namespace BattleCalculator
             {
                 isSkirmishAttack = false;
             }
-            activateStartButton();
+            ActivateStartButton();
         }
         private void cbTerrainType_LostFocus(object sender, RoutedEventArgs e)
         {
-            activateStartButton();
+            ActivateStartButton();
         }
         private void btnFortLevelMinus_Click(object sender, RoutedEventArgs e)
         {
@@ -158,7 +158,7 @@ namespace BattleCalculator
             }
         }
         // rozwijanie epok dla armii 1
-        void dropdownBtn(ref bool isBtnSelected, StackPanel stackpanel)
+        void DropdownBtn(ref bool isBtnSelected, StackPanel stackpanel)
         {
             if (!isBtnSelected)
             {
@@ -173,107 +173,107 @@ namespace BattleCalculator
         }
         private void btnStartUnits1_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref startUnits1, stpStartUnits1);
+            DropdownBtn(ref startUnits1, stpStartUnits1);
         }
         private void btnExplorationEra1_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref explorationUnits1, stpExplorationEra1);
+            DropdownBtn(ref explorationUnits1, stpExplorationEra1);
         }
         private void btnExpansionEra1_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref expansionUnits1, stpExpansionEra1);
+            DropdownBtn(ref expansionUnits1, stpExpansionEra1);
         }
         private void btnEmpireEra1_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref empireUnits1, stpEmpireEra1);
+            DropdownBtn(ref empireUnits1, stpEmpireEra1);
         }
         private void btnRevolutionEra1_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref revUnits1, stpRevolutionEra1);
+            DropdownBtn(ref revUnits1, stpRevolutionEra1);
         }
         private void btnUniqueUnitsEra1_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref uniqueUnits1, stpUniqueUnits1);
+            DropdownBtn(ref uniqueUnits1, stpUniqueUnits1);
         }
 
         // rozwijanie epok dla armii 2
         private void btnStartUnits2_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref startUnits2, stpStartUnits2);
+            DropdownBtn(ref startUnits2, stpStartUnits2);
         }
         private void btnExplorationEra2_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref explorationUnits2, stpExplorationEra2);
+            DropdownBtn(ref explorationUnits2, stpExplorationEra2);
         }
         private void btnExpansionEra2_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref expansionUnits2, stpExpansionEra2);
+            DropdownBtn(ref expansionUnits2, stpExpansionEra2);
         }
         private void btnEmpireEra2_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref empireUnits2, stpEmpireEra2);
+            DropdownBtn(ref empireUnits2, stpEmpireEra2);
         }
         private void btnRevolutionEra2_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref revUnits2, stpRevolutionEra2);
+            DropdownBtn(ref revUnits2, stpRevolutionEra2);
         }
         private void btnUniqueUnitsEra2_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref uniqueUnits2 , stpUniqueUnits2);
+            DropdownBtn(ref uniqueUnits2 , stpUniqueUnits2);
         }
         // rozwijanie epok dla floty 1
         private void btnStartShips1_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref startShips1 , stpStartShips1);
+            DropdownBtn(ref startShips1 , stpStartShips1);
         }
         private void btnExplorationEraShips1_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref explorationShips1 , stpExplorationEraShips1);
+            DropdownBtn(ref explorationShips1 , stpExplorationEraShips1);
         }
 
         private void btnExpansionEraShips1_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref expansionShips1 , stpExpansionEraShips1);
+            DropdownBtn(ref expansionShips1 , stpExpansionEraShips1);
         }
         private void btnEmpireEraShips1_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref empireShips1 , stpEmpireEraShips1);
+            DropdownBtn(ref empireShips1 , stpEmpireEraShips1);
         }
         private void btnRevolutionEraShips1_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref revShips1, stpRevolutionEraShips1);
+            DropdownBtn(ref revShips1, stpRevolutionEraShips1);
         }
         private void btnUniqueUnitsShipsEra1_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref uniqueShips1, stpUniqueShips1);
+            DropdownBtn(ref uniqueShips1, stpUniqueShips1);
         }
         //rozwijanie epok dla floty 2
         private void btnStartShips2_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref startShips2 , stpStartShips2);
+            DropdownBtn(ref startShips2 , stpStartShips2);
         }
         private void btnExplorationEraShips2_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref explorationShips2 , stpExplorationEraShips2);
+            DropdownBtn(ref explorationShips2 , stpExplorationEraShips2);
         }
         private void btnExpansionEraShips2_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref expansionShips2 , stpExpansionEraShips2);
+            DropdownBtn(ref expansionShips2 , stpExpansionEraShips2);
         }
         private void btnEmpireEraShips2_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref empireShips2 , stpEmpireEraShips2);
+            DropdownBtn(ref empireShips2 , stpEmpireEraShips2);
         }
         private void btnRevolutionEraShips2_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref revShips2, stpRevolutionEraShips2);
+            DropdownBtn(ref revShips2, stpRevolutionEraShips2);
         }
         private void btnUniqueUnitsShipsEra2_Click(object sender, RoutedEventArgs e)
         {
-            dropdownBtn(ref uniqueShips2, stpUniqueShips2);
+            DropdownBtn(ref uniqueShips2, stpUniqueShips2);
         }
         //zaznaczanie jednostek i wyznaczanie ich ilosci
-        void selectAnUnit(CheckBox ckUnit, TextBox tbxUnitNum, List<CheckBox> ckList, List<TextBox> tbxList)
+        void SelectAnUnit(CheckBox ckUnit, TextBox tbxUnitNum, List<CheckBox> ckList, List<TextBox> tbxList)
         {
             if (ckUnit.IsChecked == true)
             {
@@ -288,9 +288,9 @@ namespace BattleCalculator
                 ckList.Remove(ckUnit);
                 tbxList.Remove(tbxUnitNum);
             }
-            activateStartButton();
+            ActivateStartButton();
         }
-        void verifyNumberOfUnits(TextBox tbxUnitNum)
+        void VerifyNumberOfUnits(TextBox tbxUnitNum)
         {
             int numOfUnit = 0;
             bool tbxIsNumber = int.TryParse(tbxUnitNum.Text, out numOfUnit);
@@ -302,932 +302,932 @@ namespace BattleCalculator
         //dla armii 1
         private void ckArmy1Pikemen_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Pikemen, tbxArmy1Pikemen, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Pikemen, tbxArmy1Pikemen, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Pikemen_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Pikemen);
+            VerifyNumberOfUnits(tbxArmy1Pikemen);
         }
         private void ckArmy1Arquebusiers_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Arquebusiers, tbxArmy1Arquebusiers, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Arquebusiers, tbxArmy1Arquebusiers, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Arquebusiers_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Arquebusiers);
+            VerifyNumberOfUnits(tbxArmy1Arquebusiers);
         }
 
         private void ckArmy1Archers_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Archers, tbxArmy1Archers, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Archers, tbxArmy1Archers, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Archers_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Archers);
+            VerifyNumberOfUnits(tbxArmy1Archers);
         }
 
         private void ckArmy1Crossbowmen_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Crossbowmen, tbxArmy1Crossbowmen, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Crossbowmen, tbxArmy1Crossbowmen, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Crossbowmen_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Crossbowmen);
+            VerifyNumberOfUnits(tbxArmy1Crossbowmen);
         }
 
         private void ckArmy1Knights_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Knights, tbxArmy1Knights, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Knights, tbxArmy1Knights, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Knights_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Knights);
+            VerifyNumberOfUnits(tbxArmy1Knights);
         }
         private void ckArmy1Horsemen_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Horsemen, tbxArmy1Horsemen, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Horsemen, tbxArmy1Horsemen, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Horsemen_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Horsemen);
+            VerifyNumberOfUnits(tbxArmy1Horsemen);
         }
 
         private void ckArmy1Bombard_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Bombard, tbxArmy1Bombard, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Bombard, tbxArmy1Bombard, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Bombard_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Bombard);
+            VerifyNumberOfUnits(tbxArmy1Bombard);
         }
 
         private void ckArmy1PikeShotArq_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1PikeShotArq, tbxArmy1PikeShotArq, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1PikeShotArq, tbxArmy1PikeShotArq, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1PikeShotArq_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1PikeShotArq);
+            VerifyNumberOfUnits(tbxArmy1PikeShotArq);
         }
 
         private void ckArmy1HeavyHussars_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1HeavyHussars, tbxArmy1HeavyHussars, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1HeavyHussars, tbxArmy1HeavyHussars, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1HeavyHussars_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1HeavyHussars);
+            VerifyNumberOfUnits(tbxArmy1HeavyHussars);
         }
 
         private void ckArmy1Cossacks_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Cossacks, tbxArmy1Cossacks, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Cossacks, tbxArmy1Cossacks, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Cossacks_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Cossacks);
+            VerifyNumberOfUnits(tbxArmy1Cossacks);
         }
 
         private void ckArmy1Reiters_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Reiters, tbxArmy1Reiters, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Reiters, tbxArmy1Reiters, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Reiters_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Reiters);
+            VerifyNumberOfUnits(tbxArmy1Reiters);
         }
         private void ckArmy1FieldCannon_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1FieldCannon, tbxArmy1FieldCannon, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1FieldCannon, tbxArmy1FieldCannon, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1FieldCannon_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1FieldCannon);
+            VerifyNumberOfUnits(tbxArmy1FieldCannon);
         }
 
         private void ckArmy1HeavyCannon_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1HeavyCannon, tbxArmy1HeavyCannon, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1HeavyCannon, tbxArmy1HeavyCannon, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1HeavyCannon_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1HeavyCannon);
+            VerifyNumberOfUnits(tbxArmy1HeavyCannon);
         }
 
         private void ckArmy1PikeShotMusk_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1PikeShotMusk, tbxArmy1PikeShotMusk, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1PikeShotMusk, tbxArmy1PikeShotMusk, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1PikeShotMusk_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1PikeShotMusk);
+            VerifyNumberOfUnits(tbxArmy1PikeShotMusk);
         }
 
         private void ckArmy1EarlyFusiliers_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1EarlyFusiliers, tbxArmy1EarlyFusiliers, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1EarlyFusiliers, tbxArmy1EarlyFusiliers, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1EarlyFusiliers_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1EarlyFusiliers);
+            VerifyNumberOfUnits(tbxArmy1EarlyFusiliers);
         }
 
         private void ckArmy1EarlyCuirassier_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1EarlyCuirassier, tbxArmy1EarlyCuirassier, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1EarlyCuirassier, tbxArmy1EarlyCuirassier, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1EarlyCuirassier_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1EarlyCuirassier);
+            VerifyNumberOfUnits(tbxArmy1EarlyCuirassier);
         }
 
         private void ckArmy1Harquebusers_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Harquebusers, tbxArmy1Harquebusers, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Harquebusers, tbxArmy1Harquebusers, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Harquebusers_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Harquebusers);
+            VerifyNumberOfUnits(tbxArmy1Harquebusers);
         }
 
         private void ckArmy1Lancers_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Lancers, tbxArmy1Lancers, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Lancers, tbxArmy1Lancers, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Lancers_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Lancers);
+            VerifyNumberOfUnits(tbxArmy1Lancers);
         }
 
         private void ckArmy1SiegeHowitzer_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1SiegeHowitzer, tbxArmy1SiegeHowitzer, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1SiegeHowitzer, tbxArmy1SiegeHowitzer, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1SiegeHowitzer_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1SiegeHowitzer);
+            VerifyNumberOfUnits(tbxArmy1SiegeHowitzer);
         }
 
         private void ckArmy1Fusiliers_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Fusiliers, tbxArmy1Fusiliers, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Fusiliers, tbxArmy1Fusiliers, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Fusiliers_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Fusiliers);
+            VerifyNumberOfUnits(tbxArmy1Fusiliers);
         }
         private void ckArmy1Grenadiers_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Grenadiers, tbxArmy1Grenadiers, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Grenadiers, tbxArmy1Grenadiers, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Grenadiers_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Grenadiers);
+            VerifyNumberOfUnits(tbxArmy1Grenadiers);
         }
         private void ckArmy1Militia_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Militia, tbxArmy1Militia, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Militia, tbxArmy1Militia, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Militia_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Militia);
+            VerifyNumberOfUnits(tbxArmy1Militia);
         }
 
         private void ckArmy1CarbineCav_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1CarbineCav, tbxArmy1CarbineCav, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1CarbineCav, tbxArmy1CarbineCav, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1CarbineCav_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1CarbineCav);
+            VerifyNumberOfUnits(tbxArmy1CarbineCav);
         }
 
         private void ckArmy1Dragoons_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Dragoons, tbxArmy1Dragoons, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Dragoons, tbxArmy1Dragoons, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Dragoons_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Dragoons);
+            VerifyNumberOfUnits(tbxArmy1Dragoons);
         }
 
         private void ckArmy1Hussars_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Hussars, tbxArmy1Hussars, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Hussars, tbxArmy1Hussars, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Hussars_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Hussars);
+            VerifyNumberOfUnits(tbxArmy1Hussars);
         }
 
         private void ckArmy1Cuiraissiers_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Cuiraissiers, tbxArmy1Cuiraissiers, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Cuiraissiers, tbxArmy1Cuiraissiers, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Cuiraissiers_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Cuiraissiers);
+            VerifyNumberOfUnits(tbxArmy1Cuiraissiers);
         }
 
         private void ckArmy1FieldGun_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1FieldGun, tbxArmy1FieldGun, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1FieldGun, tbxArmy1FieldGun, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1FieldGun_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1FieldGun);
+            VerifyNumberOfUnits(tbxArmy1FieldGun);
         }
 
         private void ckArmy1Mortars_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1Mortars, tbxArmy1Mortars, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Mortars, tbxArmy1Mortars, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1Mortars_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1Mortars);
+            VerifyNumberOfUnits(tbxArmy1Mortars);
         }
 
         private void ckArmy1LightInfantry_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1LightInfantry, tbxArmy1LightInfantry, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1LightInfantry, tbxArmy1LightInfantry, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1LightInfantry_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1LightInfantry);
+            VerifyNumberOfUnits(tbxArmy1LightInfantry);
         }
 
         private void ckArmy1LineInfantry_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1LineInfantry, tbxArmy1LineInfantry, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1LineInfantry, tbxArmy1LineInfantry, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1LineInfantry_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1LineInfantry);
+            VerifyNumberOfUnits(tbxArmy1LineInfantry);
         }
 
         private void ckArmy1FieldHowitzer_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1FieldHowitzer, tbxArmy1FieldHowitzer, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1FieldHowitzer, tbxArmy1FieldHowitzer, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1FieldHowitzer_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1FieldHowitzer);
+            VerifyNumberOfUnits(tbxArmy1FieldHowitzer);
         }
 
         private void ckArmy1TribalWarriors_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1TribalWarriors, tbxArmy1TribalWarriors, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1TribalWarriors, tbxArmy1TribalWarriors, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1TribalWarriors_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1TribalWarriors);
+            VerifyNumberOfUnits(tbxArmy1TribalWarriors);
         }
 
         private void ckArmy1TribalRanger_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1TribalRanger, tbxArmy1TribalRanger, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1TribalRanger, tbxArmy1TribalRanger, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1TribalRanger_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1TribalRanger);
+            VerifyNumberOfUnits(tbxArmy1TribalRanger);
         }
 
         private void ckArmy1TribalHorsemen_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1TribalHorsemen, tbxArmy1TribalHorsemen, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1TribalHorsemen, tbxArmy1TribalHorsemen, army1CheckBoxList, army1TextboxList);
         }
 
         private void tbxArmy1TribalHorsemen_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1TribalHorsemen);
+            VerifyNumberOfUnits(tbxArmy1TribalHorsemen);
         }
         private void tbxArmy1HorseArcher_LostFocus(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy1HorseArcher, tbxArmy1HorseArcher, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1HorseArcher, tbxArmy1HorseArcher, army1CheckBoxList, army1TextboxList);
         }
 
         private void ckArmy1HorseArcher_Click(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy1HorseArcher);
+            VerifyNumberOfUnits(tbxArmy1HorseArcher);
         }
         // dla floty 1
         private void ckFleet1Carrack_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet1Carrack, tbxFleet1Carrack, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1Carrack, tbxFleet1Carrack, fleet1CheckBoxList, fleet1TextboxList);
         }
 
         private void tbxFleet1Carrack_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet1Carrack);
+            VerifyNumberOfUnits(tbxFleet1Carrack);
         }
 
         private void ckFleet1Caravel_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet1Caravel, tbxFleet1Caravel, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1Caravel, tbxFleet1Caravel, fleet1CheckBoxList, fleet1TextboxList);
         }
 
         private void tbxFleet1Caravel_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet1Caravel);
+            VerifyNumberOfUnits(tbxFleet1Caravel);
         }
 
         private void ckFleet1Galley_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet1Galley, tbxFleet1Galley, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1Galley, tbxFleet1Galley, fleet1CheckBoxList, fleet1TextboxList);
         }
 
         private void tbxFleet1Galley_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet1Galley);
+            VerifyNumberOfUnits(tbxFleet1Galley);
         }
 
         private void ckFleet1Galleon_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet1Galleon, tbxFleet1Galleon, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1Galleon, tbxFleet1Galleon, fleet1CheckBoxList, fleet1TextboxList);
         }
 
         private void tbxFleet1Galleon_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet1Galleon);
+            VerifyNumberOfUnits(tbxFleet1Galleon);
         }
 
         private void ckFleet1Schooner_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet1Schooner, tbxFleet1Schooner, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1Schooner, tbxFleet1Schooner, fleet1CheckBoxList, fleet1TextboxList);
         }
 
         private void tbxFleet1Schooner_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet1Schooner);
+            VerifyNumberOfUnits(tbxFleet1Schooner);
         }
 
         private void ckFleet1Brig_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet1Brig, tbxFleet1Brig, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1Brig, tbxFleet1Brig, fleet1CheckBoxList, fleet1TextboxList);
         }
 
         private void tbxFleet1Brig_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet1Brig);
+            VerifyNumberOfUnits(tbxFleet1Brig);
         }
 
         private void ckFleet1Frigate_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet1Frigate, tbxFleet1Frigate, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1Frigate, tbxFleet1Frigate, fleet1CheckBoxList, fleet1TextboxList);
         }
 
         private void tbxFleet1Frigate_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet1Frigate);
+            VerifyNumberOfUnits(tbxFleet1Frigate);
         }
 
         private void ckFleet1GreatFrigate_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet1GreatFrigate, tbxFleet1GreatFrigate, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1GreatFrigate, tbxFleet1GreatFrigate, fleet1CheckBoxList, fleet1TextboxList);
         }
 
         private void tbxFleet1GreatFrigate_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet1GreatFrigate);
+            VerifyNumberOfUnits(tbxFleet1GreatFrigate);
         }
 
         private void ckFleet1ShipOfLine_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet1ShipOfLine, tbxFleet1ShipOfLine, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1ShipOfLine, tbxFleet1ShipOfLine, fleet1CheckBoxList, fleet1TextboxList);
         }
 
         private void tbxFleet1ShipOfLine_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet1ShipOfLine);
+            VerifyNumberOfUnits(tbxFleet1ShipOfLine);
         }
 
         private void ckFleet1Eastindiaman_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet1Eastindiaman, tbxFleet1Eastindiaman, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1Eastindiaman, tbxFleet1Eastindiaman, fleet1CheckBoxList, fleet1TextboxList);
         }
 
         private void tbxFleet1Eastindiaman_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet1Eastindiaman);
+            VerifyNumberOfUnits(tbxFleet1Eastindiaman);
         }
 
         private void ckFleet1ArmoredFrigate_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet1ArmoredFrigate, tbxFleet1ArmoredFrigate, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1ArmoredFrigate, tbxFleet1ArmoredFrigate, fleet1CheckBoxList, fleet1TextboxList);
         }
 
         private void tbxFleet1ArmoredFrigate_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet1ArmoredFrigate);
+            VerifyNumberOfUnits(tbxFleet1ArmoredFrigate);
         }
 
         private void ckFleet1AsianShip_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet1AsianShip, tbxFleet1AsianShip, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1AsianShip, tbxFleet1AsianShip, fleet1CheckBoxList, fleet1TextboxList);
         }
 
         private void tbxFleet1AsianShip_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet1AsianShip);
+            VerifyNumberOfUnits(tbxFleet1AsianShip);
         }
         // dla armii 1
         private void ckArmy2Pikemen_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Pikemen, tbxArmy2Pikemen, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Pikemen, tbxArmy2Pikemen, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Pikemen_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Pikemen);
+            VerifyNumberOfUnits(tbxArmy2Pikemen);
         }
         private void ckArmy2Arquebusiers_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Arquebusiers, tbxArmy2Arquebusiers, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Arquebusiers, tbxArmy2Arquebusiers, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Arquebusiers_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Arquebusiers);
+            VerifyNumberOfUnits(tbxArmy2Arquebusiers);
         }
 
         private void ckArmy2Archers_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Archers, tbxArmy2Archers, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Archers, tbxArmy2Archers, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Archers_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Archers);
+            VerifyNumberOfUnits(tbxArmy2Archers);
         }
 
         private void ckArmy2Crossbowmen_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Crossbowmen, tbxArmy2Crossbowmen, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Crossbowmen, tbxArmy2Crossbowmen, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Crossbowmen_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Crossbowmen);
+            VerifyNumberOfUnits(tbxArmy2Crossbowmen);
         }
 
         private void ckArmy2Knights_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Knights, tbxArmy2Knights, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Knights, tbxArmy2Knights, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Knights_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Knights);
+            VerifyNumberOfUnits(tbxArmy2Knights);
         }
         private void ckArmy2Horsemen_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Horsemen, tbxArmy2Horsemen, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Horsemen, tbxArmy2Horsemen, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Horsemen_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Horsemen);
+            VerifyNumberOfUnits(tbxArmy2Horsemen);
         }
 
         private void ckArmy2Bombard_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Bombard, tbxArmy2Bombard, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Bombard, tbxArmy2Bombard, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Bombard_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Bombard);
+            VerifyNumberOfUnits(tbxArmy2Bombard);
         }
 
         private void ckArmy2PikeShotArq_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2PikeShotArq, tbxArmy2PikeShotArq, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2PikeShotArq, tbxArmy2PikeShotArq, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2PikeShotArq_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2PikeShotArq);
+            VerifyNumberOfUnits(tbxArmy2PikeShotArq);
         }
 
         private void ckArmy2HeavyHussars_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2HeavyHussars, tbxArmy2HeavyHussars, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2HeavyHussars, tbxArmy2HeavyHussars, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2HeavyHussars_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2HeavyHussars);
+            VerifyNumberOfUnits(tbxArmy2HeavyHussars);
         }
 
         private void ckArmy2Cossacks_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Cossacks, tbxArmy2Cossacks, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Cossacks, tbxArmy2Cossacks, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Cossacks_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Cossacks);
+            VerifyNumberOfUnits(tbxArmy2Cossacks);
         }
 
         private void ckArmy2Reiters_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Reiters, tbxArmy2Reiters, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Reiters, tbxArmy2Reiters, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Reiters_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Reiters);
+            VerifyNumberOfUnits(tbxArmy2Reiters);
         }
         private void ckArmy2FieldCannon_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2FieldCannon, tbxArmy2FieldCannon, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2FieldCannon, tbxArmy2FieldCannon, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2FieldCannon_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2FieldCannon);
+            VerifyNumberOfUnits(tbxArmy2FieldCannon);
         }
 
         private void ckArmy2HeavyCannon_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2HeavyCannon, tbxArmy2HeavyCannon, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2HeavyCannon, tbxArmy2HeavyCannon, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2HeavyCannon_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2HeavyCannon);
+            VerifyNumberOfUnits(tbxArmy2HeavyCannon);
         }
 
         private void ckArmy2PikeShotMusk_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2PikeShotMusk, tbxArmy2PikeShotMusk, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2PikeShotMusk, tbxArmy2PikeShotMusk, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2PikeShotMusk_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2PikeShotMusk);
+            VerifyNumberOfUnits(tbxArmy2PikeShotMusk);
         }
 
         private void ckArmy2EarlyFusiliers_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2EarlyFusiliers, tbxArmy2EarlyFusiliers, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2EarlyFusiliers, tbxArmy2EarlyFusiliers, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2EarlyFusiliers_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2EarlyFusiliers);
+            VerifyNumberOfUnits(tbxArmy2EarlyFusiliers);
         }
 
         private void ckArmy2EarlyCuirassier_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2EarlyCuirassier, tbxArmy2EarlyCuirassier, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2EarlyCuirassier, tbxArmy2EarlyCuirassier, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2EarlyCuirassier_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2EarlyCuirassier);
+            VerifyNumberOfUnits(tbxArmy2EarlyCuirassier);
         }
 
         private void ckArmy2Harquebusers_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Harquebusers, tbxArmy2Harquebusers, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Harquebusers, tbxArmy2Harquebusers, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Harquebusers_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Harquebusers);
+            VerifyNumberOfUnits(tbxArmy2Harquebusers);
         }
 
         private void ckArmy2Lancers_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Lancers, tbxArmy2Lancers, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Lancers, tbxArmy2Lancers, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Lancers_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Lancers);
+            VerifyNumberOfUnits(tbxArmy2Lancers);
         }
 
         private void ckArmy2SiegeHowitzer_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2SiegeHowitzer, tbxArmy2SiegeHowitzer, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2SiegeHowitzer, tbxArmy2SiegeHowitzer, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2SiegeHowitzer_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2SiegeHowitzer);
+            VerifyNumberOfUnits(tbxArmy2SiegeHowitzer);
         }
 
         private void ckArmy2Fusiliers_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Fusiliers, tbxArmy2Fusiliers, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Fusiliers, tbxArmy2Fusiliers, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Fusiliers_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Fusiliers);
+            VerifyNumberOfUnits(tbxArmy2Fusiliers);
         }
         private void ckArmy2Grenadiers_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Grenadiers, tbxArmy2Grenadiers, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Grenadiers, tbxArmy2Grenadiers, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Grenadiers_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Grenadiers);
+            VerifyNumberOfUnits(tbxArmy2Grenadiers);
         }
 
         private void ckArmy2Militia_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Militia, tbxArmy2Militia, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Militia, tbxArmy2Militia, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Militia_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Militia);
+            VerifyNumberOfUnits(tbxArmy2Militia);
         }
 
         private void ckArmy2CarbineCav_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2CarbineCav, tbxArmy2CarbineCav, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2CarbineCav, tbxArmy2CarbineCav, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2CarbineCav_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2CarbineCav);
+            VerifyNumberOfUnits(tbxArmy2CarbineCav);
         }
 
         private void ckArmy2Dragoons_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Dragoons, tbxArmy2Dragoons, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Dragoons, tbxArmy2Dragoons, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Dragoons_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Dragoons);
+            VerifyNumberOfUnits(tbxArmy2Dragoons);
         }
 
         private void ckArmy2Hussars_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Hussars, tbxArmy2Hussars, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Hussars, tbxArmy2Hussars, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Hussars_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Hussars);
+            VerifyNumberOfUnits(tbxArmy2Hussars);
         }
 
         private void ckArmy2Cuiraissiers_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Cuiraissiers, tbxArmy2Cuiraissiers, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Cuiraissiers, tbxArmy2Cuiraissiers, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Cuiraissiers_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Cuiraissiers);
+            VerifyNumberOfUnits(tbxArmy2Cuiraissiers);
         }
 
         private void ckArmy2FieldGun_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2FieldGun, tbxArmy2FieldGun, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2FieldGun, tbxArmy2FieldGun, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2FieldGun_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2FieldGun);
+            VerifyNumberOfUnits(tbxArmy2FieldGun);
         }
 
         private void ckArmy2Mortars_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2Mortars, tbxArmy2Mortars, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Mortars, tbxArmy2Mortars, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2Mortars_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2Mortars);
+            VerifyNumberOfUnits(tbxArmy2Mortars);
         }
 
         private void ckArmy2LightInfantry_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2LightInfantry, tbxArmy2LightInfantry, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2LightInfantry, tbxArmy2LightInfantry, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2LightInfantry_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2LightInfantry);
+            VerifyNumberOfUnits(tbxArmy2LightInfantry);
         }
 
         private void ckArmy2LineInfantry_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2LineInfantry, tbxArmy2LineInfantry, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2LineInfantry, tbxArmy2LineInfantry, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2LineInfantry_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2LineInfantry);
+            VerifyNumberOfUnits(tbxArmy2LineInfantry);
         }
 
         private void ckArmy2FieldHowitzer_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2FieldHowitzer, tbxArmy2FieldHowitzer, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2FieldHowitzer, tbxArmy2FieldHowitzer, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2FieldHowitzer_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2FieldHowitzer);
+            VerifyNumberOfUnits(tbxArmy2FieldHowitzer);
         }
 
         private void ckArmy2TribalWarriors_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2TribalWarriors, tbxArmy2TribalWarriors, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2TribalWarriors, tbxArmy2TribalWarriors, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2TribalWarriors_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2TribalWarriors);
+            VerifyNumberOfUnits(tbxArmy2TribalWarriors);
         }
 
         private void ckArmy2TribalRanger_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2TribalRanger, tbxArmy2TribalRanger, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2TribalRanger, tbxArmy2TribalRanger, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2TribalRanger_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2TribalRanger);
+            VerifyNumberOfUnits(tbxArmy2TribalRanger);
         }
 
         private void ckArmy2TribalHorsemen_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2TribalHorsemen, tbxArmy2TribalHorsemen, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2TribalHorsemen, tbxArmy2TribalHorsemen, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2TribalHorsemen_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2TribalHorsemen);
+            VerifyNumberOfUnits(tbxArmy2TribalHorsemen);
         }
         private void ckArmy2HorseArcher_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckArmy2HorseArcher, tbxArmy2HorseArcher, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2HorseArcher, tbxArmy2HorseArcher, army2CheckBoxList, army2TextboxList);
         }
 
         private void tbxArmy2HorseArcher_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxArmy2HorseArcher);
+            VerifyNumberOfUnits(tbxArmy2HorseArcher);
         }
         // flota 2
         private void ckFleet2Carrack_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet2Carrack, tbxFleet2Carrack, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2Carrack, tbxFleet2Carrack, fleet2CheckBoxList, fleet2TextboxList);
         }
 
         private void tbxFleet2Carrack_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet2Carrack);
+            VerifyNumberOfUnits(tbxFleet2Carrack);
         }
         private void ckFleet2Caravel_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet2Caravel, tbxFleet2Caravel, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2Caravel, tbxFleet2Caravel, fleet2CheckBoxList, fleet2TextboxList);
         }
 
         private void tbxFleet2Caravel_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet2Caravel);
+            VerifyNumberOfUnits(tbxFleet2Caravel);
         }
         private void ckFleet2Galley_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet2Galley, tbxFleet2Galley, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2Galley, tbxFleet2Galley, fleet2CheckBoxList, fleet2TextboxList);
         }
 
         private void tbxFleet2Galley_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet2Galley);
+            VerifyNumberOfUnits(tbxFleet2Galley);
         }
 
         private void ckFleet2Galleon_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet2Galleon, tbxFleet2Galleon, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2Galleon, tbxFleet2Galleon, fleet2CheckBoxList, fleet2TextboxList);
         }
 
         private void tbxFleet2Galleon_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet2Galleon);
+            VerifyNumberOfUnits(tbxFleet2Galleon);
         }
 
         private void ckFleet2Schooner_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet2Schooner, tbxFleet2Schooner, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2Schooner, tbxFleet2Schooner, fleet2CheckBoxList, fleet2TextboxList);
         }
 
         private void tbxFleet2Schooner_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet2Schooner);
+            VerifyNumberOfUnits(tbxFleet2Schooner);
         }
 
         private void ckFleet2Brig_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet2Brig, tbxFleet2Brig, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2Brig, tbxFleet2Brig, fleet2CheckBoxList, fleet2TextboxList);
         }
 
         private void tbxFleet2Brig_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet2Brig);
+            VerifyNumberOfUnits(tbxFleet2Brig);
         }
 
         private void ckFleet2Frigate_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet2Frigate, tbxFleet2Frigate, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2Frigate, tbxFleet2Frigate, fleet2CheckBoxList, fleet2TextboxList);
         }
 
         private void tbxFleet2Frigate_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet2Frigate);
+            VerifyNumberOfUnits(tbxFleet2Frigate);
         }
 
         private void ckFleet2GreatFrigate_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet2GreatFrigate, tbxFleet2GreatFrigate, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2GreatFrigate, tbxFleet2GreatFrigate, fleet2CheckBoxList, fleet2TextboxList);
         }
 
         private void tbxFleet2GreatFrigate_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet2GreatFrigate);
+            VerifyNumberOfUnits(tbxFleet2GreatFrigate);
         }
 
         private void ckFleet2ShipOfLine_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet2ShipOfLine, tbxFleet2ShipOfLine, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2ShipOfLine, tbxFleet2ShipOfLine, fleet2CheckBoxList, fleet2TextboxList);
         }
 
         private void tbxFleet2ShipOfLine_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet2ShipOfLine);
+            VerifyNumberOfUnits(tbxFleet2ShipOfLine);
         }
 
         private void ckFleet2Eastindiaman_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet2Eastindiaman, tbxFleet2Eastindiaman, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2Eastindiaman, tbxFleet2Eastindiaman, fleet2CheckBoxList, fleet2TextboxList);
         }
 
         private void tbxFleet2Eastindiaman_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet2Eastindiaman);
+            VerifyNumberOfUnits(tbxFleet2Eastindiaman);
         }
 
         private void ckFleet2ArmoredFrigate_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet2ArmoredFrigate, tbxFleet2ArmoredFrigate, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2ArmoredFrigate, tbxFleet2ArmoredFrigate, fleet2CheckBoxList, fleet2TextboxList);
         }
 
         private void tbxFleet2ArmoredFrigate_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet2ArmoredFrigate);
+            VerifyNumberOfUnits(tbxFleet2ArmoredFrigate);
         }
 
         private void ckFleet2AsianShip_Click(object sender, RoutedEventArgs e)
         {
-            selectAnUnit(ckFleet2AsianShip, tbxFleet2AsianShip, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2AsianShip, tbxFleet2AsianShip, fleet2CheckBoxList, fleet2TextboxList);
         }
 
         private void tbxFleet2AsianShip_LostFocus(object sender, RoutedEventArgs e)
         {
-            verifyNumberOfUnits(tbxFleet2AsianShip);
+            VerifyNumberOfUnits(tbxFleet2AsianShip);
         }
         // wszystko po kliknieciu start
-        void applyTerrainEffects(ref List<LandUnit> armyList)
+        public void ApplyTerrainEffects(ref List<LandUnit> armyList)
         {
             foreach (LandUnit unit in armyList)
             {
@@ -1258,7 +1258,7 @@ namespace BattleCalculator
                 }
             }
         }
-        void fillArmyList(List<CheckBox> ckList, List<TextBox> tbxList, ref List<LandUnit> armyList)
+        public void FillArmyList(List<CheckBox> ckList, List<TextBox> tbxList, ref List<LandUnit> armyList)
         {
             armyList.Clear();
             string? unitName;
@@ -1383,7 +1383,7 @@ namespace BattleCalculator
                 }
             }
         }
-        void selectAttackingUnits(ref List<LandUnit> mainArmyList, ref List<LandUnit> attackingUnits)
+        public void SelectAttackingUnits(ref List<LandUnit> mainArmyList, ref List<LandUnit> attackingUnits)
         {
             attackingUnits.Clear();
             int maxUnitCount= 0;
@@ -1425,7 +1425,7 @@ namespace BattleCalculator
                 }
             }
         }
-        void selectDefendingUnits(ref List<LandUnit> mainArmyList, ref List<LandUnit> defendingUnits)
+        public void SelectDefendingUnits(ref List<LandUnit> mainArmyList, ref List<LandUnit> defendingUnits)
         {
             defendingUnits.Clear();
             int maxUnitCount = 0;
@@ -1561,7 +1561,7 @@ namespace BattleCalculator
                 }
             }
         }
-        void selectBombardingUnits(ref List<LandUnit> mainArmyList, ref List<LandUnit> bombardingUnits, bool allowFieldGuns)
+        public void SelectBombardingUnits(ref List<LandUnit> mainArmyList, ref List<LandUnit> bombardingUnits, bool allowFieldGuns)
         {
             bombardingUnits.Clear();
             foreach (LandUnit unit in  mainArmyList)
@@ -1576,7 +1576,7 @@ namespace BattleCalculator
                 }
             }
         }
-        void mergeLandUnits(ref List<LandUnit> armyList)
+        public void MergeLandUnits(ref List<LandUnit> armyList)
         {
             for (int i = 0; i < armyList.Count; i++)
             {
@@ -1594,18 +1594,21 @@ namespace BattleCalculator
         public enum TypeOfDamage
         {
             LongRange,
+            LongRangeRet,
             MidRange,
+            MidRangeRet,
+            LowRangeRet,
             LowRange,
             ChargeMelee,
-            Melee
+            Melee,
+            MeleeRet
         }
-        void attackLandUnits(ref List<LandUnit> attackerList, ref List<LandUnit> defenderList, TypeOfDamage typeOfdamage)
+        public void AttackLandUnits(ref List<LandUnit> attackerList, ref List<LandUnit> defenderList, TypeOfDamage typeOfdamage)
         {
             if(Enum.IsDefined(typeof(TypeOfDamage), typeOfdamage)) throw new ArgumentException();
             string damageType = typeOfdamage.ToString();
             int attackerDamage = 0;
             int defenderDamage = 0;
-            int avgAttackerInit = 0, avgDefenderInit = 0;
             if (damageType == "LongRange")
             {
                 foreach(LandUnit unit in attackerList)
@@ -1623,6 +1626,77 @@ namespace BattleCalculator
                     if(unit.Health <= 0)
                     {
                         while(unit.Health <= 0 && unit.NumberOf > 0)
+                        {
+                            unit.Health += unit.MaxHealth;
+                            unit.NumberOf--;
+                            unit.Morale -= 5;
+                        }
+                    }
+                    if (unit.Morale <= 0) unit.Morale = 0;
+                }
+            }
+            else if(damageType == "LongRangeRet")
+            {
+                foreach (LandUnit unit in attackerList)
+                {
+                    attackerDamage += unit.LongRange;
+                }
+                if (attackerDamage > 0) attackerDamage /= defenderList.Count;
+                if (attackerDamage > 0) attackerDamage /= 2;
+                //1 polowa ostrzalu atakujacych
+                foreach (LandUnit unit in defenderList)
+                {
+                    if (attackerDamage - unit.ArtilleryDef > 0)
+                    {
+                        unit.Health -= attackerDamage - unit.ArtilleryDef;
+                        unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
+                    }
+                    if (unit.Health <= 0)
+                    {
+                        while (unit.Health <= 0 && unit.NumberOf > 0)
+                        {
+                            unit.Health += unit.MaxHealth;
+                            unit.NumberOf--;
+                            unit.Morale -= 5;
+                        }
+                    }
+                    if (unit.Morale <= 0) unit.Morale = 0;
+                }
+                //ostrzal broniacvych sie
+                foreach (LandUnit unit in defenderList)
+                {
+                    defenderDamage += unit.LongRange;
+                }
+                if (defenderDamage > 0) defenderDamage /= attackerList.Count;
+                foreach (LandUnit unit in attackerList)
+                {
+                    if (attackerDamage - unit.ArtilleryDef > 0)
+                    {
+                        unit.Health -= attackerDamage - unit.ArtilleryDef;
+                        unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
+                    }
+                    if (unit.Health <= 0)
+                    {
+                        while (unit.Health <= 0 && unit.NumberOf > 0)
+                        {
+                            unit.Health += unit.MaxHealth;
+                            unit.NumberOf--;
+                            unit.Morale -= 5;
+                        }
+                    }
+                    if (unit.Morale <= 0) unit.Morale = 0;
+                }
+                //2 polowa ostrzalu atakujacych
+                foreach (LandUnit unit in defenderList)
+                {
+                    if (attackerDamage - unit.ArtilleryDef > 0)
+                    {
+                        unit.Health -= attackerDamage - unit.ArtilleryDef;
+                        unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
+                    }
+                    if (unit.Health <= 0)
+                    {
+                        while (unit.Health <= 0 && unit.NumberOf > 0)
                         {
                             unit.Health += unit.MaxHealth;
                             unit.NumberOf--;
@@ -1658,101 +1732,173 @@ namespace BattleCalculator
                     if(unit.Morale <= 0) unit.Morale = 0;
                 }
             }
-            else if(damageType == "LowRange")
+            else if(damageType == "MidRangeRet")
             {
+                foreach (LandUnit unit in attackerList)
+                {
+                    attackerDamage += unit.MediumRange;
+                }
+                if (attackerDamage > 0) attackerDamage /= defenderList.Count;
+                if (attackerDamage > 0) attackerDamage /= 2;
+                //1 polowa ostrzalu atakujacych
                 foreach (LandUnit unit in defenderList)
                 {
-                    defenderDamage += unit.LowRange;
-                    avgDefenderInit += unit.initiative;
+                    if (attackerDamage - unit.ArtilleryDef > 0)
+                    {
+                        unit.Health -= attackerDamage - unit.ArtilleryDef;
+                        unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
+                    }
+                    if (unit.Health <= 0)
+                    {
+                        while (unit.Health <= 0 && unit.NumberOf > 0)
+                        {
+                            unit.Health += unit.MaxHealth;
+                            unit.NumberOf--;
+                            unit.Morale -= 5;
+                        }
+                    }
+                    if (unit.Morale <= 0) unit.Morale = 0;
+                }
+                //ostrzal broniacvych sie
+                foreach (LandUnit unit in defenderList)
+                {
+                    defenderDamage += unit.MediumRange;
                 }
                 if (defenderDamage > 0) defenderDamage /= attackerList.Count;
-                avgDefenderInit /= defenderList.Count;
+                foreach (LandUnit unit in attackerList)
+                {
+                    if (attackerDamage - unit.ArtilleryDef > 0)
+                    {
+                        unit.Health -= attackerDamage - unit.ArtilleryDef;
+                        unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
+                    }
+                    if (unit.Health <= 0)
+                    {
+                        while (unit.Health <= 0 && unit.NumberOf > 0)
+                        {
+                            unit.Health += unit.MaxHealth;
+                            unit.NumberOf--;
+                            unit.Morale -= 5;
+                        }
+                    }
+                    if (unit.Morale <= 0) unit.Morale = 0;
+                }
+                //2 polowa ostrzalu atakujacych
+                foreach (LandUnit unit in defenderList)
+                {
+                    if (attackerDamage - unit.ArtilleryDef > 0)
+                    {
+                        unit.Health -= attackerDamage - unit.ArtilleryDef;
+                        unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
+                    }
+                    if (unit.Health <= 0)
+                    {
+                        while (unit.Health <= 0 && unit.NumberOf > 0)
+                        {
+                            unit.Health += unit.MaxHealth;
+                            unit.NumberOf--;
+                            unit.Morale -= 5;
+                        }
+                    }
+                    if (unit.Morale <= 0) unit.Morale = 0;
+                }
+            }
+            else if(damageType == "LowRange")
+            {
                 foreach (LandUnit unit in attackerList)
                 {
                     attackerDamage += unit.LowRange;
-                    avgAttackerInit += unit.initiative;
                 }
-                avgAttackerInit /= attackerList.Count;
                 if (attackerDamage > 0) attackerDamage /= defenderList.Count;
-                if(avgAttackerInit > avgDefenderInit)
+                foreach (LandUnit unit in defenderList)
                 {
-                    foreach (LandUnit unit in defenderList)
+                    if (attackerDamage - unit.ArtilleryDef > 0)
                     {
-                        if (attackerDamage - unit.ArtilleryDef > 0)
-                        {
-                            unit.Health -= attackerDamage - unit.ArtilleryDef;
-                            unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
-                        }
-                        if (unit.Health <= 0)
-                        {
-                            while (unit.Health <= 0 && unit.NumberOf > 0)
-                            {
-                                unit.Health += unit.MaxHealth;
-                                unit.NumberOf--;
-                                unit.Morale -= 5;
-                            }
-                        }
-                        if (unit.Morale <= 0) unit.Morale = 0;
+                        unit.Health -= attackerDamage - unit.ArtilleryDef;
+                        unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
                     }
-                    foreach (LandUnit unit in attackerList)
+                    if (unit.Health <= 0)
                     {
-                        if (defenderDamage - unit.ArtilleryDef > 0)
+                        while (unit.Health <= 0 && unit.NumberOf > 0)
                         {
-                            unit.Health -= defenderDamage - unit.ArtilleryDef;
-                            unit.Morale -= (defenderDamage - unit.ArtilleryDef) / 2;
+                            unit.Health += unit.MaxHealth;
+                            unit.NumberOf--;
+                            unit.Morale -= 5;
                         }
-                        if (unit.Health <= 0)
-                        {
-                            while (unit.Health <= 0 && unit.NumberOf > 0)
-                            {
-                                unit.Health += unit.MaxHealth;
-                                unit.NumberOf--;
-                                unit.Morale -= 5;
-                            }
-                        }
-                        if (unit.Morale <= 0) unit.Morale = 0;
                     }
+                    if (unit.Morale <= 0) unit.Morale = 0;
                 }
-                else
+            }
+            else if(damageType == "LowRangeRet")
+            {
+                foreach (LandUnit unit in attackerList)
                 {
-                    foreach (LandUnit unit in attackerList)
-                    {
-                        if (defenderDamage - unit.ArtilleryDef > 0)
-                        {
-                            unit.Health -= defenderDamage - unit.ArtilleryDef;
-                            unit.Morale -= (defenderDamage - unit.ArtilleryDef) / 2;
-                        }
-                        if (unit.Health <= 0)
-                        {
-                            while (unit.Health <= 0 && unit.NumberOf > 0)
-                            {
-                                unit.Health += unit.MaxHealth;
-                                unit.NumberOf--;
-                                unit.Morale -= 5;
-                            }
-                        }
-                        if (unit.Morale <= 0) unit.Morale = 0;
-                    }
-                    foreach (LandUnit unit in defenderList)
-                    {
-                        if (attackerDamage - unit.ArtilleryDef > 0)
-                        {
-                            unit.Health -= attackerDamage - unit.ArtilleryDef;
-                            unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
-                        }
-                        if (unit.Health <= 0)
-                        {
-                            while (unit.Health <= 0 && unit.NumberOf > 0)
-                            {
-                                unit.Health += unit.MaxHealth;
-                                unit.NumberOf--;
-                                unit.Morale -= 5;
-                            }
-                        }
-                        if (unit.Morale <= 0) unit.Morale = 0;
-                    }
+                    attackerDamage += unit.LowRange;
                 }
-                
+                if (attackerDamage > 0) attackerDamage /= defenderList.Count;
+                if (attackerDamage > 0) attackerDamage /= 2;
+                //1 polowa ostrzalu atakujacych
+                foreach (LandUnit unit in defenderList)
+                {
+                    if (attackerDamage - unit.ArtilleryDef > 0)
+                    {
+                        unit.Health -= attackerDamage - unit.ArtilleryDef;
+                        unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
+                    }
+                    if (unit.Health <= 0)
+                    {
+                        while (unit.Health <= 0 && unit.NumberOf > 0)
+                        {
+                            unit.Health += unit.MaxHealth;
+                            unit.NumberOf--;
+                            unit.Morale -= 5;
+                        }
+                    }
+                    if (unit.Morale <= 0) unit.Morale = 0;
+                }
+                //ostrzal broniacvych sie
+                foreach (LandUnit unit in defenderList)
+                {
+                    defenderDamage += unit.LowRange;
+                }
+                if (defenderDamage > 0) defenderDamage /= attackerList.Count;
+                foreach (LandUnit unit in attackerList)
+                {
+                    if (attackerDamage - unit.ArtilleryDef > 0)
+                    {
+                        unit.Health -= attackerDamage - unit.ArtilleryDef;
+                        unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
+                    }
+                    if (unit.Health <= 0)
+                    {
+                        while (unit.Health <= 0 && unit.NumberOf > 0)
+                        {
+                            unit.Health += unit.MaxHealth;
+                            unit.NumberOf--;
+                            unit.Morale -= 5;
+                        }
+                    }
+                    if (unit.Morale <= 0) unit.Morale = 0;
+                }
+                //2 polowa ostrzalu atakujacych
+                foreach (LandUnit unit in defenderList)
+                {
+                    if (attackerDamage - unit.ArtilleryDef > 0)
+                    {
+                        unit.Health -= attackerDamage - unit.ArtilleryDef;
+                        unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
+                    }
+                    if (unit.Health <= 0)
+                    {
+                        while (unit.Health <= 0 && unit.NumberOf > 0)
+                        {
+                            unit.Health += unit.MaxHealth;
+                            unit.NumberOf--;
+                            unit.Morale -= 5;
+                        }
+                    }
+                    if (unit.Morale <= 0) unit.Morale = 0;
+                }
             }
             else if(damageType == "ChargeMelee")
             {
@@ -1896,7 +2042,7 @@ namespace BattleCalculator
                     }
                 }
             }
-            else if(damageType == "Melee")
+            else if(damageType == "MeleeRet")
             {
                 foreach(LandUnit unit in attackerList)
                 {
@@ -1943,8 +2089,58 @@ namespace BattleCalculator
                     if (unit.Morale <= 0) unit.Morale = 0;
                 }
             }
+            else if (damageType == "Melee")
+            {
+                foreach (LandUnit unit in attackerList)
+                {
+                    attackerDamage += unit.Melee;
+                    if (unit.ShockAttack > 0) attackerDamage += unit.ShockAttack / 3;
+                    if (unit.LowRange > 0) attackerDamage += unit.LowRange / 3;
+                }
+                if (attackerDamage > 0) attackerDamage /= defenderList.Count;
+                foreach (LandUnit unit in defenderList)
+                {
+                    if (attackerDamage - unit.ArtilleryDef > 0)
+                    {
+                        unit.Health -= attackerDamage - unit.ArtilleryDef;
+                        unit.Morale -= (attackerDamage - unit.ArtilleryDef) / 2;
+                    }
+                    if (unit.Health <= 0)
+                    {
+                        while (unit.Health <= 0 && unit.NumberOf > 0)
+                        {
+                            unit.Health += unit.MaxHealth;
+                            unit.NumberOf--;
+                            unit.Morale -= 5;
+                        }
+                    }
+                    if (unit.Morale <= 0) unit.Morale = 0;
+                }
+            }
         }
-        void fillFleetList(List<CheckBox> ckList, List<TextBox> tbxList, ref List<Ship> fleetList)
+        public void UpdateInitiative(ref List<LandUnit> armyList)
+        {
+
+        }
+        public void MoraleModification(ref List<LandUnit> armyList, int moraleModification)
+        {
+            foreach (LandUnit unit in armyList)
+            {
+                unit.Morale += moraleModification;
+                if (unit.Morale < 0) unit.Morale = 0;
+            }
+            UpdateInitiative(ref armyList);
+        }
+        public void RegainMorale(ref List<LandUnit> armyList)
+        {
+            foreach(LandUnit unit in armyList)
+            {
+                if (unit.Morale > 0 && unit.Morale < unit.MaxMorale) unit.Morale += 10;
+                if (unit.Morale > unit.MaxMorale) unit.Morale = unit.MaxMorale;
+            }
+            UpdateInitiative(ref armyList);
+        }
+        void FillFleetList(List<CheckBox> ckList, List<TextBox> tbxList, ref List<Ship> fleetList)
         {
             fleetList.Clear();
             string? unitName;
@@ -2001,7 +2197,7 @@ namespace BattleCalculator
             }
         }
 
-        void verifyInputLists(ref List<CheckBox> ckList, ref List<TextBox> tbxList)
+        void VerifyInputLists(ref List<CheckBox> ckList, ref List<TextBox> tbxList)
         {
             int input;
             for (int i = 0; i < ckList.Count; i++)
@@ -2020,14 +2216,14 @@ namespace BattleCalculator
         {
             if (cbBattleType.Text == "Bitwa lądowa")
             {
-                verifyInputLists(ref army1CheckBoxList, ref army1TextboxList);
-                verifyInputLists(ref army2CheckBoxList, ref army2TextboxList);
-                activateStartButton();
+                VerifyInputLists(ref army1CheckBoxList, ref army1TextboxList);
+                VerifyInputLists(ref army2CheckBoxList, ref army2TextboxList);
+                ActivateStartButton();
                 if (btnStart.IsEnabled)
                 {
                     //tworzenie armii
-                    fillArmyList(army1CheckBoxList, army1TextboxList, ref army1UnitsList);
-                    fillArmyList(army2CheckBoxList, army2TextboxList, ref army2UnitsList);
+                    FillArmyList(army1CheckBoxList, army1TextboxList, ref army1UnitsList);
+                    FillArmyList(army2CheckBoxList, army2TextboxList, ref army2UnitsList);
                     //teren 
                     switch (cbTerrainType.Text)
                     {
@@ -2060,23 +2256,23 @@ namespace BattleCalculator
                             break;
                     }
                     // glowne dzialanie
-                    applyTerrainEffects(ref army1UnitsList);
-                    applyTerrainEffects(ref army2UnitsList);
-                    changePageToResults(sender, e);
+                    ApplyTerrainEffects(ref army1UnitsList);
+                    ApplyTerrainEffects(ref army2UnitsList);
+                    ChangePageToResults(sender, e);
                 }
             }
             else
             {
-                verifyInputLists(ref fleet1CheckBoxList, ref fleet1TextboxList);
-                verifyInputLists(ref fleet2CheckBoxList, ref fleet2TextboxList);
-                activateStartButton();
+                VerifyInputLists(ref fleet1CheckBoxList, ref fleet1TextboxList);
+                VerifyInputLists(ref fleet2CheckBoxList, ref fleet2TextboxList);
+                ActivateStartButton();
                 if (btnStart.IsEnabled)
                 {
                     fleet1UnitsList.Clear();
                     fleet2UnitsList.Clear();
                     //dodanie jednostek do flot
-                    fillFleetList(fleet1CheckBoxList, fleet1TextboxList, ref fleet1UnitsList);
-                    fillFleetList(fleet2CheckBoxList, fleet2TextboxList, ref fleet2UnitsList);
+                    FillFleetList(fleet1CheckBoxList, fleet1TextboxList, ref fleet1UnitsList);
+                    FillFleetList(fleet2CheckBoxList, fleet2TextboxList, ref fleet2UnitsList);
                 }
 
             }
