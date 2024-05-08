@@ -44,7 +44,8 @@ namespace BattleCalculator
         public int ShockDef;
         public int ArtilleryDef;
 
-        public int initiative;
+        public int Initiative;
+        public int MaxInitiative;
 
         public int Health;
         public int MaxHealth;
@@ -66,7 +67,8 @@ namespace BattleCalculator
             Melee = UnitMelee;
             ShockDef = UnitShockDef;
             ArtilleryDef = UnitArtDef;
-            initiative = UnitInitiative;
+            Initiative = UnitInitiative;
+            MaxInitiative = UnitInitiative;
             Health = UnitHealth;
             MaxHealth = UnitHealth;
             MaxMorale = UnitMorale;
