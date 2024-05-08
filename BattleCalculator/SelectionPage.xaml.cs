@@ -1604,14 +1604,14 @@ namespace BattleCalculator
             Melee,
             MeleeRet
         }
-        public void AttackLandUnits(ref List<LandUnit> attackerList, ref List<LandUnit> defenderList, TypeOfDamage typeOfdamage)
+        public void AttackLandUnits(ref List<LandUnit> attackerList, ref List<LandUnit> defenderList, TypeOfDamage typeOfdamage, bool isRiverBeingCrossed)
         {
             if(Enum.IsDefined(typeof(TypeOfDamage), typeOfdamage)) throw new ArgumentException();
             string damageType = typeOfdamage.ToString();
             int attackerDamage = 0;
             int defenderDamage = 0;
             List<LandUnit> attackers = new List<LandUnit>(attackerList);
-            if (damageType == "ChargeMelee")
+            if (damageType == "ChargeMelee" && isRiverBeingCrossed)
             {
                 attackers.Clear();
                 int i = 0;
