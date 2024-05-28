@@ -34,13 +34,14 @@ namespace BattleCalculator
         {
             btnClick?.Invoke(this, EventArgs.Empty);
         }
-
+        public string battleLog = "";
         int fortLevel = 0;
         bool isSkirmishAttack = false;
         bool isBattleLand = false;
-        bool army1SpecialCondition = false;
-        bool army2SpecialCondition = false;
-        TerrainType[] terrain = new TerrainType[1];
+        bool team1SpecialCondition = false;
+        bool team2SpecialCondition = false;
+        bool team1Win = false, team2Win = false;
+        TerrainType terrain = new TerrainType("filler", 0, 0, 0, 0);
         SeaType[] seaTypes = new SeaType[1];
         List<LandUnit> army1UnitsList = new List<LandUnit>();
         List<LandUnit> army2UnitsList = new List<LandUnit>();
@@ -274,7 +275,7 @@ namespace BattleCalculator
             DropdownBtn(ref uniqueShips2, stpUniqueShips2);
         }
         //zaznaczanie jednostek i wyznaczanie ich ilosci
-        void SelectAnUnit(CheckBox ckUnit, TextBox tbxUnitNum, List<CheckBox> ckList, List<TextBox> tbxList)
+        void SelectAnUnit(CheckBox ckUnit, TextBox tbxUnitNum, ref List<CheckBox> ckList, ref List<TextBox> tbxList)
         {
             if (ckUnit.IsChecked == true)
             {
@@ -303,7 +304,7 @@ namespace BattleCalculator
         //dla armii 1
         private void ckArmy1Pikemen_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Pikemen, tbxArmy1Pikemen, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Pikemen, tbxArmy1Pikemen, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Pikemen_LostFocus(object sender, RoutedEventArgs e)
@@ -312,7 +313,7 @@ namespace BattleCalculator
         }
         private void ckArmy1Arquebusiers_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Arquebusiers, tbxArmy1Arquebusiers, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Arquebusiers, tbxArmy1Arquebusiers, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Arquebusiers_LostFocus(object sender, RoutedEventArgs e)
@@ -322,7 +323,7 @@ namespace BattleCalculator
 
         private void ckArmy1Archers_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Archers, tbxArmy1Archers, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Archers, tbxArmy1Archers, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Archers_LostFocus(object sender, RoutedEventArgs e)
@@ -332,7 +333,7 @@ namespace BattleCalculator
 
         private void ckArmy1Crossbowmen_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Crossbowmen, tbxArmy1Crossbowmen, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Crossbowmen, tbxArmy1Crossbowmen, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Crossbowmen_LostFocus(object sender, RoutedEventArgs e)
@@ -342,7 +343,7 @@ namespace BattleCalculator
 
         private void ckArmy1Knights_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Knights, tbxArmy1Knights, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Knights, tbxArmy1Knights, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Knights_LostFocus(object sender, RoutedEventArgs e)
@@ -351,7 +352,7 @@ namespace BattleCalculator
         }
         private void ckArmy1Horsemen_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Horsemen, tbxArmy1Horsemen, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Horsemen, tbxArmy1Horsemen, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Horsemen_LostFocus(object sender, RoutedEventArgs e)
@@ -361,7 +362,7 @@ namespace BattleCalculator
 
         private void ckArmy1Bombard_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Bombard, tbxArmy1Bombard, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Bombard, tbxArmy1Bombard, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Bombard_LostFocus(object sender, RoutedEventArgs e)
@@ -371,7 +372,7 @@ namespace BattleCalculator
 
         private void ckArmy1PikeShotArq_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1PikeShotArq, tbxArmy1PikeShotArq, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1PikeShotArq, tbxArmy1PikeShotArq, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1PikeShotArq_LostFocus(object sender, RoutedEventArgs e)
@@ -381,7 +382,7 @@ namespace BattleCalculator
 
         private void ckArmy1HeavyHussars_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1HeavyHussars, tbxArmy1HeavyHussars, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1HeavyHussars, tbxArmy1HeavyHussars, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1HeavyHussars_LostFocus(object sender, RoutedEventArgs e)
@@ -391,7 +392,7 @@ namespace BattleCalculator
 
         private void ckArmy1Cossacks_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Cossacks, tbxArmy1Cossacks, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Cossacks, tbxArmy1Cossacks, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Cossacks_LostFocus(object sender, RoutedEventArgs e)
@@ -401,7 +402,7 @@ namespace BattleCalculator
 
         private void ckArmy1Reiters_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Reiters, tbxArmy1Reiters, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Reiters, tbxArmy1Reiters, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Reiters_LostFocus(object sender, RoutedEventArgs e)
@@ -410,7 +411,7 @@ namespace BattleCalculator
         }
         private void ckArmy1FieldCannon_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1FieldCannon, tbxArmy1FieldCannon, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1FieldCannon, tbxArmy1FieldCannon, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1FieldCannon_LostFocus(object sender, RoutedEventArgs e)
@@ -420,7 +421,7 @@ namespace BattleCalculator
 
         private void ckArmy1HeavyCannon_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1HeavyCannon, tbxArmy1HeavyCannon, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1HeavyCannon, tbxArmy1HeavyCannon, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1HeavyCannon_LostFocus(object sender, RoutedEventArgs e)
@@ -430,7 +431,7 @@ namespace BattleCalculator
 
         private void ckArmy1PikeShotMusk_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1PikeShotMusk, tbxArmy1PikeShotMusk, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1PikeShotMusk, tbxArmy1PikeShotMusk, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1PikeShotMusk_LostFocus(object sender, RoutedEventArgs e)
@@ -440,7 +441,7 @@ namespace BattleCalculator
 
         private void ckArmy1EarlyFusiliers_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1EarlyFusiliers, tbxArmy1EarlyFusiliers, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1EarlyFusiliers, tbxArmy1EarlyFusiliers, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1EarlyFusiliers_LostFocus(object sender, RoutedEventArgs e)
@@ -450,7 +451,7 @@ namespace BattleCalculator
 
         private void ckArmy1EarlyCuirassier_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1EarlyCuirassier, tbxArmy1EarlyCuirassier, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1EarlyCuirassier, tbxArmy1EarlyCuirassier, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1EarlyCuirassier_LostFocus(object sender, RoutedEventArgs e)
@@ -460,7 +461,7 @@ namespace BattleCalculator
 
         private void ckArmy1Harquebusers_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Harquebusers, tbxArmy1Harquebusers, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Harquebusers, tbxArmy1Harquebusers, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Harquebusers_LostFocus(object sender, RoutedEventArgs e)
@@ -470,7 +471,7 @@ namespace BattleCalculator
 
         private void ckArmy1Lancers_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Lancers, tbxArmy1Lancers, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Lancers, tbxArmy1Lancers, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Lancers_LostFocus(object sender, RoutedEventArgs e)
@@ -480,7 +481,7 @@ namespace BattleCalculator
 
         private void ckArmy1SiegeHowitzer_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1SiegeHowitzer, tbxArmy1SiegeHowitzer, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1SiegeHowitzer, tbxArmy1SiegeHowitzer, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1SiegeHowitzer_LostFocus(object sender, RoutedEventArgs e)
@@ -490,7 +491,7 @@ namespace BattleCalculator
 
         private void ckArmy1Fusiliers_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Fusiliers, tbxArmy1Fusiliers, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Fusiliers, tbxArmy1Fusiliers, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Fusiliers_LostFocus(object sender, RoutedEventArgs e)
@@ -499,7 +500,7 @@ namespace BattleCalculator
         }
         private void ckArmy1Grenadiers_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Grenadiers, tbxArmy1Grenadiers, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Grenadiers, tbxArmy1Grenadiers, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Grenadiers_LostFocus(object sender, RoutedEventArgs e)
@@ -508,7 +509,7 @@ namespace BattleCalculator
         }
         private void ckArmy1Militia_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Militia, tbxArmy1Militia, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Militia, tbxArmy1Militia, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Militia_LostFocus(object sender, RoutedEventArgs e)
@@ -518,7 +519,7 @@ namespace BattleCalculator
 
         private void ckArmy1CarbineCav_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1CarbineCav, tbxArmy1CarbineCav, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1CarbineCav, tbxArmy1CarbineCav, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1CarbineCav_LostFocus(object sender, RoutedEventArgs e)
@@ -528,7 +529,7 @@ namespace BattleCalculator
 
         private void ckArmy1Dragoons_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Dragoons, tbxArmy1Dragoons, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Dragoons, tbxArmy1Dragoons, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Dragoons_LostFocus(object sender, RoutedEventArgs e)
@@ -538,7 +539,7 @@ namespace BattleCalculator
 
         private void ckArmy1Hussars_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Hussars, tbxArmy1Hussars, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Hussars, tbxArmy1Hussars, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Hussars_LostFocus(object sender, RoutedEventArgs e)
@@ -548,7 +549,7 @@ namespace BattleCalculator
 
         private void ckArmy1Cuiraissiers_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Cuiraissiers, tbxArmy1Cuiraissiers, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Cuiraissiers, tbxArmy1Cuiraissiers, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Cuiraissiers_LostFocus(object sender, RoutedEventArgs e)
@@ -558,7 +559,7 @@ namespace BattleCalculator
 
         private void ckArmy1FieldGun_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1FieldGun, tbxArmy1FieldGun, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1FieldGun, tbxArmy1FieldGun, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1FieldGun_LostFocus(object sender, RoutedEventArgs e)
@@ -568,7 +569,7 @@ namespace BattleCalculator
 
         private void ckArmy1Mortars_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1Mortars, tbxArmy1Mortars, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1Mortars, tbxArmy1Mortars, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1Mortars_LostFocus(object sender, RoutedEventArgs e)
@@ -578,7 +579,7 @@ namespace BattleCalculator
 
         private void ckArmy1LightInfantry_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1LightInfantry, tbxArmy1LightInfantry, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1LightInfantry, tbxArmy1LightInfantry, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1LightInfantry_LostFocus(object sender, RoutedEventArgs e)
@@ -588,7 +589,7 @@ namespace BattleCalculator
 
         private void ckArmy1LineInfantry_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1LineInfantry, tbxArmy1LineInfantry, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1LineInfantry, tbxArmy1LineInfantry, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1LineInfantry_LostFocus(object sender, RoutedEventArgs e)
@@ -598,7 +599,7 @@ namespace BattleCalculator
 
         private void ckArmy1FieldHowitzer_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1FieldHowitzer, tbxArmy1FieldHowitzer, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1FieldHowitzer, tbxArmy1FieldHowitzer, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1FieldHowitzer_LostFocus(object sender, RoutedEventArgs e)
@@ -608,7 +609,7 @@ namespace BattleCalculator
 
         private void ckArmy1TribalWarriors_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1TribalWarriors, tbxArmy1TribalWarriors, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1TribalWarriors, tbxArmy1TribalWarriors, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1TribalWarriors_LostFocus(object sender, RoutedEventArgs e)
@@ -618,7 +619,7 @@ namespace BattleCalculator
 
         private void ckArmy1TribalRanger_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1TribalRanger, tbxArmy1TribalRanger, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1TribalRanger, tbxArmy1TribalRanger, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1TribalRanger_LostFocus(object sender, RoutedEventArgs e)
@@ -628,7 +629,7 @@ namespace BattleCalculator
 
         private void ckArmy1TribalHorsemen_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1TribalHorsemen, tbxArmy1TribalHorsemen, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1TribalHorsemen, tbxArmy1TribalHorsemen, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void tbxArmy1TribalHorsemen_LostFocus(object sender, RoutedEventArgs e)
@@ -637,7 +638,7 @@ namespace BattleCalculator
         }
         private void tbxArmy1HorseArcher_LostFocus(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy1HorseArcher, tbxArmy1HorseArcher, army1CheckBoxList, army1TextboxList);
+            SelectAnUnit(ckArmy1HorseArcher, tbxArmy1HorseArcher, ref army1CheckBoxList, ref army1TextboxList);
         }
 
         private void ckArmy1HorseArcher_Click(object sender, RoutedEventArgs e)
@@ -647,7 +648,7 @@ namespace BattleCalculator
         // dla floty 1
         private void ckFleet1Carrack_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet1Carrack, tbxFleet1Carrack, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1Carrack, tbxFleet1Carrack, ref fleet1CheckBoxList, ref fleet1TextboxList);
         }
 
         private void tbxFleet1Carrack_LostFocus(object sender, RoutedEventArgs e)
@@ -657,7 +658,7 @@ namespace BattleCalculator
 
         private void ckFleet1Caravel_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet1Caravel, tbxFleet1Caravel, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1Caravel, tbxFleet1Caravel, ref fleet1CheckBoxList, ref fleet1TextboxList);
         }
 
         private void tbxFleet1Caravel_LostFocus(object sender, RoutedEventArgs e)
@@ -667,7 +668,7 @@ namespace BattleCalculator
 
         private void ckFleet1Galley_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet1Galley, tbxFleet1Galley, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1Galley, tbxFleet1Galley, ref fleet1CheckBoxList, ref fleet1TextboxList);
         }
 
         private void tbxFleet1Galley_LostFocus(object sender, RoutedEventArgs e)
@@ -677,7 +678,7 @@ namespace BattleCalculator
 
         private void ckFleet1Galleon_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet1Galleon, tbxFleet1Galleon, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1Galleon, tbxFleet1Galleon, ref fleet1CheckBoxList, ref fleet1TextboxList);
         }
 
         private void tbxFleet1Galleon_LostFocus(object sender, RoutedEventArgs e)
@@ -687,7 +688,7 @@ namespace BattleCalculator
 
         private void ckFleet1Schooner_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet1Schooner, tbxFleet1Schooner, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1Schooner, tbxFleet1Schooner, ref fleet1CheckBoxList, ref fleet1TextboxList);
         }
 
         private void tbxFleet1Schooner_LostFocus(object sender, RoutedEventArgs e)
@@ -697,7 +698,7 @@ namespace BattleCalculator
 
         private void ckFleet1Brig_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet1Brig, tbxFleet1Brig, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1Brig, tbxFleet1Brig, ref fleet1CheckBoxList, ref fleet1TextboxList);
         }
 
         private void tbxFleet1Brig_LostFocus(object sender, RoutedEventArgs e)
@@ -707,7 +708,7 @@ namespace BattleCalculator
 
         private void ckFleet1Frigate_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet1Frigate, tbxFleet1Frigate, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1Frigate, tbxFleet1Frigate, ref fleet1CheckBoxList, ref fleet1TextboxList);
         }
 
         private void tbxFleet1Frigate_LostFocus(object sender, RoutedEventArgs e)
@@ -717,7 +718,7 @@ namespace BattleCalculator
 
         private void ckFleet1GreatFrigate_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet1GreatFrigate, tbxFleet1GreatFrigate, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1GreatFrigate, tbxFleet1GreatFrigate, ref fleet1CheckBoxList, ref fleet1TextboxList);
         }
 
         private void tbxFleet1GreatFrigate_LostFocus(object sender, RoutedEventArgs e)
@@ -727,7 +728,7 @@ namespace BattleCalculator
 
         private void ckFleet1ShipOfLine_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet1ShipOfLine, tbxFleet1ShipOfLine, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1ShipOfLine, tbxFleet1ShipOfLine, ref fleet1CheckBoxList, ref fleet1TextboxList);
         }
 
         private void tbxFleet1ShipOfLine_LostFocus(object sender, RoutedEventArgs e)
@@ -737,7 +738,7 @@ namespace BattleCalculator
 
         private void ckFleet1Eastindiaman_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet1Eastindiaman, tbxFleet1Eastindiaman, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1Eastindiaman, tbxFleet1Eastindiaman, ref fleet1CheckBoxList, ref fleet1TextboxList);
         }
 
         private void tbxFleet1Eastindiaman_LostFocus(object sender, RoutedEventArgs e)
@@ -747,7 +748,7 @@ namespace BattleCalculator
 
         private void ckFleet1ArmoredFrigate_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet1ArmoredFrigate, tbxFleet1ArmoredFrigate, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1ArmoredFrigate, tbxFleet1ArmoredFrigate, ref fleet1CheckBoxList, ref fleet1TextboxList);
         }
 
         private void tbxFleet1ArmoredFrigate_LostFocus(object sender, RoutedEventArgs e)
@@ -757,7 +758,7 @@ namespace BattleCalculator
 
         private void ckFleet1AsianShip_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet1AsianShip, tbxFleet1AsianShip, fleet1CheckBoxList, fleet1TextboxList);
+            SelectAnUnit(ckFleet1AsianShip, tbxFleet1AsianShip, ref fleet1CheckBoxList, ref fleet1TextboxList);
         }
 
         private void tbxFleet1AsianShip_LostFocus(object sender, RoutedEventArgs e)
@@ -767,7 +768,7 @@ namespace BattleCalculator
         // dla armii 1
         private void ckArmy2Pikemen_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Pikemen, tbxArmy2Pikemen, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Pikemen, tbxArmy2Pikemen, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Pikemen_LostFocus(object sender, RoutedEventArgs e)
@@ -776,7 +777,7 @@ namespace BattleCalculator
         }
         private void ckArmy2Arquebusiers_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Arquebusiers, tbxArmy2Arquebusiers, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Arquebusiers, tbxArmy2Arquebusiers, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Arquebusiers_LostFocus(object sender, RoutedEventArgs e)
@@ -786,7 +787,7 @@ namespace BattleCalculator
 
         private void ckArmy2Archers_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Archers, tbxArmy2Archers, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Archers, tbxArmy2Archers, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Archers_LostFocus(object sender, RoutedEventArgs e)
@@ -796,7 +797,7 @@ namespace BattleCalculator
 
         private void ckArmy2Crossbowmen_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Crossbowmen, tbxArmy2Crossbowmen, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Crossbowmen, tbxArmy2Crossbowmen, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Crossbowmen_LostFocus(object sender, RoutedEventArgs e)
@@ -806,7 +807,7 @@ namespace BattleCalculator
 
         private void ckArmy2Knights_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Knights, tbxArmy2Knights, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Knights, tbxArmy2Knights, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Knights_LostFocus(object sender, RoutedEventArgs e)
@@ -815,7 +816,7 @@ namespace BattleCalculator
         }
         private void ckArmy2Horsemen_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Horsemen, tbxArmy2Horsemen, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Horsemen, tbxArmy2Horsemen, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Horsemen_LostFocus(object sender, RoutedEventArgs e)
@@ -825,7 +826,7 @@ namespace BattleCalculator
 
         private void ckArmy2Bombard_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Bombard, tbxArmy2Bombard, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Bombard, tbxArmy2Bombard, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Bombard_LostFocus(object sender, RoutedEventArgs e)
@@ -835,7 +836,7 @@ namespace BattleCalculator
 
         private void ckArmy2PikeShotArq_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2PikeShotArq, tbxArmy2PikeShotArq, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2PikeShotArq, tbxArmy2PikeShotArq, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2PikeShotArq_LostFocus(object sender, RoutedEventArgs e)
@@ -845,7 +846,7 @@ namespace BattleCalculator
 
         private void ckArmy2HeavyHussars_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2HeavyHussars, tbxArmy2HeavyHussars, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2HeavyHussars, tbxArmy2HeavyHussars, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2HeavyHussars_LostFocus(object sender, RoutedEventArgs e)
@@ -855,7 +856,7 @@ namespace BattleCalculator
 
         private void ckArmy2Cossacks_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Cossacks, tbxArmy2Cossacks, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Cossacks, tbxArmy2Cossacks, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Cossacks_LostFocus(object sender, RoutedEventArgs e)
@@ -865,7 +866,7 @@ namespace BattleCalculator
 
         private void ckArmy2Reiters_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Reiters, tbxArmy2Reiters, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Reiters, tbxArmy2Reiters, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Reiters_LostFocus(object sender, RoutedEventArgs e)
@@ -874,7 +875,7 @@ namespace BattleCalculator
         }
         private void ckArmy2FieldCannon_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2FieldCannon, tbxArmy2FieldCannon, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2FieldCannon, tbxArmy2FieldCannon, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2FieldCannon_LostFocus(object sender, RoutedEventArgs e)
@@ -884,7 +885,7 @@ namespace BattleCalculator
 
         private void ckArmy2HeavyCannon_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2HeavyCannon, tbxArmy2HeavyCannon, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2HeavyCannon, tbxArmy2HeavyCannon, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2HeavyCannon_LostFocus(object sender, RoutedEventArgs e)
@@ -894,7 +895,7 @@ namespace BattleCalculator
 
         private void ckArmy2PikeShotMusk_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2PikeShotMusk, tbxArmy2PikeShotMusk, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2PikeShotMusk, tbxArmy2PikeShotMusk, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2PikeShotMusk_LostFocus(object sender, RoutedEventArgs e)
@@ -904,7 +905,7 @@ namespace BattleCalculator
 
         private void ckArmy2EarlyFusiliers_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2EarlyFusiliers, tbxArmy2EarlyFusiliers, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2EarlyFusiliers, tbxArmy2EarlyFusiliers, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2EarlyFusiliers_LostFocus(object sender, RoutedEventArgs e)
@@ -914,7 +915,7 @@ namespace BattleCalculator
 
         private void ckArmy2EarlyCuirassier_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2EarlyCuirassier, tbxArmy2EarlyCuirassier, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2EarlyCuirassier, tbxArmy2EarlyCuirassier, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2EarlyCuirassier_LostFocus(object sender, RoutedEventArgs e)
@@ -924,7 +925,7 @@ namespace BattleCalculator
 
         private void ckArmy2Harquebusers_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Harquebusers, tbxArmy2Harquebusers, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Harquebusers, tbxArmy2Harquebusers, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Harquebusers_LostFocus(object sender, RoutedEventArgs e)
@@ -934,7 +935,7 @@ namespace BattleCalculator
 
         private void ckArmy2Lancers_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Lancers, tbxArmy2Lancers, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Lancers, tbxArmy2Lancers, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Lancers_LostFocus(object sender, RoutedEventArgs e)
@@ -944,7 +945,7 @@ namespace BattleCalculator
 
         private void ckArmy2SiegeHowitzer_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2SiegeHowitzer, tbxArmy2SiegeHowitzer, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2SiegeHowitzer, tbxArmy2SiegeHowitzer, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2SiegeHowitzer_LostFocus(object sender, RoutedEventArgs e)
@@ -954,7 +955,7 @@ namespace BattleCalculator
 
         private void ckArmy2Fusiliers_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Fusiliers, tbxArmy2Fusiliers, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Fusiliers, tbxArmy2Fusiliers, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Fusiliers_LostFocus(object sender, RoutedEventArgs e)
@@ -963,7 +964,7 @@ namespace BattleCalculator
         }
         private void ckArmy2Grenadiers_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Grenadiers, tbxArmy2Grenadiers, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Grenadiers, tbxArmy2Grenadiers, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Grenadiers_LostFocus(object sender, RoutedEventArgs e)
@@ -973,7 +974,7 @@ namespace BattleCalculator
 
         private void ckArmy2Militia_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Militia, tbxArmy2Militia, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Militia, tbxArmy2Militia, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Militia_LostFocus(object sender, RoutedEventArgs e)
@@ -983,7 +984,7 @@ namespace BattleCalculator
 
         private void ckArmy2CarbineCav_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2CarbineCav, tbxArmy2CarbineCav, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2CarbineCav, tbxArmy2CarbineCav, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2CarbineCav_LostFocus(object sender, RoutedEventArgs e)
@@ -993,7 +994,7 @@ namespace BattleCalculator
 
         private void ckArmy2Dragoons_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Dragoons, tbxArmy2Dragoons, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Dragoons, tbxArmy2Dragoons, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Dragoons_LostFocus(object sender, RoutedEventArgs e)
@@ -1003,7 +1004,7 @@ namespace BattleCalculator
 
         private void ckArmy2Hussars_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Hussars, tbxArmy2Hussars, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Hussars, tbxArmy2Hussars, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Hussars_LostFocus(object sender, RoutedEventArgs e)
@@ -1013,7 +1014,7 @@ namespace BattleCalculator
 
         private void ckArmy2Cuiraissiers_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Cuiraissiers, tbxArmy2Cuiraissiers, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Cuiraissiers, tbxArmy2Cuiraissiers, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Cuiraissiers_LostFocus(object sender, RoutedEventArgs e)
@@ -1023,7 +1024,7 @@ namespace BattleCalculator
 
         private void ckArmy2FieldGun_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2FieldGun, tbxArmy2FieldGun, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2FieldGun, tbxArmy2FieldGun, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2FieldGun_LostFocus(object sender, RoutedEventArgs e)
@@ -1033,7 +1034,7 @@ namespace BattleCalculator
 
         private void ckArmy2Mortars_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2Mortars, tbxArmy2Mortars, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2Mortars, tbxArmy2Mortars, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2Mortars_LostFocus(object sender, RoutedEventArgs e)
@@ -1043,7 +1044,7 @@ namespace BattleCalculator
 
         private void ckArmy2LightInfantry_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2LightInfantry, tbxArmy2LightInfantry, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2LightInfantry, tbxArmy2LightInfantry, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2LightInfantry_LostFocus(object sender, RoutedEventArgs e)
@@ -1053,7 +1054,7 @@ namespace BattleCalculator
 
         private void ckArmy2LineInfantry_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2LineInfantry, tbxArmy2LineInfantry, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2LineInfantry, tbxArmy2LineInfantry, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2LineInfantry_LostFocus(object sender, RoutedEventArgs e)
@@ -1063,7 +1064,7 @@ namespace BattleCalculator
 
         private void ckArmy2FieldHowitzer_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2FieldHowitzer, tbxArmy2FieldHowitzer, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2FieldHowitzer, tbxArmy2FieldHowitzer, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2FieldHowitzer_LostFocus(object sender, RoutedEventArgs e)
@@ -1073,7 +1074,7 @@ namespace BattleCalculator
 
         private void ckArmy2TribalWarriors_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2TribalWarriors, tbxArmy2TribalWarriors, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2TribalWarriors, tbxArmy2TribalWarriors, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2TribalWarriors_LostFocus(object sender, RoutedEventArgs e)
@@ -1083,7 +1084,7 @@ namespace BattleCalculator
 
         private void ckArmy2TribalRanger_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2TribalRanger, tbxArmy2TribalRanger, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2TribalRanger, tbxArmy2TribalRanger, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2TribalRanger_LostFocus(object sender, RoutedEventArgs e)
@@ -1093,7 +1094,7 @@ namespace BattleCalculator
 
         private void ckArmy2TribalHorsemen_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2TribalHorsemen, tbxArmy2TribalHorsemen, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2TribalHorsemen, tbxArmy2TribalHorsemen, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2TribalHorsemen_LostFocus(object sender, RoutedEventArgs e)
@@ -1102,7 +1103,7 @@ namespace BattleCalculator
         }
         private void ckArmy2HorseArcher_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckArmy2HorseArcher, tbxArmy2HorseArcher, army2CheckBoxList, army2TextboxList);
+            SelectAnUnit(ckArmy2HorseArcher, tbxArmy2HorseArcher, ref army2CheckBoxList, ref army2TextboxList);
         }
 
         private void tbxArmy2HorseArcher_LostFocus(object sender, RoutedEventArgs e)
@@ -1112,7 +1113,7 @@ namespace BattleCalculator
         // flota 2
         private void ckFleet2Carrack_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet2Carrack, tbxFleet2Carrack, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2Carrack, tbxFleet2Carrack, ref fleet2CheckBoxList, ref fleet2TextboxList);
         }
 
         private void tbxFleet2Carrack_LostFocus(object sender, RoutedEventArgs e)
@@ -1121,7 +1122,7 @@ namespace BattleCalculator
         }
         private void ckFleet2Caravel_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet2Caravel, tbxFleet2Caravel, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2Caravel, tbxFleet2Caravel, ref fleet2CheckBoxList, ref fleet2TextboxList);
         }
 
         private void tbxFleet2Caravel_LostFocus(object sender, RoutedEventArgs e)
@@ -1130,7 +1131,7 @@ namespace BattleCalculator
         }
         private void ckFleet2Galley_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet2Galley, tbxFleet2Galley, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2Galley, tbxFleet2Galley, ref fleet2CheckBoxList, ref fleet2TextboxList);
         }
 
         private void tbxFleet2Galley_LostFocus(object sender, RoutedEventArgs e)
@@ -1140,7 +1141,7 @@ namespace BattleCalculator
 
         private void ckFleet2Galleon_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet2Galleon, tbxFleet2Galleon, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2Galleon, tbxFleet2Galleon, ref fleet2CheckBoxList, ref fleet2TextboxList);
         }
 
         private void tbxFleet2Galleon_LostFocus(object sender, RoutedEventArgs e)
@@ -1150,7 +1151,7 @@ namespace BattleCalculator
 
         private void ckFleet2Schooner_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet2Schooner, tbxFleet2Schooner, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2Schooner, tbxFleet2Schooner, ref fleet2CheckBoxList, ref fleet2TextboxList);
         }
 
         private void tbxFleet2Schooner_LostFocus(object sender, RoutedEventArgs e)
@@ -1160,7 +1161,7 @@ namespace BattleCalculator
 
         private void ckFleet2Brig_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet2Brig, tbxFleet2Brig, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2Brig, tbxFleet2Brig, ref fleet2CheckBoxList, ref fleet2TextboxList);
         }
 
         private void tbxFleet2Brig_LostFocus(object sender, RoutedEventArgs e)
@@ -1170,7 +1171,7 @@ namespace BattleCalculator
 
         private void ckFleet2Frigate_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet2Frigate, tbxFleet2Frigate, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2Frigate, tbxFleet2Frigate, ref fleet2CheckBoxList, ref fleet2TextboxList);
         }
 
         private void tbxFleet2Frigate_LostFocus(object sender, RoutedEventArgs e)
@@ -1180,7 +1181,7 @@ namespace BattleCalculator
 
         private void ckFleet2GreatFrigate_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet2GreatFrigate, tbxFleet2GreatFrigate, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2GreatFrigate, tbxFleet2GreatFrigate, ref fleet2CheckBoxList, ref fleet2TextboxList);
         }
 
         private void tbxFleet2GreatFrigate_LostFocus(object sender, RoutedEventArgs e)
@@ -1190,9 +1191,8 @@ namespace BattleCalculator
 
         private void ckFleet2ShipOfLine_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet2ShipOfLine, tbxFleet2ShipOfLine, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2ShipOfLine, tbxFleet2ShipOfLine, ref fleet2CheckBoxList, ref fleet2TextboxList);
         }
-
         private void tbxFleet2ShipOfLine_LostFocus(object sender, RoutedEventArgs e)
         {
             VerifyNumberOfUnits(tbxFleet2ShipOfLine);
@@ -1200,7 +1200,7 @@ namespace BattleCalculator
 
         private void ckFleet2Eastindiaman_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet2Eastindiaman, tbxFleet2Eastindiaman, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2Eastindiaman, tbxFleet2Eastindiaman, ref fleet2CheckBoxList, ref fleet2TextboxList);
         }
 
         private void tbxFleet2Eastindiaman_LostFocus(object sender, RoutedEventArgs e)
@@ -1210,7 +1210,7 @@ namespace BattleCalculator
 
         private void ckFleet2ArmoredFrigate_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet2ArmoredFrigate, tbxFleet2ArmoredFrigate, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2ArmoredFrigate, tbxFleet2ArmoredFrigate, ref fleet2CheckBoxList, ref fleet2TextboxList);
         }
 
         private void tbxFleet2ArmoredFrigate_LostFocus(object sender, RoutedEventArgs e)
@@ -1220,7 +1220,7 @@ namespace BattleCalculator
 
         private void ckFleet2AsianShip_Click(object sender, RoutedEventArgs e)
         {
-            SelectAnUnit(ckFleet2AsianShip, tbxFleet2AsianShip, fleet2CheckBoxList, fleet2TextboxList);
+            SelectAnUnit(ckFleet2AsianShip, tbxFleet2AsianShip, ref fleet2CheckBoxList, ref fleet2TextboxList);
         }
 
         private void tbxFleet2AsianShip_LostFocus(object sender, RoutedEventArgs e)
@@ -1232,7 +1232,7 @@ namespace BattleCalculator
         {
             foreach (LandUnit unit in armyList)
             {
-                unit.Speed = unit.Speed - terrain[0].Mud - terrain[0].HighDiff;
+                unit.Speed = unit.Speed - terrain.Mud - terrain.HighDiff;
                 if (unit.Type == "SiegeArtillery" && unit.Speed < 1)
                 {
                     unit.Speed = 1;
@@ -1241,20 +1241,20 @@ namespace BattleCalculator
                 {
                     unit.Speed = 2;
                 }
-                unit.ArtilleryDef += terrain[0].Concealment;
+                unit.ArtilleryDef += terrain.Concealment;
                 if(unit.MediumRange > 0)
                 {
-                    unit.MediumRange -= terrain[0].HighDiff;
+                    unit.MediumRange -= terrain.HighDiff;
                     if (unit.MediumRange < 0) unit.MediumRange = 5;
                 }
                 if (unit.LongRange > 0)
                 {
-                    unit.LongRange -= terrain[0].HighDiff;
+                    unit.LongRange -= terrain.HighDiff;
                     if (unit.LongRange < 0) unit.LongRange = 4;
                 }
                 if(unit.LowRange > 0)
                 {
-                    unit.LowRange -= terrain[0].Obstacles;
+                    unit.LowRange -= terrain.Obstacles;
                     if (unit.LowRange < 0) unit.LowRange = 6;
                 }
             }
@@ -1604,9 +1604,8 @@ namespace BattleCalculator
             Melee,
             MeleeRet
         }
-        public void AttackLandUnits(ref List<LandUnit> attackerList, ref List<LandUnit> defenderList, TypeOfDamage typeOfdamage, bool isRiverBeingCrossed)
+        public void DealDamageToLandunits(ref List<LandUnit> attackerList, ref List<LandUnit> defenderList, TypeOfDamage typeOfdamage, bool isRiverBeingCrossed = false)
         {
-            if(Enum.IsDefined(typeof(TypeOfDamage), typeOfdamage)) throw new ArgumentException();
             string damageType = typeOfdamage.ToString();
             int attackerDamage = 0;
             int defenderDamage = 0;
@@ -1934,7 +1933,7 @@ namespace BattleCalculator
                 }
                 if(defensiveCharge.Count > 0)
                 {
-                    defenderDamage /= attackers.Count;
+                    if(attackers.Count > 0) defenderDamage /= attackers.Count;
                     int localAttackerDamage = attackerDamage / defensiveCharge.Count;
                     for (int i = 0; i < defensiveCharge.Count; i++)
                     {
@@ -2017,7 +2016,7 @@ namespace BattleCalculator
                 else
                 {
                     defenderDamage = 0;
-                    attackerDamage /= defenderList.Count;
+                    if (defenderList.Count > 0) attackerDamage /= defenderList.Count;
                     foreach (LandUnit unit in defenderList)
                     {
                         defenderDamage += unit.Melee + unit.LowRange;
@@ -2141,12 +2140,12 @@ namespace BattleCalculator
                 unit.Initiative = unit.Morale / percentPerPoint;
             }
         }
-        public void MoraleModification(ref List<LandUnit> armyList, int moraleModification)
+        public void MoraleModification(ref List<LandUnit> armyList, int moraleModification, bool goBeyondLimit = false)
         {
             foreach (LandUnit unit in armyList)
             {
                 unit.Morale += moraleModification;
-                if (unit.Morale < 0) unit.Morale = 0;
+                if (unit.Morale < 0 && !goBeyondLimit) unit.Morale = 0;
             }
             UpdateInitiative(ref armyList);
         }
@@ -2158,6 +2157,26 @@ namespace BattleCalculator
                 if (unit.Morale > unit.MaxMorale) unit.Morale = unit.MaxMorale;
             }
             UpdateInitiative(ref armyList);
+        }
+        public int GetArmyMorale(List<LandUnit> armyList)
+        {
+            int avgMorale = 0;
+            foreach (LandUnit unit in armyList)
+            {
+                avgMorale += unit.Morale;
+            }
+            avgMorale /= armyList.Count;
+            return avgMorale;
+        }
+        public int GetArmyInitiative(List<LandUnit> armyList)
+        {
+            int avgInitiative = 0;
+            foreach(LandUnit unit in armyList)
+            {
+                avgInitiative += unit.Initiative;
+            }
+            avgInitiative /= armyList.Count;
+            return avgInitiative;
         }
         void FillFleetList(List<CheckBox> ckList, List<TextBox> tbxList, ref List<Ship> fleetList)
         {
@@ -2219,6 +2238,7 @@ namespace BattleCalculator
         void VerifyInputLists(ref List<CheckBox> ckList, ref List<TextBox> tbxList)
         {
             int input;
+            List<int> indexesToBeDeleted = new List<int>();
             for (int i = 0; i < ckList.Count; i++)
             {
                 input = Convert.ToInt32(tbxList[i].Text);
@@ -2226,9 +2246,13 @@ namespace BattleCalculator
                 {
                     ckList[i].IsChecked = false;
                     tbxList[i].IsEnabled = false;
-                    ckList.RemoveAt(i);
-                    tbxList.RemoveAt(i);
+                    
                 }
+            }
+            foreach(int index  in indexesToBeDeleted)
+            {
+                ckList.RemoveAt(index);
+                tbxList.RemoveAt(index);
             }
         }
         private void StartButton_Click(object sender, RoutedEventArgs e)
@@ -2247,36 +2271,96 @@ namespace BattleCalculator
                     switch (cbTerrainType.Text)
                     {
                         case "Łąki":
-                            terrain[0] = new TerrainType(cbTerrainType.Text, 2, 0, 2, 0);
+                            terrain = new TerrainType(cbTerrainType.Text, 2, 0, 2, 0);
                             break;
                         case "Wzgórza":
-                            terrain[0] = new TerrainType(cbTerrainType.Text, 10, 0, 6, 1);
+                            terrain = new TerrainType(cbTerrainType.Text, 10, 0, 6, 1);
                             break;
                         case "Las":
-                            terrain[0] = new TerrainType(cbTerrainType.Text, 10, 0, 8, 0);
+                            terrain = new TerrainType(cbTerrainType.Text, 10, 0, 8, 0);
                             break;
                         case "Leśne wzgórza":
-                            terrain[0] = new TerrainType(cbTerrainType.Text, 18, 0, 13, 1);
+                            terrain = new TerrainType(cbTerrainType.Text, 18, 0, 13, 1);
                             break;
                         case "Góry":
-                            terrain[0] = new TerrainType(cbTerrainType.Text, 17, 0, 13, 4);
+                            terrain = new TerrainType(cbTerrainType.Text, 17, 0, 13, 4);
                             break;
                         case "Bagno":
-                            terrain[0] = new TerrainType(cbTerrainType.Text, 2, 4, 2, 0);
+                            terrain = new TerrainType(cbTerrainType.Text, 2, 4, 2, 0);
                             break;
                         case "Dżungla":
-                            terrain[0] = new TerrainType(cbTerrainType.Text, 15, 4, 15, 0);
+                            terrain = new TerrainType(cbTerrainType.Text, 15, 4, 15, 0);
                             break;
                         case "Równina":
-                            terrain[0] = new TerrainType(cbTerrainType.Text, 0, 0, 1, 0);
+                            terrain = new TerrainType(cbTerrainType.Text, 0, 0, 1, 0);
                             break;
                         case "Pustynia":
-                            terrain[0] = new TerrainType(cbTerrainType.Text, 8, 2, 2, 1);
+                            terrain = new TerrainType(cbTerrainType.Text, 8, 2, 2, 1);
                             break;
                     }
                     // glowne dzialanie
                     ApplyTerrainEffects(ref army1UnitsList);
                     ApplyTerrainEffects(ref army2UnitsList);
+                    int army1AvgMorale = GetArmyMorale(army1UnitsList), army2AvgMorale = GetArmyMorale(army2UnitsList);
+                    List<LandUnit> actingUnitsFromArmy1 = new List<LandUnit>();
+                    List<LandUnit> actingUnitsFromArmy2 = new List<LandUnit>();
+                    if (!isSkirmishAttack)
+                    {
+                        //spotkanie, fort nie ma znaczenie w tej sytuacji
+                    }
+                    else if(isSkirmishAttack && fortLevel == 0) 
+                    {
+                        //atak bez fortu
+                        MoraleModification(ref army1UnitsList, 10, true);
+                        int army1AvgInitiative = GetArmyInitiative(army1UnitsList), army2AvgInitiative = GetArmyInitiative(army2UnitsList);
+                        while(!team1Win && !team2Win)
+                        {
+                            MoraleModification(ref actingUnitsFromArmy1, 5);
+                            MoraleModification(ref actingUnitsFromArmy2, 5);
+                            UpdateInitiative(ref army1UnitsList);
+                            UpdateInitiative(ref army2UnitsList);
+                            army1AvgInitiative = GetArmyInitiative(army1UnitsList);
+                            army2AvgInitiative = GetArmyInitiative(army2UnitsList);
+                            if (army1AvgInitiative > army2AvgInitiative)
+                            {
+                                battleLog += "Armia 1 ma inicjatywe i przechodzi do ataku\n Nastepuje bombardowanie\n";
+                                //armia 1 ma inicjatywe
+                                //bombardowanie z obu stron
+                                SelectBombardingUnits(ref army1UnitsList, ref actingUnitsFromArmy1, true);
+                                SelectBombardingUnits(ref army2UnitsList, ref actingUnitsFromArmy2, true);
+                                DealDamageToLandunits(ref actingUnitsFromArmy1, ref actingUnitsFromArmy2, TypeOfDamage.LongRangeRet);
+                                //atak
+                                SelectAttackingUnits(ref army1UnitsList, ref actingUnitsFromArmy1);
+                                SelectDefendingUnits(ref army2UnitsList, ref actingUnitsFromArmy2);
+                                DealDamageToLandunits(ref actingUnitsFromArmy1, ref actingUnitsFromArmy2, TypeOfDamage.ChargeMelee, team1SpecialCondition);
+                                while(GetArmyMorale(actingUnitsFromArmy1) > GetArmyMorale(actingUnitsFromArmy2))
+                                {
+                                    if (GetArmyInitiative(actingUnitsFromArmy1) > GetArmyInitiative(actingUnitsFromArmy2)) DealDamageToLandunits(ref actingUnitsFromArmy1, ref actingUnitsFromArmy2, TypeOfDamage.MeleeRet);
+                                    else DealDamageToLandunits(ref actingUnitsFromArmy2, ref actingUnitsFromArmy1, TypeOfDamage.MeleeRet);
+                                    //warunki wyjsciowe
+                                    if(GetArmyMorale(actingUnitsFromArmy1) <= 10)
+                                    {
+                                        //atakujacy uciekaja
+                                        battleLog += "Obrona sie utrzymala\n";
+                                        DealDamageToLandunits(ref actingUnitsFromArmy2, ref actingUnitsFromArmy1, TypeOfDamage.Melee);
+                                        MoraleModification(ref actingUnitsFromArmy1, -10);
+                                    }
+                                    else if(GetArmyMorale(actingUnitsFromArmy2) <= 10)
+                                    {
+                                        //broniacy uciekaja uciekaja
+                                        battleLog += "Obrona zostala zlamana\n";
+                                        DealDamageToLandunits(ref actingUnitsFromArmy1, ref actingUnitsFromArmy2, TypeOfDamage.Melee);
+                                        MoraleModification(ref actingUnitsFromArmy2, -10);
+                                        MoraleModification(ref actingUnitsFromArmy1, 5);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //atak na fort
+                    }
                     ChangePageToResults(sender, e);
                 }
             }

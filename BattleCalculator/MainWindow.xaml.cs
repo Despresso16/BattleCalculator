@@ -59,23 +59,23 @@ namespace BattleCalculator
 
         public LandUnit(string UnitName, int UnitLongRange, int UnitMidRange, int UnitLowRange, int UnitShockAttack, int UnitMelee, int UnitShockDef, int UnitArtDef, int UnitInitiative, int UnitHealth, int UnitMorale, int UnitSpeed, string UnitType, int UnitNumberOf)
         {
-            Name = UnitName;
-            LongRange = UnitLongRange;
-            MediumRange = UnitMidRange;
-            LowRange = UnitLowRange;
-            ShockAttack = UnitShockAttack + (UnitSpeed * 2);
-            Melee = UnitMelee;
-            ShockDef = UnitShockDef;
-            ArtilleryDef = UnitArtDef;
-            Initiative = UnitInitiative;
-            MaxInitiative = UnitInitiative;
-            Health = UnitHealth;
-            MaxHealth = UnitHealth;
-            MaxMorale = UnitMorale;
-            Morale = UnitMorale;
-            Speed = UnitSpeed;
-            Type = UnitType;
-            NumberOf = UnitNumberOf;
+            this.Name = UnitName;
+            this.LongRange = UnitLongRange;
+            this.MediumRange = UnitMidRange;
+            this.LowRange = UnitLowRange;
+            this.ShockAttack = UnitShockAttack + (UnitSpeed * 2);
+            this.Melee = UnitMelee;
+            this.ShockDef = UnitShockDef;
+            this.ArtilleryDef = UnitArtDef;
+            this.Initiative = UnitInitiative;
+            this.MaxInitiative = UnitInitiative;
+            this.Health = UnitHealth;
+            this.MaxHealth = UnitHealth;
+            this.MaxMorale = UnitMorale;
+            this.Morale = UnitMorale;
+            this.Speed = UnitSpeed;
+            this.Type = UnitType;
+            this.NumberOf = UnitNumberOf;
 
         }
     }
@@ -103,20 +103,20 @@ namespace BattleCalculator
 
         public Ship(string shipName, int shipType, int shipHullShallow, int shipHull, int shipCrew, int shipSpeed, int shipManeuver, int shipBroadside, int shipFrontal, int shipStern, int shipMortars, int numberOfShips)
         {
-            name = shipName;
-            type = shipType;
-            size = shipHullShallow;
-            hullHealth = shipHull;
-            maxHull = shipHull;
-            crew = shipCrew;
-            maxCrew = shipCrew;
-            speed = shipSpeed;
-            maneuver = shipManeuver + shipSpeed;
-            broadSideFirepower = shipBroadside;
-            frontalFirepower = shipFrontal;
-            sternFirepower = shipStern;
-            mortarFirepower = shipMortars;
-            numberOf = numberOfShips;
+            this.name = shipName;
+            this.type = shipType;
+            this.size = shipHullShallow;
+            this.hullHealth = shipHull;
+            this.maxHull = shipHull;
+            this.crew = shipCrew;
+            this.maxCrew = shipCrew;
+            this.speed = shipSpeed;
+            this.maneuver = shipManeuver + shipSpeed;
+            this.broadSideFirepower = shipBroadside;
+            this.frontalFirepower = shipFrontal;
+            this.sternFirepower = shipStern;
+            this.mortarFirepower = shipMortars;
+            this.numberOf = numberOfShips;
         }
     }
     public class TerrainType //typy terenu
