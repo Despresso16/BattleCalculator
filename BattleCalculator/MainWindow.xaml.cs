@@ -28,6 +28,7 @@ namespace BattleCalculator
         }
         private void startBtnClicked(object? sender, EventArgs e)
         {
+
             frame.Content = new ResultPage();
         }
     }

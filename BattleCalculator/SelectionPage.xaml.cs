@@ -28,7 +28,7 @@ namespace BattleCalculator
         {
             InitializeComponent();
         }
-
+        
 
         private void ChangePageToResults(object sender, RoutedEventArgs e)
         {
@@ -2345,7 +2345,8 @@ namespace BattleCalculator
                             MoraleModification(ref actingUnitsFromArmy2, 5);
                             UpdateInitiative(ref army1UnitsList);
                             UpdateInitiative(ref army2UnitsList);
-                            army1AvgInitiative = GetArmyInitiative(army1UnitsList) + 4;
+                            army1AvgInitiative = GetArmyInitiative(army1UnitsList);
+                            if (isSkirmishAttack) army1AvgInitiative += 4;
                             army2AvgInitiative = GetArmyInitiative(army2UnitsList);
                             army1CountBefore = GetArmyCount(army1UnitsList);
                             army2CountBefore = GetArmyCount(army2UnitsList);
@@ -2407,8 +2408,40 @@ namespace BattleCalculator
                                 team1Win = true;
                                 break;
                             }
+                            //krytyczne morale
+                            else if (GetArmyMorale(army1UnitsList) <= 10)
+                            {
+                                //zbyt male morale armii 1
+                                battleLog += "Armia 1 zostala zlamana i ucieka w poplochu";
+                                SelectBombardingUnits(ref army2UnitsList, ref actingUnitsFromArmy2, true);
+                                DealDamageToLandunits(ref actingUnitsFromArmy2, ref army1UnitsList, TypeOfDamage.LongRange);
+                                RetreatInHaste(ref army1UnitsList);
+                                team2Win = true;
+                                break;
+                            }
+                            else if (GetArmyMorale(army2UnitsList) <= 10)
+                            {
+                                //zbyt male morale armii 2
+                                battleLog += "Armia 2 zostala zlamana i ucieka w poplochu";
+                                SelectBombardingUnits(ref army1UnitsList, ref actingUnitsFromArmy1, true);
+                                DealDamageToLandunits(ref actingUnitsFromArmy1, ref army2UnitsList, TypeOfDamage.LongRange);
+                                RetreatInHaste(ref army2UnitsList);
+                                team1Win = true;
+                                break;
+                            }
                             //ataki
-                            if (army1AvgInitiative >= army2AvgInitiative)
+                            if(army1AvgInitiative == army2AvgInitiative)
+                            {
+                                if (isSkirmishAttack) army1AvgInitiative++;
+                                else
+                                {
+                                    Random rnd = new Random();
+                                    int num = rnd.Next(0, 2);
+                                    if (num > 0) army1AvgInitiative++;
+                                    else army2AvgInitiative++;
+                                }
+                            }
+                            if (army1AvgInitiative > army2AvgInitiative)
                             {
                                 battleLog += "Armia 1 ma inicjatywe i przechodzi do ataku\n Nastepuje bombardowanie\n";
                                 //armia 1 ma inicjatywe
@@ -2566,12 +2599,15 @@ namespace BattleCalculator
                                         MoraleModification(ref army2UnitsList, 5);
                                         break;
                                     }
+
                                 }
                                 //obliczanie strat
                                 army1Losses += army1CountBefore - GetArmyCount(army1UnitsList);
                                 army2Losses += army2CountBefore - GetArmyCount(army2UnitsList);
                             }
                         }
+                        //zakonczenia bitwy
+
                     }
                     else
                     {
