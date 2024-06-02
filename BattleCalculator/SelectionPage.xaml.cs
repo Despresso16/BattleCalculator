@@ -1562,7 +1562,7 @@ namespace BattleCalculator
                 }
             }
         }
-        public void SelectBombardingUnits(ref List<LandUnit> mainArmyList, ref List<LandUnit> bombardingUnits, bool allowFieldGuns)
+        public void SelectBombardingUnits(ref List<LandUnit> mainArmyList, ref List<LandUnit> bombardingUnits, bool allowFieldGuns = false)
         {
             bombardingUnits.Clear();
             foreach (LandUnit unit in  mainArmyList)
@@ -2131,6 +2131,21 @@ namespace BattleCalculator
                 }
             }
         }
+        public void RetreatInHaste(ref List<LandUnit> retreatingArmy)
+        {
+            List<LandUnit> artilleryList = new List<LandUnit>();
+            SelectBombardingUnits(ref retreatingArmy, ref artilleryList);
+            foreach (LandUnit unit in artilleryList)
+            {
+                if(unit.Type == "SiegeArtillery") unit.Health -= unit.MaxHealth / 2;
+                else if (unit.Type == "FieldGuns") unit.Health -= unit.MaxHealth / 4;
+                while(unit.Health < 0 && unit.NumberOf > 0)
+                {
+                    unit.Health += unit.MaxHealth;
+                    unit.NumberOf--;
+                }
+            }
+        }
         public void UpdateInitiative(ref List<LandUnit> armyList)
         {
             int percentPerPoint;
@@ -2146,15 +2161,7 @@ namespace BattleCalculator
             {
                 unit.Morale += moraleModification;
                 if (unit.Morale < 0 && !goBeyondLimit) unit.Morale = 0;
-            }
-            UpdateInitiative(ref armyList);
-        }
-        public void RegainMorale(ref List<LandUnit> armyList)
-        {
-            foreach(LandUnit unit in armyList)
-            {
-                if (unit.Morale > 0 && unit.Morale < unit.MaxMorale) unit.Morale += 10;
-                if (unit.Morale > unit.MaxMorale) unit.Morale = unit.MaxMorale;
+                if(unit.Morale > unit.MaxMorale && !goBeyondLimit) unit.Morale = unit.MaxMorale;
             }
             UpdateInitiative(ref armyList);
         }
@@ -2168,6 +2175,16 @@ namespace BattleCalculator
             avgMorale /= armyList.Count;
             return avgMorale;
         }
+        public int GetArmySpeed(List<LandUnit> armyList)
+        {
+            int avgSpeed = 0;
+            foreach(LandUnit unit in armyList)
+            {
+                avgSpeed += unit.Speed;
+            }
+            avgSpeed /= armyList.Count;
+            return avgSpeed;
+        }
         public int GetArmyInitiative(List<LandUnit> armyList)
         {
             int avgInitiative = 0;
@@ -2177,6 +2194,15 @@ namespace BattleCalculator
             }
             avgInitiative /= armyList.Count;
             return avgInitiative;
+        }
+        public int GetArmyCount(List<LandUnit> armyList)
+        {
+            int count = 0;
+            foreach(LandUnit unit in armyList)
+            {
+                count += unit.NumberOf;
+            }
+            return count;
         }
         void FillFleetList(List<CheckBox> ckList, List<TextBox> tbxList, ref List<Ship> fleetList)
         {
@@ -2304,56 +2330,246 @@ namespace BattleCalculator
                     int army1AvgMorale = GetArmyMorale(army1UnitsList), army2AvgMorale = GetArmyMorale(army2UnitsList);
                     List<LandUnit> actingUnitsFromArmy1 = new List<LandUnit>();
                     List<LandUnit> actingUnitsFromArmy2 = new List<LandUnit>();
-                    if (!isSkirmishAttack)
-                    {
-                        //spotkanie, fort nie ma znaczenie w tej sytuacji
-                    }
-                    else if(isSkirmishAttack && fortLevel == 0) 
+                    
+                    if(fortLevel == 0) 
                     {
                         //atak bez fortu
+                        int army1CountBefore, army2CountBefore;
+                        int army1Losses = 0, army2Losses = 0;
                         MoraleModification(ref army1UnitsList, 10, true);
-                        int army1AvgInitiative = GetArmyInitiative(army1UnitsList), army2AvgInitiative = GetArmyInitiative(army2UnitsList);
+                        int army1AvgInitiative, army2AvgInitiative;
+                        battleLog += "Bitwa sie rozpoczyna\n";
                         while(!team1Win && !team2Win)
                         {
                             MoraleModification(ref actingUnitsFromArmy1, 5);
                             MoraleModification(ref actingUnitsFromArmy2, 5);
                             UpdateInitiative(ref army1UnitsList);
                             UpdateInitiative(ref army2UnitsList);
-                            army1AvgInitiative = GetArmyInitiative(army1UnitsList);
+                            army1AvgInitiative = GetArmyInitiative(army1UnitsList) + 4;
                             army2AvgInitiative = GetArmyInitiative(army2UnitsList);
-                            if (army1AvgInitiative > army2AvgInitiative)
+                            army1CountBefore = GetArmyCount(army1UnitsList);
+                            army2CountBefore = GetArmyCount(army2UnitsList);
+                            //warunki zakonczenia bitwy
+                            //przewagi liczebne
+                            if(GetArmyCount(army1UnitsList) > GetArmyCount(army2UnitsList) && GetArmyCount(army1UnitsList) - GetArmyCount(army2UnitsList) > 30)
+                            {
+                                //przewaga liczebna armii 1
+                                battleLog += "Armia 2 wycofuje sie ze wzgledu na przewage liczebna armii 1";
+                                SelectBombardingUnits(ref army1UnitsList, ref actingUnitsFromArmy1, true);
+                                DealDamageToLandunits(ref actingUnitsFromArmy1, ref army2UnitsList, TypeOfDamage.LongRange);
+                                team1Win = true;
+                                break;
+                            }
+                            else if(GetArmyCount(army1UnitsList) < GetArmyCount(army2UnitsList) && GetArmyCount(army2UnitsList) - GetArmyCount(army1UnitsList) > 30)
+                            {
+                                //przewaga liczebna armii 2
+                                battleLog += "Armia 1 wycofuje sie ze wzgledu na przewage liczebna armii 2";
+                                SelectBombardingUnits(ref army2UnitsList, ref actingUnitsFromArmy2, true);
+                                DealDamageToLandunits(ref actingUnitsFromArmy2, ref army1UnitsList, TypeOfDamage.LongRange);
+                                team2Win = true;
+                                break;
+                            }
+                            //straty w porownaniu
+                            else if(army1Losses > army2Losses && army1Losses - army2Losses > 20)
+                            {
+                                //zbyt duze straty armii 1
+                                battleLog += "Armia 1 wycofuje sie ze wzgledu przewazajace straty";
+                                SelectBombardingUnits(ref army2UnitsList, ref actingUnitsFromArmy2, true);
+                                DealDamageToLandunits(ref actingUnitsFromArmy2, ref army1UnitsList, TypeOfDamage.LongRange);
+                                team2Win = true;
+                                break;
+                            }
+                            else if (army1Losses < army2Losses && army2Losses - army1Losses > 20)
+                            {
+                                //zbyt duze straty armii 2
+                                battleLog += "Armia 2 wycofuje sie ze wzgledu przewazajace straty";
+                                SelectBombardingUnits(ref army1UnitsList, ref actingUnitsFromArmy1, true);
+                                DealDamageToLandunits(ref actingUnitsFromArmy1, ref army2UnitsList, TypeOfDamage.LongRange);
+                                team1Win = true;
+                                break;
+                            }
+                            //morale
+                            else if(GetArmyMorale(army1UnitsList) < 20 && GetArmyMorale(army1UnitsList) > 10)
+                            {
+                                //zbyt male morale armii 1
+                                battleLog += "Armia 1 wycofuje ze wzgledu an slabe morale";
+                                SelectBombardingUnits(ref army2UnitsList, ref actingUnitsFromArmy2, true);
+                                DealDamageToLandunits(ref actingUnitsFromArmy2, ref army1UnitsList, TypeOfDamage.LongRange);
+                                team2Win = true;
+                                break;
+                            }
+                            else if (GetArmyMorale(army2UnitsList) < 20 && GetArmyMorale(army2UnitsList) > 10)
+                            {
+                                //zbyt male morale armii 2
+                                battleLog += "Armia 2 wycofuje ze wzgledu an slabe morale";
+                                SelectBombardingUnits(ref army1UnitsList, ref actingUnitsFromArmy1, true);
+                                DealDamageToLandunits(ref actingUnitsFromArmy1, ref army2UnitsList, TypeOfDamage.LongRange);
+                                team1Win = true;
+                                break;
+                            }
+                            //ataki
+                            if (army1AvgInitiative >= army2AvgInitiative)
                             {
                                 battleLog += "Armia 1 ma inicjatywe i przechodzi do ataku\n Nastepuje bombardowanie\n";
                                 //armia 1 ma inicjatywe
                                 //bombardowanie z obu stron
-                                SelectBombardingUnits(ref army1UnitsList, ref actingUnitsFromArmy1, true);
-                                SelectBombardingUnits(ref army2UnitsList, ref actingUnitsFromArmy2, true);
-                                DealDamageToLandunits(ref actingUnitsFromArmy1, ref actingUnitsFromArmy2, TypeOfDamage.LongRangeRet);
+                                DealDamageToLandunits(ref army1UnitsList, ref army2UnitsList, TypeOfDamage.LongRangeRet);
                                 //atak
                                 SelectAttackingUnits(ref army1UnitsList, ref actingUnitsFromArmy1);
                                 SelectDefendingUnits(ref army2UnitsList, ref actingUnitsFromArmy2);
+                                int distance = 20;
+                                int attackerSpeed = GetArmySpeed(actingUnitsFromArmy1);
+                                while(distance > 0 && distance - attackerSpeed >= attackerSpeed)
+                                {
+                                    if(distance > 12)
+                                    {
+                                        DealDamageToLandunits(ref actingUnitsFromArmy2, ref actingUnitsFromArmy1, TypeOfDamage.MidRange);
+                                    }
+                                    else
+                                    {
+                                        DealDamageToLandunits(ref actingUnitsFromArmy1, ref actingUnitsFromArmy2, TypeOfDamage.LowRangeRet, team1SpecialCondition);
+                                    }
+                                    distance -= attackerSpeed;
+                                }
                                 DealDamageToLandunits(ref actingUnitsFromArmy1, ref actingUnitsFromArmy2, TypeOfDamage.ChargeMelee, team1SpecialCondition);
-                                while(GetArmyMorale(actingUnitsFromArmy1) > GetArmyMorale(actingUnitsFromArmy2))
+                                while(true)
                                 {
                                     if (GetArmyInitiative(actingUnitsFromArmy1) > GetArmyInitiative(actingUnitsFromArmy2)) DealDamageToLandunits(ref actingUnitsFromArmy1, ref actingUnitsFromArmy2, TypeOfDamage.MeleeRet);
                                     else DealDamageToLandunits(ref actingUnitsFromArmy2, ref actingUnitsFromArmy1, TypeOfDamage.MeleeRet);
                                     //warunki wyjsciowe
-                                    if(GetArmyMorale(actingUnitsFromArmy1) <= 10)
+                                    if(GetArmyCount(actingUnitsFromArmy1) - GetArmyCount(actingUnitsFromArmy2) >= 20)
+                                    {
+                                        battleLog += "Obrona armii 2 ucieka przez przewage liczebna wroga\n";
+                                        DealDamageToLandunits(ref actingUnitsFromArmy1, ref actingUnitsFromArmy2, TypeOfDamage.LowRange);
+                                        MoraleModification(ref army2UnitsList, -12);
+                                        MoraleModification(ref army1UnitsList, 7);
+                                        break;
+                                    }
+                                    else if (GetArmyCount(actingUnitsFromArmy2) - GetArmyCount(actingUnitsFromArmy1) >= 20)
+                                    {
+                                        battleLog += "Atakujacy armii 1 wycofuja sie ze wzgledu na przewage liczbena wroga\n";
+                                        DealDamageToLandunits(ref actingUnitsFromArmy2, ref actingUnitsFromArmy1, TypeOfDamage.LowRange);
+                                        MoraleModification(ref army1UnitsList, -10);
+                                        MoraleModification(ref army2UnitsList, 5);
+                                        break;
+                                    }
+                                    else if(GetArmyCount(actingUnitsFromArmy1) == 0)
+                                    {
+                                        //atakujacy wybici
+                                        battleLog += "Obrona armii 2 sie utrzymala, atakujacy zostali wybici\n";
+                                        DealDamageToLandunits(ref actingUnitsFromArmy2, ref actingUnitsFromArmy1, TypeOfDamage.Melee);
+                                        MoraleModification(ref army1UnitsList, -15);
+                                        break;
+                                    }
+                                    else if(GetArmyCount(actingUnitsFromArmy2) == 0)
+                                    {
+                                        //broniacy wybici
+                                        battleLog += "Obrona armii 2 zostala wybita w pien\n";
+                                        DealDamageToLandunits(ref actingUnitsFromArmy2, ref actingUnitsFromArmy1, TypeOfDamage.Melee);
+                                        MoraleModification(ref army2UnitsList, -15);
+                                        break;
+                                    }
+                                    else if(GetArmyMorale(actingUnitsFromArmy1) <= 10)
                                     {
                                         //atakujacy uciekaja
-                                        battleLog += "Obrona sie utrzymala\n";
+                                        battleLog += "Obrona armii 2 sie utrzymala\n";
                                         DealDamageToLandunits(ref actingUnitsFromArmy2, ref actingUnitsFromArmy1, TypeOfDamage.Melee);
-                                        MoraleModification(ref actingUnitsFromArmy1, -10);
+                                        MoraleModification(ref army1UnitsList, -10);
+                                        break;
                                     }
                                     else if(GetArmyMorale(actingUnitsFromArmy2) <= 10)
                                     {
                                         //broniacy uciekaja uciekaja
-                                        battleLog += "Obrona zostala zlamana\n";
+                                        battleLog += "Obrona armii 2 zostala zlamana\n";
                                         DealDamageToLandunits(ref actingUnitsFromArmy1, ref actingUnitsFromArmy2, TypeOfDamage.Melee);
-                                        MoraleModification(ref actingUnitsFromArmy2, -10);
-                                        MoraleModification(ref actingUnitsFromArmy1, 5);
+                                        MoraleModification(ref army2UnitsList, -10);
+                                        MoraleModification(ref army1UnitsList, 5);
+                                        break;
                                     }
                                 }
+                            }
+                            else
+                            {
+                                battleLog += "Armia 2 ma inicjatywe i przechodzi do ataku\n Nastepuje bombardowanie\n";
+                                //armia 2 ma inicjatywe
+                                //bombardowanie z obu stron
+                                DealDamageToLandunits(ref army2UnitsList, ref army1UnitsList, TypeOfDamage.LongRangeRet);
+                                //atak
+                                SelectAttackingUnits(ref army1UnitsList, ref actingUnitsFromArmy1);
+                                SelectDefendingUnits(ref army2UnitsList, ref actingUnitsFromArmy2);
+                                int distance = 20;
+                                int attackerSpeed = GetArmySpeed(actingUnitsFromArmy2);
+                                while (distance > 0 && distance - attackerSpeed >= attackerSpeed)
+                                {
+                                    if (distance > 12)
+                                    {
+                                        DealDamageToLandunits(ref actingUnitsFromArmy1, ref actingUnitsFromArmy2, TypeOfDamage.MidRange);
+                                    }
+                                    else
+                                    {
+                                        DealDamageToLandunits(ref actingUnitsFromArmy2, ref actingUnitsFromArmy1, TypeOfDamage.LowRangeRet, team1SpecialCondition);
+                                    }
+                                    distance -= attackerSpeed;
+                                }
+                                DealDamageToLandunits(ref actingUnitsFromArmy2, ref actingUnitsFromArmy1, TypeOfDamage.ChargeMelee, team1SpecialCondition);
+                                while (true)
+                                {
+                                    if (GetArmyInitiative(actingUnitsFromArmy2) > GetArmyInitiative(actingUnitsFromArmy1)) DealDamageToLandunits(ref actingUnitsFromArmy2, ref actingUnitsFromArmy1, TypeOfDamage.MeleeRet);
+                                    else DealDamageToLandunits(ref actingUnitsFromArmy1, ref actingUnitsFromArmy2, TypeOfDamage.MeleeRet);
+                                    //warunki wyjsciowe
+                                    if (GetArmyCount(actingUnitsFromArmy2) - GetArmyCount(actingUnitsFromArmy1) >= 20)
+                                    {
+                                        battleLog += "Obrona armii 1 ucieka przez przewage liczebna wroga\n";
+                                        DealDamageToLandunits(ref actingUnitsFromArmy2, ref actingUnitsFromArmy1, TypeOfDamage.LowRange);
+                                        MoraleModification(ref army1UnitsList, -12);
+                                        MoraleModification(ref army2UnitsList, 7);
+                                        break;
+                                    }
+                                    else if (GetArmyCount(actingUnitsFromArmy1) - GetArmyCount(actingUnitsFromArmy2) >= 20)
+                                    {
+                                        battleLog += "Atakujacy armii 2 wycofuja sie ze wzgledu na przewage liczbena wroga\n";
+                                        DealDamageToLandunits(ref actingUnitsFromArmy2, ref actingUnitsFromArmy1, TypeOfDamage.LowRange);
+                                        MoraleModification(ref army2UnitsList, -10);
+                                        MoraleModification(ref army1UnitsList, 5);
+                                        break;
+                                    }
+                                    else if (GetArmyCount(actingUnitsFromArmy2) == 0)
+                                    {
+                                        //atakujacy uciekaja
+                                        battleLog += "Obrona armii 1 sie utrzymala, atakujacy zostali wybici\n";
+                                        DealDamageToLandunits(ref actingUnitsFromArmy2, ref actingUnitsFromArmy1, TypeOfDamage.Melee);
+                                        MoraleModification(ref army2UnitsList, -15);
+                                        break;
+                                    }
+                                    else if (GetArmyCount(actingUnitsFromArmy1) == 0)
+                                    {
+                                        //atakujacy uciekaja
+                                        battleLog += "Obrona armii 1 zostala wybita w pien\n";
+                                        DealDamageToLandunits(ref actingUnitsFromArmy2, ref actingUnitsFromArmy1, TypeOfDamage.Melee);
+                                        MoraleModification(ref army1UnitsList, -15);
+                                        break;
+                                    }
+                                    else if (GetArmyMorale(actingUnitsFromArmy2) <= 10)
+                                    {
+                                        //atakujacy uciekaja
+                                        battleLog += "Obrona armii 1 sie utrzymala\n";
+                                        DealDamageToLandunits(ref actingUnitsFromArmy2, ref actingUnitsFromArmy1, TypeOfDamage.Melee);
+                                        MoraleModification(ref army2UnitsList, -10);
+                                        break;
+                                    }
+                                    else if (GetArmyMorale(actingUnitsFromArmy1) <= 10)
+                                    {
+                                        //broniacy uciekaja uciekaja
+                                        battleLog += "Obrona armii 1 zostala zlamana\n";
+                                        DealDamageToLandunits(ref actingUnitsFromArmy1, ref actingUnitsFromArmy2, TypeOfDamage.Melee);
+                                        MoraleModification(ref army1UnitsList, -10);
+                                        MoraleModification(ref army2UnitsList, 5);
+                                        break;
+                                    }
+                                }
+                                //obliczanie strat
+                                army1Losses += army1CountBefore - GetArmyCount(army1UnitsList);
+                                army2Losses += army2CountBefore - GetArmyCount(army2UnitsList);
                             }
                         }
                     }
