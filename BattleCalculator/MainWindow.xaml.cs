@@ -19,44 +19,51 @@ namespace BattleCalculator
     
     public partial class MainWindow : Window
     {
+
+        SelectionPage selectionPage = new SelectionPage();
         public MainWindow()
         {
             InitializeComponent();
-            SelectionPage selectionPage = new SelectionPage();
             selectionPage.btnClick += startBtnClicked;
             frame.Content = selectionPage;
         }
         private void startBtnClicked(object? sender, EventArgs e)
         {
-
-            frame.Content = new ResultPage();
+            ResultPage resultPage = new ResultPage();
+            resultPage.lbResult.Content = selectionPage.resultString;
+            resultPage.tbxBattleLog.Text = selectionPage.battleLog;
+            resultPage.tbxTeam1DisplayList.Text = selectionPage.team1StringDisplayList;
+            resultPage.tbxTeam2DisplayList.Text = selectionPage.team2StringDisplayList;
+            resultPage.tbxTeam1List.Text = selectionPage.team1StringList;
+            resultPage.tbxTeam2List.Text = selectionPage.team2StringList;
+            frame.Content = resultPage;
         }
     }
     public class LandUnit //jednostki ladowe
     {
         public string Name;
 
-        public int LongRange;
-        public int MediumRange;
-        public int LowRange;
+        public int LongRange { get; set; }
+        public int MediumRange { get; set; }
+        public int LowRange { get; set; }
 
-        public int ShockAttack;
-        public int Melee;
-        public int ShockDef;
-        public int ArtilleryDef;
+        public int ShockAttack { get; set; }
+        public int Melee { get; set; }
+        public int ShockDef { get; set; }
+        public int ArtilleryDef { get; set; }
 
-        public int Initiative;
-        public int MaxInitiative;
+        public int Initiative { get; set; }
+        public int MaxInitiative { get; set; }
 
-        public int Health;
-        public int MaxHealth;
-        public int MaxMorale;
-        public int Morale;
-        public int Speed;
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
+        public int MaxMorale { get; set; }
+        public int Morale { get; set; }
+        public int Speed { get; set; }
 
-        public string Type;
+        public string Type { get; set; }
 
-        public int NumberOf;
+        public int NumberOf { get; set; }
 
         public LandUnit(string UnitName, int UnitLongRange, int UnitMidRange, int UnitLowRange, int UnitShockAttack, int UnitMelee, int UnitShockDef, int UnitArtDef, int UnitInitiative, int UnitHealth, int UnitMorale, int UnitSpeed, string UnitType, int UnitNumberOf)
         {
