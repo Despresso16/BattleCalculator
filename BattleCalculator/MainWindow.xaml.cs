@@ -43,27 +43,27 @@ namespace BattleCalculator
     {
         public string Name;
 
-        public int LongRange { get; set; }
-        public int MediumRange { get; set; }
-        public int LowRange { get; set; }
+        public int LongRange;
+        public int MediumRange;
+        public int LowRange;
 
-        public int ShockAttack { get; set; }
-        public int Melee { get; set; }
-        public int ShockDef { get; set; }
-        public int ArtilleryDef { get; set; }
+        public int ShockAttack;
+        public int Melee;
+        public int ShockDef;
+        public int ArtilleryDef;
 
-        public int Initiative { get; set; }
-        public int MaxInitiative { get; set; }
+        public int Initiative;
+        public int MaxInitiative;
 
-        public int Health { get; set; }
-        public int MaxHealth { get; set; }
-        public int MaxMorale { get; set; }
-        public int Morale { get; set; }
-        public int Speed { get; set; }
+        public int Health;
+        public int MaxHealth;
+        public int MaxMorale;
+        public int Morale;
+        public int Speed;
 
-        public string Type { get; set; }
+        public string Type;
 
-        public int NumberOf { get; set; }
+        public int NumberOf;
 
         public LandUnit(string UnitName, int UnitLongRange, int UnitMidRange, int UnitLowRange, int UnitShockAttack, int UnitMelee, int UnitShockDef, int UnitArtDef, int UnitInitiative, int UnitHealth, int UnitMorale, int UnitSpeed, string UnitType, int UnitNumberOf)
         {
