@@ -9,6 +9,7 @@ Funkcje zaimplementowane:
 -Zapisywanie armii jako plików
 -Opis zdarzeń z bitwy
 -Podsumowanie bitwy, co zostało, kto wygrał
+
 Funkcje narazie niezaimplementowane 
 - Wczytywanie armii z pliku (niestety nie dziala narazie)
 - Zresetowanie wyboru armii
