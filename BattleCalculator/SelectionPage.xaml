@@ -32,7 +32,7 @@
                 <ComboBox Margin="15" Grid.Column="0" Grid.Row="0" x:Name="cbBattleType" VerticalContentAlignment="Center" LostFocus="cbBattleType_LostFocus">
                     <ComboBoxItem Content="Wybierz typ bitwy" IsSelected="True" IsEnabled="False" />
                     <ComboBoxItem Content="Bitwa lądowa"/>
-                    <ComboBoxItem Content="Bitwa morska"/>
+                    <ComboBoxItem Content="Bitwa morska - narazie niedostępne" IsEnabled="False"/>
                 </ComboBox>
                 <ComboBox Margin="15" Grid.Column="0" Grid.Row="1" x:Name="cbSkirmishVariant" VerticalContentAlignment="Center" LostFocus="cbSkirmishVariant_LostFocus">
                     <ComboBoxItem Content="Wybierz rodzaj spotkania" IsSelected="True" IsEnabled="False" />
@@ -47,7 +47,7 @@
                             <ColumnDefinition Width="0.2*"/>
                         </Grid.ColumnDefinitions>
                         <Button Content="-" Grid.Column="0" FontSize="15" x:Name="btnFortLevelMinus" Click="btnFortLevelMinus_Click"/>
-                        <TextBlock Grid.Column="1" Text="Poziom fortu: 0" FontSize="15" x:Name="tbFortLevel" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="Fort jest in progress" FontSize="15" x:Name="tbFortLevel" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <Button Content="+" Grid.Column="2" FontSize="15" x:Name="btnFortLevelPlus" Click="btnFortLevelPlus_Click"/>
                     </Grid>
                 </Border>
@@ -94,38 +94,38 @@
                 <TextBlock Text="Grupa 1" HorizontalAlignment="Center" Margin="10" x:Name="txbArmy1"/>
                 <CheckBox Content="Armia spełniła specjalny warunek" x:Name="ckArmy1Condition" VerticalAlignment="Center"/>
             </StackPanel>
-            <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Visible" x:Name="scArmy1Selection">
+            <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Hidden" x:Name="scArmy1Selection">
                 <StackPanel Orientation="Vertical">
                     <Button Content="Jednostki startowe" x:Name="btnStartUnits1" Height="20" Click="btnStartUnits1_Click"/>
                     <StackPanel x:Name="stpStartUnits1" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Pikinierzy" x:Name="ckArmy1Pikemen" Width="150" Click="ckArmy1Pikemen_Click"/>
-                                <TextBox x:Name="tbxArmy1Pikemen" Text="0" IsEnabled="False" LostFocus="tbxArmy1Pikemen_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Pikemen" Text="0" IsEnabled="False" LostFocus="tbxArmy1Pikemen_LostFocus" TextChanged="tbxArmy1Pikemen_TextChanged" LostKeyboardFocus="tbxArmy1Pikemen_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Arkebuzerzy" x:Name="ckArmy1Arquebusiers" Width="150" Click="ckArmy1Arquebusiers_Click"/>
-                                <TextBox x:Name="tbxArmy1Arquebusiers" Text="0" IsEnabled="False" LostFocus="tbxArmy1Arquebusiers_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Arquebusiers" Text="0" IsEnabled="False" LostFocus="tbxArmy1Arquebusiers_LostFocus" TextChanged="tbxArmy1Arquebusiers_TextChanged" LostKeyboardFocus="tbxArmy1Arquebusiers_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Łucznicy" x:Name="ckArmy1Archers" Width="150" Click="ckArmy1Archers_Click"/>
-                                <TextBox x:Name="tbxArmy1Archers" Text="0" IsEnabled="False" LostFocus="tbxArmy1Archers_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Archers" Text="0" IsEnabled="False" LostFocus="tbxArmy1Archers_LostFocus" TextChanged="tbxArmy1Archers_TextChanged" LostKeyboardFocus="tbxArmy1Archers_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Kusznicy" x:Name="ckArmy1Crossbowmen" Width="150" Click="ckArmy1Crossbowmen_Click"/>
-                                <TextBox x:Name="tbxArmy1Crossbowmen" Text="0" IsEnabled="False" LostFocus="tbxArmy1Crossbowmen_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Crossbowmen" Text="0" IsEnabled="False" LostFocus="tbxArmy1Crossbowmen_LostFocus" TextChanged="tbxArmy1Crossbowmen_TextChanged" LostKeyboardFocus="tbxArmy1Crossbowmen_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Rycerze" x:Name="ckArmy1Knights" Width="150" Click="ckArmy1Knights_Click"/>
-                                <TextBox x:Name="tbxArmy1Knights" Text="0" IsEnabled="False" LostFocus="tbxArmy1Knights_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Knights" Text="0" IsEnabled="False" LostFocus="tbxArmy1Knights_LostFocus" TextChanged="tbxArmy1Knights_TextChanged" LostKeyboardFocus="tbxArmy1Knights_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Konnica" x:Name="ckArmy1Horsemen" Width="150" Click="ckArmy1Horsemen_Click"/>
-                                <TextBox x:Name="tbxArmy1Horsemen" Text="0" IsEnabled="False" LostFocus="tbxArmy1Horsemen_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Horsemen" Text="0" IsEnabled="False" LostFocus="tbxArmy1Horsemen_LostFocus" TextChanged="tbxArmy1Horsemen_TextChanged" LostKeyboardFocus="tbxArmy1Horsemen_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Bombarda" x:Name="ckArmy1Bombard" Width="150" Click="ckArmy1Bombard_Click"/>
-                                <TextBox x:Name="tbxArmy1Bombard" Text="0" IsEnabled="False" LostFocus="tbxArmy1Bombard_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Bombard" Text="0" IsEnabled="False" LostFocus="tbxArmy1Bombard_LostFocus" TextChanged="tbxArmy1Bombard_TextChanged" LostKeyboardFocus="tbxArmy1Bombard_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -134,23 +134,23 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Piki i arkebuzerzy" x:Name="ckArmy1PikeShotArq" Width="150" Click="ckArmy1PikeShotArq_Click"/>
-                                <TextBox x:Name="tbxArmy1PikeShotArq" Text="0" IsEnabled="False" LostFocus="tbxArmy1PikeShotArq_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1PikeShotArq" Text="0" IsEnabled="False" LostFocus="tbxArmy1PikeShotArq_LostFocus" TextChanged="tbxArmy1PikeShotArq_TextChanged" LostKeyboardFocus="tbxArmy1PikeShotArq_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Ciężcy husarze" x:Name="ckArmy1HeavyHussars" Width="150" Click="ckArmy1HeavyHussars_Click"/>
-                                <TextBox x:Name="tbxArmy1HeavyHussars" Text="0" IsEnabled="False" LostFocus="tbxArmy1HeavyHussars_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1HeavyHussars" Text="0" IsEnabled="False" LostFocus="tbxArmy1HeavyHussars_LostFocus" TextChanged="tbxArmy1HeavyHussars_TextChanged" LostKeyboardFocus="tbxArmy1HeavyHussars_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Reiterzy" x:Name="ckArmy1Reiters" Width="150" Click="ckArmy1Reiters_Click"/>
-                                <TextBox x:Name="tbxArmy1Reiters" Text="0" IsEnabled="False" LostFocus="tbxArmy1Reiters_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Reiters" Text="0" IsEnabled="False" LostFocus="tbxArmy1Reiters_LostFocus" TextChanged="tbxArmy1Reiters_TextChanged" LostKeyboardFocus="tbxArmy1Reiters_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Armata polowa" x:Name="ckArmy1FieldCannon" Width="150" Click="ckArmy1FieldCannon_Click"/>
-                                <TextBox x:Name="tbxArmy1FieldCannon" Text="0" IsEnabled="False" LostFocus="tbxArmy1FieldCannon_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1FieldCannon" Text="0" IsEnabled="False" LostFocus="tbxArmy1FieldCannon_LostFocus" TextChanged="tbxArmy1FieldCannon_TextChanged" LostKeyboardFocus="tbxArmy1FieldCannon_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Ciężka armata" x:Name="ckArmy1HeavyCannon" Width="150" Click="ckArmy1HeavyCannon_Click"/>
-                                <TextBox x:Name="tbxArmy1HeavyCannon" Text="0" IsEnabled="False" LostFocus="tbxArmy1HeavyCannon_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1HeavyCannon" Text="0" IsEnabled="False" LostFocus="tbxArmy1HeavyCannon_LostFocus" TextChanged="tbxArmy1HeavyCannon_TextChanged" LostKeyboardFocus="tbxArmy1HeavyCannon_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -159,27 +159,27 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Piki i muszkieterzy" x:Name="ckArmy1PikeShotMusk" Width="150" Click="ckArmy1PikeShotMusk_Click"/>
-                                <TextBox x:Name="tbxArmy1PikeShotMusk" Text="0" IsEnabled="False" LostFocus="tbxArmy1PikeShotMusk_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1PikeShotMusk" Text="0" IsEnabled="False" LostFocus="tbxArmy1PikeShotMusk_LostFocus" TextChanged="tbxArmy1PikeShotMusk_TextChanged" LostKeyboardFocus="tbxArmy1PikeShotMusk_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Wcześni fusilierzy" x:Name="ckArmy1EarlyFusiliers" Width="150" Click="ckArmy1EarlyFusiliers_Click"/>
-                                <TextBox x:Name="tbxArmy1EarlyFusiliers" Text="0" IsEnabled="False" LostFocus="tbxArmy1EarlyFusiliers_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1EarlyFusiliers" Text="0" IsEnabled="False" LostFocus="tbxArmy1EarlyFusiliers_LostFocus" TextChanged="tbxArmy1EarlyFusiliers_TextChanged" LostKeyboardFocus="tbxArmy1EarlyFusiliers_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
-                                <CheckBox Content="Wczesni kirasjerzy" x:Name="ckArmy1EarlyCuirassier" Width="150" Click="ckArmy1EarlyCuirassier_Click"/>
-                                <TextBox x:Name="tbxArmy1EarlyCuirassier" Text="0" IsEnabled="False" LostFocus="tbxArmy1EarlyCuirassier_LostFocus"/>
+                                <CheckBox Content="Wcześni kirasjerzy" x:Name="ckArmy1EarlyCuirassier" Width="150" Click="ckArmy1EarlyCuirassier_Click"/>
+                                <TextBox x:Name="tbxArmy1EarlyCuirassier" Text="0" IsEnabled="False" LostFocus="tbxArmy1EarlyCuirassier_LostFocus" TextChanged="tbxArmy1EarlyCuirassier_TextChanged" LostKeyboardFocus="tbxArmy1EarlyCuirassier_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Harkebuzerzy" x:Name="ckArmy1Harquebusers" Width="150" Click="ckArmy1Harquebusers_Click"/>
-                                <TextBox x:Name="tbxArmy1Harquebusers" Text="0" IsEnabled="False" LostFocus="tbxArmy1Harquebusers_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Harquebusers" Text="0" IsEnabled="False" LostFocus="tbxArmy1Harquebusers_LostFocus" TextChanged="tbxArmy1Harquebusers_TextChanged" LostKeyboardFocus="tbxArmy1Harquebusers_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Lansjerzy" x:Name="ckArmy1Lancers" Width="150" Click="ckArmy1Lancers_Click"/>
-                                <TextBox x:Name="tbxArmy1Lancers" Text="0" IsEnabled="False" LostFocus="tbxArmy1Lancers_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Lancers" Text="0" IsEnabled="False" LostFocus="tbxArmy1Lancers_LostFocus" TextChanged="tbxArmy1Lancers_TextChanged" LostKeyboardFocus="tbxArmy1Lancers_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Haubica oblężnicza" x:Name="ckArmy1SiegeHowitzer" Width="150" Click="ckArmy1SiegeHowitzer_Click"/>
-                                <TextBox x:Name="tbxArmy1SiegeHowitzer" Text="0" IsEnabled="False" LostFocus="tbxArmy1SiegeHowitzer_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1SiegeHowitzer" Text="0" IsEnabled="False" LostFocus="tbxArmy1SiegeHowitzer_LostFocus" TextChanged="tbxArmy1SiegeHowitzer_TextChanged" LostKeyboardFocus="tbxArmy1SiegeHowitzer_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -188,39 +188,39 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Fusilierzy" x:Name="ckArmy1Fusiliers" Width="150" Click="ckArmy1Fusiliers_Click"/>
-                                <TextBox x:Name="tbxArmy1Fusiliers" Text="0" IsEnabled="False" LostFocus="tbxArmy1Fusiliers_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Fusiliers" Text="0" IsEnabled="False" LostFocus="tbxArmy1Fusiliers_LostFocus" TextChanged="tbxArmy1Fusiliers_TextChanged" LostKeyboardFocus="tbxArmy1Fusiliers_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Grenadierzy" x:Name="ckArmy1Grenadiers" Width="150" Click="ckArmy1Grenadiers_Click"/>
-                                <TextBox x:Name="tbxArmy1Grenadiers" Text="0" IsEnabled="False" LostFocus="tbxArmy1Grenadiers_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Grenadiers" Text="0" IsEnabled="False" LostFocus="tbxArmy1Grenadiers_LostFocus" TextChanged="tbxArmy1Grenadiers_TextChanged" LostKeyboardFocus="tbxArmy1Grenadiers_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Milicja" x:Name="ckArmy1Militia" Width="150" Click="ckArmy1Militia_Click"/>
-                                <TextBox x:Name="tbxArmy1Militia" Text="0" IsEnabled="False" LostFocus="tbxArmy1Militia_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Militia" Text="0" IsEnabled="False" LostFocus="tbxArmy1Militia_LostFocus" TextChanged="tbxArmy1Militia_TextChanged" LostKeyboardFocus="tbxArmy1Militia_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Karbinerzy" x:Name="ckArmy1CarbineCav" Width="150" Click="ckArmy1CarbineCav_Click"/>
-                                <TextBox x:Name="tbxArmy1CarbineCav" Text="0" IsEnabled="False" LostFocus="tbxArmy1CarbineCav_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1CarbineCav" Text="0" IsEnabled="False" LostFocus="tbxArmy1CarbineCav_LostFocus" TextChanged="tbxArmy1CarbineCav_TextChanged" LostKeyboardFocus="tbxArmy1CarbineCav_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Dragoni" x:Name="ckArmy1Dragoons" Width="150" Click="ckArmy1Dragoons_Click"/>
-                                <TextBox x:Name="tbxArmy1Dragoons" Text="0" IsEnabled="False" LostFocus="tbxArmy1Dragoons_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Dragoons" Text="0" IsEnabled="False" LostFocus="tbxArmy1Dragoons_LostFocus" TextChanged="tbxArmy1Dragoons_TextChanged" LostKeyboardFocus="tbxArmy1Dragoons_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Huzarzy" x:Name="ckArmy1Hussars" Width="150" Click="ckArmy1Hussars_Click"/>
-                                <TextBox x:Name="tbxArmy1Hussars" Text="0" IsEnabled="False" LostFocus="tbxArmy1Hussars_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Hussars" Text="0" IsEnabled="False" LostFocus="tbxArmy1Hussars_LostFocus" TextChanged="tbxArmy1Hussars_TextChanged" LostKeyboardFocus="tbxArmy1Hussars_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Kirasjerzy" x:Name="ckArmy1Cuiraissiers" Width="150" Click="ckArmy1Cuiraissiers_Click"/>
-                                <TextBox x:Name="tbxArmy1Cuiraissiers" Text="0" IsEnabled="False" LostFocus="tbxArmy1Cuiraissiers_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Cuiraissiers" Text="0" IsEnabled="False" LostFocus="tbxArmy1Cuiraissiers_LostFocus" TextChanged="tbxArmy1Cuiraissiers_TextChanged" LostKeyboardFocus="tbxArmy1Cuiraissiers_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Działa polowe" x:Name="ckArmy1FieldGun" Width="150" Click="ckArmy1FieldGun_Click"/>
-                                <TextBox x:Name="tbxArmy1FieldGun" Text="0" IsEnabled="False" LostFocus="tbxArmy1FieldGun_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1FieldGun" Text="0" IsEnabled="False" LostFocus="tbxArmy1FieldGun_LostFocus" TextChanged="tbxArmy1FieldGun_TextChanged" LostKeyboardFocus="tbxArmy1FieldGun_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Moździerze" x:Name="ckArmy1Mortars" Width="150" Click="ckArmy1Mortars_Click"/>
-                                <TextBox x:Name="tbxArmy1Mortars" Text="0" IsEnabled="False" LostFocus="tbxArmy1Mortars_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Mortars" Text="0" IsEnabled="False" LostFocus="tbxArmy1Mortars_LostFocus" TextChanged="tbxArmy1Mortars_TextChanged" LostKeyboardFocus="tbxArmy1Mortars_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -229,15 +229,15 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Lekka piechota" x:Name="ckArmy1LightInfantry" Width="150" Click="ckArmy1LightInfantry_Click"/>
-                                <TextBox x:Name="tbxArmy1LightInfantry" Text="0" IsEnabled="False" LostFocus="tbxArmy1LightInfantry_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1LightInfantry" Text="0" IsEnabled="False" LostFocus="tbxArmy1LightInfantry_LostFocus" TextChanged="tbxArmy1LightInfantry_TextChanged" LostKeyboardFocus="tbxArmy1LightInfantry_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Piechota liniowa" x:Name="ckArmy1LineInfantry" Width="150" Click="ckArmy1LineInfantry_Click"/>
-                                <TextBox x:Name="tbxArmy1LineInfantry" Text="0" IsEnabled="False" LostFocus="tbxArmy1LineInfantry_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1LineInfantry" Text="0" IsEnabled="False" LostFocus="tbxArmy1LineInfantry_LostFocus" TextChanged="tbxArmy1LineInfantry_TextChanged" LostKeyboardFocus="tbxArmy1LineInfantry_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Haubice polowe" x:Name="ckArmy1FieldHowitzer" Width="150" Click="ckArmy1FieldHowitzer_Click"/>
-                                <TextBox x:Name="tbxArmy1FieldHowitzer" Text="0" IsEnabled="False" LostFocus="tbxArmy1FieldHowitzer_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1FieldHowitzer" Text="0" IsEnabled="False" LostFocus="tbxArmy1FieldHowitzer_LostFocus" TextChanged="tbxArmy1FieldHowitzer_TextChanged" LostKeyboardFocus="tbxArmy1FieldHowitzer_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -246,44 +246,44 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Kozacy" x:Name="ckArmy1Cossacks" Width="150" Click="ckArmy1Cossacks_Click"/>
-                                <TextBox x:Name="tbxArmy1Cossacks" Text="0" IsEnabled="False" LostFocus="tbxArmy1Cossacks_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1Cossacks" Text="0" IsEnabled="False" LostFocus="tbxArmy1Cossacks_LostFocus" TextChanged="tbxArmy1Cossacks_TextChanged" LostKeyboardFocus="tbxArmy1Cossacks_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Łucznicy konni" x:Name="ckArmy1HorseArcher" Width="150" Click="ckArmy1HorseArcher_Click"/>
-                                <TextBox x:Name="tbxArmy1HorseArcher" Text="0" IsEnabled="False" LostFocus="tbxArmy1HorseArcher_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1HorseArcher" Text="0" IsEnabled="False" LostFocus="tbxArmy1HorseArcher_LostFocus" TextChanged="tbxArmy1HorseArcher_TextChanged" LostKeyboardFocus="tbxArmy1HorseArcher_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Tubylcy wojownicy" x:Name="ckArmy1TribalWarriors" Width="150" Click="ckArmy1TribalWarriors_Click"/>
-                                <TextBox x:Name="tbxArmy1TribalWarriors" Text="0" IsEnabled="False" LostFocus="tbxArmy1TribalWarriors_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1TribalWarriors" Text="0" IsEnabled="False" LostFocus="tbxArmy1TribalWarriors_LostFocus" TextChanged="tbxArmy1TribalWarriors_TextChanged" LostKeyboardFocus="tbxArmy1TribalWarriors_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Tubylcy strzelcy" x:Name="ckArmy1TribalRanger" Width="150" Click="ckArmy1TribalRanger_Click"/>
-                                <TextBox x:Name="tbxArmy1TribalRanger" Text="0" IsEnabled="False" LostFocus="tbxArmy1TribalRanger_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1TribalRanger" Text="0" IsEnabled="False" LostFocus="tbxArmy1TribalRanger_LostFocus" TextChanged="tbxArmy1TribalRanger_TextChanged" LostKeyboardFocus="tbxArmy1TribalRanger_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Konnica tubylców" x:Name="ckArmy1TribalHorsemen" Width="150" Click="ckArmy1TribalHorsemen_Click"/>
-                                <TextBox x:Name="tbxArmy1TribalHorsemen" Text="0" IsEnabled="False" LostFocus="tbxArmy1TribalHorsemen_LostFocus"/>
+                                <TextBox x:Name="tbxArmy1TribalHorsemen" Text="0" IsEnabled="False" LostFocus="tbxArmy1TribalHorsemen_LostFocus" TextChanged="tbxArmy1TribalHorsemen_TextChanged" LostKeyboardFocus="tbxArmy1TribalHorsemen_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
-            <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Visible" x:Name="scFleet1Selection" Visibility="Hidden">
+            <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Hidden" x:Name="scFleet1Selection" Visibility="Hidden">
                 <StackPanel Orientation="Vertical">
                     <Button Content="Jednostki startowe" x:Name="btnStartShips1" Height="20" Click="btnStartShips1_Click"/>
                     <StackPanel x:Name="stpStartShips1" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Karak" x:Name="ckFleet1Carrack" Width="150" Click="ckFleet1Carrack_Click"/>
-                                <TextBox x:Name="tbxFleet1Carrack" Text="0" IsEnabled="False" LostFocus="tbxFleet1Carrack_LostFocus"/>
+                                <TextBox x:Name="tbxFleet1Carrack" Text="0" IsEnabled="False" LostFocus="tbxFleet1Carrack_LostFocus" TextChanged="tbxFleet1Carrack_TextChanged" LostKeyboardFocus="tbxFleet1Carrack_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Karawela" x:Name="ckFleet1Caravel" Width="150" Click="ckFleet1Caravel_Click"/>
-                                <TextBox x:Name="tbxFleet1Caravel" Text="0" IsEnabled="False" LostFocus="tbxFleet1Caravel_LostFocus"/>
+                                <TextBox x:Name="tbxFleet1Caravel" Text="0" IsEnabled="False" LostFocus="tbxFleet1Caravel_LostFocus" TextChanged="tbxFleet1Caravel_TextChanged" LostKeyboardFocus="tbxFleet1Caravel_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Galera" x:Name="ckFleet1Galley" Width="150" Click="ckFleet1Galley_Click"/>
-                                <TextBox x:Name="tbxFleet1Galley" Text="0" IsEnabled="False" LostFocus="tbxFleet1Galley_LostFocus"/>
+                                <TextBox x:Name="tbxFleet1Galley" Text="0" IsEnabled="False" LostFocus="tbxFleet1Galley_LostFocus" TextChanged="tbxFleet1Galley_TextChanged" LostKeyboardFocus="tbxFleet1Galley_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -292,7 +292,7 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Galeon" x:Name="ckFleet1Galleon" Width="150" Click="ckFleet1Galleon_Click"/>
-                                <TextBox x:Name="tbxFleet1Galleon" Text="0" IsEnabled="False" LostFocus="tbxFleet1Galleon_LostFocus"/>
+                                <TextBox x:Name="tbxFleet1Galleon" Text="0" IsEnabled="False" LostFocus="tbxFleet1Galleon_LostFocus" TextChanged="tbxFleet1Galleon_TextChanged" LostKeyboardFocus="tbxFleet1Galleon_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -301,19 +301,19 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Szkuner" x:Name="ckFleet1Schooner" Width="150" Click="ckFleet1Schooner_Click"/>
-                                <TextBox x:Name="tbxFleet1Schooner" Text="0" IsEnabled="False" LostFocus="tbxFleet1Schooner_LostFocus"/>
+                                <TextBox x:Name="tbxFleet1Schooner" Text="0" IsEnabled="False" LostFocus="tbxFleet1Schooner_LostFocus" TextChanged="tbxFleet1Schooner_TextChanged" LostKeyboardFocus="tbxFleet1Schooner_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Bryg" x:Name="ckFleet1Brig" Width="150" Click="ckFleet1Brig_Click"/>
-                                <TextBox x:Name="tbxFleet1Brig" Text="0" IsEnabled="False" LostFocus="tbxFleet1Brig_LostFocus"/>
+                                <TextBox x:Name="tbxFleet1Brig" Text="0" IsEnabled="False" LostFocus="tbxFleet1Brig_LostFocus" TextChanged="tbxFleet1Brig_TextChanged" LostKeyboardFocus="tbxFleet1Brig_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Fregata" x:Name="ckFleet1Frigate" Width="150" Click="ckFleet1Frigate_Click"/>
-                                <TextBox x:Name="tbxFleet1Frigate" Text="0" IsEnabled="False" LostFocus="tbxFleet1Frigate_LostFocus"/>
+                                <TextBox x:Name="tbxFleet1Frigate" Text="0" IsEnabled="False" LostFocus="tbxFleet1Frigate_LostFocus" TextChanged="tbxFleet1Frigate_TextChanged" LostKeyboardFocus="tbxFleet1Frigate_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Ciężka fregata" x:Name="ckFleet1GreatFrigate" Width="150" Click="ckFleet1GreatFrigate_Click"/>
-                                <TextBox x:Name="tbxFleet1GreatFrigate" Text="0" IsEnabled="False" LostFocus="tbxFleet1GreatFrigate_LostFocus"/>
+                                <TextBox x:Name="tbxFleet1GreatFrigate" Text="0" IsEnabled="False" LostFocus="tbxFleet1GreatFrigate_LostFocus" TextChanged="tbxFleet1GreatFrigate_TextChanged" LostKeyboardFocus="tbxFleet1GreatFrigate_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -322,11 +322,11 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Liniowiec" x:Name="ckFleet1ShipOfLine" Width="150" Click="ckFleet1ShipOfLine_Click"/>
-                                <TextBox x:Name="tbxFleet1ShipOfLine" Text="0" IsEnabled="False" LostFocus="tbxFleet1ShipOfLine_LostFocus"/>
+                                <TextBox x:Name="tbxFleet1ShipOfLine" Text="0" IsEnabled="False" LostFocus="tbxFleet1ShipOfLine_LostFocus" TextChanged="tbxFleet1ShipOfLine_TextChanged" LostKeyboardFocus="tbxFleet1ShipOfLine_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Eastindiaman" x:Name="ckFleet1Eastindiaman" Width="150" Click="ckFleet1Eastindiaman_Click"/>
-                                <TextBox x:Name="tbxFleet1Eastindiaman" Text="0" IsEnabled="False" LostFocus="tbxFleet1Eastindiaman_LostFocus"/>
+                                <TextBox x:Name="tbxFleet1Eastindiaman" Text="0" IsEnabled="False" LostFocus="tbxFleet1Eastindiaman_LostFocus" TextChanged="tbxFleet1Eastindiaman_TextChanged" LostKeyboardFocus="tbxFleet1Eastindiaman_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -335,7 +335,7 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Opancerzona fregata" x:Name="ckFleet1ArmoredFrigate" Width="150" Click="ckFleet1ArmoredFrigate_Click"/>
-                                <TextBox x:Name="tbxFleet1ArmoredFrigate" Text="0" IsEnabled="False" LostFocus="tbxFleet1ArmoredFrigate_LostFocus"/>
+                                <TextBox x:Name="tbxFleet1ArmoredFrigate" Text="0" IsEnabled="False" LostFocus="tbxFleet1ArmoredFrigate_LostFocus" TextChanged="tbxFleet1ArmoredFrigate_TextChanged" LostKeyboardFocus="tbxFleet1ArmoredFrigate_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -344,16 +344,16 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Azjatycki okręt" x:Name="ckFleet1AsianShip" Width="150" Click="ckFleet1AsianShip_Click"/>
-                                <TextBox x:Name="tbxFleet1AsianShip" Text="0" IsEnabled="False" LostFocus="tbxFleet1AsianShip_LostFocus"/>
+                                <TextBox x:Name="tbxFleet1AsianShip" Text="0" IsEnabled="False" LostFocus="tbxFleet1AsianShip_LostFocus" TextChanged="tbxFleet1AsianShip_TextChanged" LostKeyboardFocus="tbxFleet1AsianShip_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
-            <Button x:Name="btnLoadArmy1" Content="Załaduj armię" Grid.Column="0" Grid.Row="2" FontSize="9"/>
-            <Button x:Name="btnAddArmy1" Content="Dodaj do armii" Grid.Column="1" Grid.Row="2" FontSize="9"/>
-            <Button x:Name="btnSaveArmy1" Content="Zapisz armię" Grid.Column="2" Grid.Row="2" FontSize="9"/>
-            <Button x:Name="btnResetArmy1" Content="Zresetuj armię" Grid.Column="3" Grid.Row="2" FontSize="9"/>
+            <Button x:Name="btnLoadArmy1" Content="Załaduj armię" Grid.Column="0" Grid.Row="2" FontSize="9" Click="btnLoadArmy1_Click" IsEnabled="False"/>
+            <Button x:Name="btnAddArmy1" Content="Dodaj do armii" Grid.Column="1" Grid.Row="2" FontSize="9" Click="btnAddArmy1_Click" IsEnabled="False"/>
+            <Button x:Name="btnSaveArmy1" Content="Zapisz armię" Grid.Column="2" Grid.Row="2" FontSize="9" Click="btnSaveArmy1_Click"/>
+            <Button x:Name="btnResetArmy1" Content="Zresetuj armię" Grid.Column="3" Grid.Row="2" FontSize="9" IsEnabled="False"/>
         </Grid>
         <!--Wybieranie skladu armii 2-->
         <Grid Grid.Row="1" Grid.Column="2" Margin="10">
@@ -372,38 +372,38 @@
                 <TextBlock Text="Grupa 2" HorizontalAlignment="Center" Margin="10" x:Name="txbArmy2"/>
                 <CheckBox Content="Armia spełniła specjalny warunek" x:Name="ckArmy2Condition" VerticalAlignment="Center"/>
             </StackPanel>
-            <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Visible" x:Name="scArmy2Selection">
+            <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Hidden" x:Name="scArmy2Selection">
                 <StackPanel Orientation="Vertical">
                     <Button Content="Jednostki startowe" x:Name="btnStartUnits2" Height="20" Click="btnStartUnits2_Click"/>
                     <StackPanel x:Name="stpStartUnits2" Visibility="Collapsed">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Pikinierzy" x:Name="ckArmy2Pikemen" Width="150" Click="ckArmy2Pikemen_Click"/>
-                                <TextBox x:Name="tbxArmy2Pikemen" Text="0" IsEnabled="False" LostFocus="tbxArmy2Pikemen_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Pikemen" Text="0" IsEnabled="False" LostFocus="tbxArmy2Pikemen_LostFocus" TextChanged="tbxArmy2Pikemen_TextChanged" LostKeyboardFocus="tbxArmy2Pikemen_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Arkebuzerzy" x:Name="ckArmy2Arquebusiers" Width="150" Click="ckArmy2Arquebusiers_Click"/>
-                                <TextBox x:Name="tbxArmy2Arquebusiers" Text="0" IsEnabled="False" LostFocus="tbxArmy2Arquebusiers_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Arquebusiers" Text="0" IsEnabled="False" LostFocus="tbxArmy2Arquebusiers_LostFocus" TextChanged="tbxArmy2Arquebusiers_TextChanged" LostKeyboardFocus="tbxArmy2Arquebusiers_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Łucznicy" x:Name="ckArmy2Archers" Width="150" Click="ckArmy2Archers_Click"/>
-                                <TextBox x:Name="tbxArmy2Archers" Text="0" IsEnabled="False" LostFocus="tbxArmy2Archers_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Archers" Text="0" IsEnabled="False" LostFocus="tbxArmy2Archers_LostFocus" TextChanged="tbxArmy2Archers_TextChanged" LostKeyboardFocus="tbxArmy2Archers_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Kusznicy" x:Name="ckArmy2Crossbowmen" Width="150" Click="ckArmy2Crossbowmen_Click"/>
-                                <TextBox x:Name="tbxArmy2Crossbowmen" Text="0" IsEnabled="False" LostFocus="tbxArmy2Crossbowmen_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Crossbowmen" Text="0" IsEnabled="False" LostFocus="tbxArmy2Crossbowmen_LostFocus" TextChanged="tbxArmy2Crossbowmen_TextChanged" LostKeyboardFocus="tbxArmy2Crossbowmen_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Rycerze" x:Name="ckArmy2Knights" Width="150" Click="ckArmy2Knights_Click"/>
-                                <TextBox x:Name="tbxArmy2Knights" Text="0" IsEnabled="False" LostFocus="tbxArmy2Knights_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Knights" Text="0" IsEnabled="False" LostFocus="tbxArmy2Knights_LostFocus" TextChanged="tbxArmy2Knights_TextChanged" LostKeyboardFocus="tbxArmy2Knights_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Konnica" x:Name="ckArmy2Horsemen" Width="150" Click="ckArmy2Horsemen_Click"/>
-                                <TextBox x:Name="tbxArmy2Horsemen" Text="0" IsEnabled="False" LostFocus="tbxArmy2Horsemen_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Horsemen" Text="0" IsEnabled="False" LostFocus="tbxArmy2Horsemen_LostFocus" TextChanged="tbxArmy2Horsemen_TextChanged" LostKeyboardFocus="tbxArmy2Horsemen_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Bombarda" x:Name="ckArmy2Bombard" Width="150" Click="ckArmy2Bombard_Click"/>
-                                <TextBox x:Name="tbxArmy2Bombard" Text="0" IsEnabled="False" LostFocus="tbxArmy2Bombard_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Bombard" Text="0" IsEnabled="False" LostFocus="tbxArmy2Bombard_LostFocus" TextChanged="tbxArmy2Bombard_TextChanged" LostKeyboardFocus="tbxArmy2Bombard_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -412,23 +412,23 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Piki i arkebuzerzy" x:Name="ckArmy2PikeShotArq" Width="150" Click="ckArmy2PikeShotArq_Click"/>
-                                <TextBox x:Name="tbxArmy2PikeShotArq" Text="0" IsEnabled="False" LostFocus="tbxArmy2PikeShotArq_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2PikeShotArq" Text="0" IsEnabled="False" LostFocus="tbxArmy2PikeShotArq_LostFocus" TextChanged="tbxArmy2PikeShotArq_TextChanged" LostKeyboardFocus="tbxArmy2PikeShotArq_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Ciężcy husarze" x:Name="ckArmy2HeavyHussars" Width="150" Click="ckArmy2HeavyHussars_Click"/>
-                                <TextBox x:Name="tbxArmy2HeavyHussars" Text="0" IsEnabled="False" LostFocus="tbxArmy2HeavyHussars_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2HeavyHussars" Text="0" IsEnabled="False" LostFocus="tbxArmy2HeavyHussars_LostFocus" TextChanged="tbxArmy2HeavyHussars_TextChanged" LostKeyboardFocus="tbxArmy2HeavyHussars_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Reiterzy" x:Name="ckArmy2Reiters" Width="150" Click="ckArmy2Reiters_Click"/>
-                                <TextBox x:Name="tbxArmy2Reiters" Text="0" IsEnabled="False" LostFocus="tbxArmy2Reiters_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Reiters" Text="0" IsEnabled="False" LostFocus="tbxArmy2Reiters_LostFocus" TextChanged="tbxArmy2Reiters_TextChanged" LostKeyboardFocus="tbxArmy2Reiters_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Armata polowa" x:Name="ckArmy2FieldCannon" Width="150" Click="ckArmy2FieldCannon_Click"/>
-                                <TextBox x:Name="tbxArmy2FieldCannon" Text="0" IsEnabled="False" LostFocus="tbxArmy2FieldCannon_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2FieldCannon" Text="0" IsEnabled="False" LostFocus="tbxArmy2FieldCannon_LostFocus" TextChanged="tbxArmy2FieldCannon_TextChanged" LostKeyboardFocus="tbxArmy2FieldCannon_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Ciężka armata" x:Name="ckArmy2HeavyCannon" Width="150" Click="ckArmy2HeavyCannon_Click"/>
-                                <TextBox x:Name="tbxArmy2HeavyCannon" Text="0" IsEnabled="False" LostFocus="tbxArmy2HeavyCannon_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2HeavyCannon" Text="0" IsEnabled="False" LostFocus="tbxArmy2HeavyCannon_LostFocus" TextChanged="tbxArmy2HeavyCannon_TextChanged" LostKeyboardFocus="tbxArmy2HeavyCannon_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -437,27 +437,27 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Piki i muszkieterzy" x:Name="ckArmy2PikeShotMusk" Width="150" Click="ckArmy2PikeShotMusk_Click"/>
-                                <TextBox x:Name="tbxArmy2PikeShotMusk" Text="0" IsEnabled="False" LostFocus="tbxArmy2PikeShotMusk_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2PikeShotMusk" Text="0" IsEnabled="False" LostFocus="tbxArmy2PikeShotMusk_LostFocus" TextChanged="tbxArmy2PikeShotMusk_TextChanged" LostKeyboardFocus="tbxArmy2PikeShotMusk_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Wcześni fusilierzy" x:Name="ckArmy2EarlyFusiliers" Width="150" Click="ckArmy2EarlyFusiliers_Click"/>
-                                <TextBox x:Name="tbxArmy2EarlyFusiliers" Text="0" IsEnabled="False" LostFocus="tbxArmy2EarlyFusiliers_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2EarlyFusiliers" Text="0" IsEnabled="False" LostFocus="tbxArmy2EarlyFusiliers_LostFocus" TextChanged="tbxArmy2EarlyFusiliers_TextChanged" LostKeyboardFocus="tbxArmy2EarlyFusiliers_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
-                                <CheckBox Content="Wczesni kirasjerzy" x:Name="ckArmy2EarlyCuirassier" Width="150" Click="ckArmy2EarlyCuirassier_Click"/>
-                                <TextBox x:Name="tbxArmy2EarlyCuirassier" Text="0" IsEnabled="False" LostFocus="tbxArmy2EarlyCuirassier_LostFocus"/>
+                                <CheckBox Content="Wcześni kirasjerzy" x:Name="ckArmy2EarlyCuirassier" Width="150" Click="ckArmy2EarlyCuirassier_Click"/>
+                                <TextBox x:Name="tbxArmy2EarlyCuirassier" Text="0" IsEnabled="False" LostFocus="tbxArmy2EarlyCuirassier_LostFocus" TextChanged="tbxArmy2EarlyCuirassier_TextChanged" LostKeyboardFocus="tbxArmy2EarlyCuirassier_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Harkebuzerzy" x:Name="ckArmy2Harquebusers" Width="150" Click="ckArmy2Harquebusers_Click"/>
-                                <TextBox x:Name="tbxArmy2Harquebusers" Text="0" IsEnabled="False" LostFocus="tbxArmy2Harquebusers_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Harquebusers" Text="0" IsEnabled="False" LostFocus="tbxArmy2Harquebusers_LostFocus" TextChanged="tbxArmy2Harquebusers_TextChanged" LostKeyboardFocus="tbxArmy2Harquebusers_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Lansjerzy" x:Name="ckArmy2Lancers" Width="150" Click="ckArmy2Lancers_Click"/>
-                                <TextBox x:Name="tbxArmy2Lancers" Text="0" IsEnabled="False" LostFocus="tbxArmy2Lancers_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Lancers" Text="0" IsEnabled="False" LostFocus="tbxArmy2Lancers_LostFocus" TextChanged="tbxArmy2Lancers_TextChanged" LostKeyboardFocus="tbxArmy2Lancers_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Haubica oblężnicza" x:Name="ckArmy2SiegeHowitzer" Width="150" Click="ckArmy2SiegeHowitzer_Click"/>
-                                <TextBox x:Name="tbxArmy2SiegeHowitzer" Text="0" IsEnabled="False" LostFocus="tbxArmy2SiegeHowitzer_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2SiegeHowitzer" Text="0" IsEnabled="False" LostFocus="tbxArmy2SiegeHowitzer_LostFocus" TextChanged="tbxArmy2SiegeHowitzer_TextChanged" LostKeyboardFocus="tbxArmy2SiegeHowitzer_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -466,39 +466,39 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Fusilierzy" x:Name="ckArmy2Fusiliers" Width="150" Click="ckArmy2Fusiliers_Click"/>
-                                <TextBox x:Name="tbxArmy2Fusiliers" Text="0" IsEnabled="False" LostFocus="tbxArmy2Fusiliers_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Fusiliers" Text="0" IsEnabled="False" LostFocus="tbxArmy2Fusiliers_LostFocus" TextChanged="tbxArmy2Fusiliers_TextChanged" LostKeyboardFocus="tbxArmy2Fusiliers_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Grenadierzy" x:Name="ckArmy2Grenadiers" Width="150" Click="ckArmy2Grenadiers_Click"/>
-                                <TextBox x:Name="tbxArmy2Grenadiers" Text="0" IsEnabled="False" LostFocus="tbxArmy2Grenadiers_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Grenadiers" Text="0" IsEnabled="False" LostFocus="tbxArmy2Grenadiers_LostFocus" TextChanged="tbxArmy2Grenadiers_TextChanged" LostKeyboardFocus="tbxArmy2Grenadiers_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Milicja" x:Name="ckArmy2Militia" Width="150" Click="ckArmy2Militia_Click"/>
-                                <TextBox x:Name="tbxArmy2Militia" Text="0" IsEnabled="False" LostFocus="tbxArmy2Militia_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Militia" Text="0" IsEnabled="False" LostFocus="tbxArmy2Militia_LostFocus" TextChanged="tbxArmy2Militia_TextChanged" LostKeyboardFocus="tbxArmy2Militia_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Karbinerzy" x:Name="ckArmy2CarbineCav" Width="150" Click="ckArmy2CarbineCav_Click"/>
-                                <TextBox x:Name="tbxArmy2CarbineCav" Text="0" IsEnabled="False" LostFocus="tbxArmy2CarbineCav_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2CarbineCav" Text="0" IsEnabled="False" LostFocus="tbxArmy2CarbineCav_LostFocus" TextChanged="tbxArmy2CarbineCav_TextChanged" LostKeyboardFocus="tbxArmy2CarbineCav_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Dragoni" x:Name="ckArmy2Dragoons" Width="150" Click="ckArmy2Dragoons_Click"/>
-                                <TextBox x:Name="tbxArmy2Dragoons" Text="0" IsEnabled="False" LostFocus="tbxArmy2Dragoons_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Dragoons" Text="0" IsEnabled="False" LostFocus="tbxArmy2Dragoons_LostFocus" TextChanged="tbxArmy2Dragoons_TextChanged" LostKeyboardFocus="tbxArmy2Dragoons_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Huzarzy" x:Name="ckArmy2Hussars" Width="150" Click="ckArmy2Hussars_Click"/>
-                                <TextBox x:Name="tbxArmy2Hussars" Text="0" IsEnabled="False" LostFocus="tbxArmy2Hussars_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Hussars" Text="0" IsEnabled="False" LostFocus="tbxArmy2Hussars_LostFocus" TextChanged="tbxArmy2Hussars_TextChanged" LostKeyboardFocus="tbxArmy2Hussars_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Kirasjerzy" x:Name="ckArmy2Cuiraissiers" Width="150" Click="ckArmy2Cuiraissiers_Click"/>
-                                <TextBox x:Name="tbxArmy2Cuiraissiers" Text="0" IsEnabled="False" LostFocus="tbxArmy2Cuiraissiers_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Cuiraissiers" Text="0" IsEnabled="False" LostFocus="tbxArmy2Cuiraissiers_LostFocus" TextChanged="tbxArmy2Cuiraissiers_TextChanged" LostKeyboardFocus="tbxArmy2Cuiraissiers_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Działa polowe" x:Name="ckArmy2FieldGun" Width="150" Click="ckArmy2FieldGun_Click"/>
-                                <TextBox x:Name="tbxArmy2FieldGun" Text="0" IsEnabled="False" LostFocus="tbxArmy2FieldGun_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2FieldGun" Text="0" IsEnabled="False" LostFocus="tbxArmy2FieldGun_LostFocus" TextChanged="tbxArmy2FieldGun_TextChanged" LostKeyboardFocus="tbxArmy2FieldGun_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Moździerze" x:Name="ckArmy2Mortars" Width="150" Click="ckArmy2Mortars_Click"/>
-                                <TextBox x:Name="tbxArmy2Mortars" Text="0" IsEnabled="False" LostFocus="tbxArmy2Mortars_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Mortars" Text="0" IsEnabled="False" LostFocus="tbxArmy2Mortars_LostFocus" TextChanged="tbxArmy2Mortars_TextChanged" LostKeyboardFocus="tbxArmy2Mortars_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -507,15 +507,15 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Lekka piechota" x:Name="ckArmy2LightInfantry" Width="150" Click="ckArmy2LightInfantry_Click"/>
-                                <TextBox x:Name="tbxArmy2LightInfantry" Text="0" IsEnabled="False" LostFocus="tbxArmy2LightInfantry_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2LightInfantry" Text="0" IsEnabled="False" LostFocus="tbxArmy2LightInfantry_LostFocus" TextChanged="tbxArmy2LightInfantry_TextChanged" LostKeyboardFocus="tbxArmy2LightInfantry_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Piechota liniowa" x:Name="ckArmy2LineInfantry" Width="150" Click="ckArmy2LineInfantry_Click"/>
-                                <TextBox x:Name="tbxArmy2LineInfantry" Text="0" IsEnabled="False" LostFocus="tbxArmy2LineInfantry_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2LineInfantry" Text="0" IsEnabled="False" LostFocus="tbxArmy2LineInfantry_LostFocus" TextChanged="tbxArmy2LineInfantry_TextChanged" LostKeyboardFocus="tbxArmy2LineInfantry_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Haubice polowe" x:Name="ckArmy2FieldHowitzer" Width="150" Click="ckArmy2FieldHowitzer_Click"/>
-                                <TextBox x:Name="tbxArmy2FieldHowitzer" Text="0" IsEnabled="False" LostFocus="tbxArmy2FieldHowitzer_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2FieldHowitzer" Text="0" IsEnabled="False" LostFocus="tbxArmy2FieldHowitzer_LostFocus" TextChanged="tbxArmy2FieldHowitzer_TextChanged" LostKeyboardFocus="tbxArmy2FieldHowitzer_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -524,23 +524,23 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Kozacy" x:Name="ckArmy2Cossacks" Width="150" Click="ckArmy2Cossacks_Click"/>
-                                <TextBox x:Name="tbxArmy2Cossacks" Text="0" IsEnabled="False" LostFocus="tbxArmy2Cossacks_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2Cossacks" Text="0" IsEnabled="False" LostFocus="tbxArmy2Cossacks_LostFocus" TextChanged="tbxArmy2Cossacks_TextChanged" LostKeyboardFocus="tbxArmy2Cossacks_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Łucznicy konni" x:Name="ckArmy2HorseArcher" Width="150" Click="ckArmy2HorseArcher_Click"/>
-                                <TextBox x:Name="tbxArmy2HorseArcher" Text="0" IsEnabled="False" LostFocus="tbxArmy2HorseArcher_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2HorseArcher" Text="0" IsEnabled="False" LostFocus="tbxArmy2HorseArcher_LostFocus" TextChanged="tbxArmy2HorseArcher_TextChanged" LostKeyboardFocus="tbxArmy2HorseArcher_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Tubylcy wojownicy" x:Name="ckArmy2TribalWarriors" Width="150" Click="ckArmy2TribalWarriors_Click"/>
-                                <TextBox x:Name="tbxArmy2TribalWarriors" Text="0" IsEnabled="False" LostFocus="tbxArmy2TribalWarriors_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2TribalWarriors" Text="0" IsEnabled="False" LostFocus="tbxArmy2TribalWarriors_LostFocus" TextChanged="tbxArmy2TribalWarriors_TextChanged" LostKeyboardFocus="tbxArmy2TribalWarriors_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Tubylcy strzelcy" x:Name="ckArmy2TribalRanger" Width="150" Click="ckArmy2TribalRanger_Click"/>
-                                <TextBox x:Name="tbxArmy2TribalRanger" Text="0" IsEnabled="False" LostFocus="tbxArmy2TribalRanger_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2TribalRanger" Text="0" IsEnabled="False" LostFocus="tbxArmy2TribalRanger_LostFocus" TextChanged="tbxArmy2TribalRanger_TextChanged" LostKeyboardFocus="tbxArmy2TribalRanger_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Konnica tubylców" x:Name="ckArmy2TribalHorsemen" Width="150" Click="ckArmy2TribalHorsemen_Click"/>
-                                <TextBox x:Name="tbxArmy2TribalHorsemen" Text="0" IsEnabled="False" LostFocus="tbxArmy2TribalHorsemen_LostFocus"/>
+                                <TextBox x:Name="tbxArmy2TribalHorsemen" Text="0" IsEnabled="False" LostFocus="tbxArmy2TribalHorsemen_LostFocus" TextChanged="tbxArmy2TribalHorsemen_TextChanged" LostKeyboardFocus="tbxArmy2TribalHorsemen_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -553,15 +553,15 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Karak" x:Name="ckFleet2Carrack" Width="150" Click="ckFleet2Carrack_Click"/>
-                                <TextBox x:Name="tbxFleet2Carrack" Text="0" IsEnabled="False" LostFocus="tbxFleet2Carrack_LostFocus"/>
+                                <TextBox x:Name="tbxFleet2Carrack" Text="0" IsEnabled="False" LostFocus="tbxFleet2Carrack_LostFocus" TextChanged="tbxFleet2Carrack_TextChanged" LostKeyboardFocus="tbxFleet2Carrack_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Karawela" x:Name="ckFleet2Caravel" Width="150" Click="ckFleet2Caravel_Click"/>
-                                <TextBox x:Name="tbxFleet2Caravel" Text="0" IsEnabled="False" LostFocus="tbxFleet2Caravel_LostFocus"/>
+                                <TextBox x:Name="tbxFleet2Caravel" Text="0" IsEnabled="False" LostFocus="tbxFleet2Caravel_LostFocus" TextChanged="tbxFleet2Caravel_TextChanged" LostKeyboardFocus="tbxFleet2Caravel_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Galera" x:Name="ckFleet2Galley" Width="150" Click="ckFleet2Galley_Click"/>
-                                <TextBox x:Name="tbxFleet2Galley" Text="0" IsEnabled="False" LostFocus="tbxFleet2Galley_LostFocus"/>
+                                <TextBox x:Name="tbxFleet2Galley" Text="0" IsEnabled="False" LostFocus="tbxFleet2Galley_LostFocus" TextChanged="tbxFleet2Galley_TextChanged" LostKeyboardFocus="tbxFleet2Galley_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -570,7 +570,7 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Galeon" x:Name="ckFleet2Galleon" Width="150" Click="ckFleet2Galleon_Click"/>
-                                <TextBox x:Name="tbxFleet2Galleon" Text="0" IsEnabled="False" LostFocus="tbxFleet2Galleon_LostFocus"/>
+                                <TextBox x:Name="tbxFleet2Galleon" Text="0" IsEnabled="False" LostFocus="tbxFleet2Galleon_LostFocus" TextChanged="tbxFleet2Galleon_TextChanged" LostKeyboardFocus="tbxFleet2Galleon_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -579,19 +579,19 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Szkuner" x:Name="ckFleet2Schooner" Width="150" Click="ckFleet2Schooner_Click"/>
-                                <TextBox x:Name="tbxFleet2Schooner" Text="0" IsEnabled="False" LostFocus="tbxFleet2Schooner_LostFocus"/>
+                                <TextBox x:Name="tbxFleet2Schooner" Text="0" IsEnabled="False" LostFocus="tbxFleet2Schooner_LostFocus" TextChanged="tbxFleet2Schooner_TextChanged" LostKeyboardFocus="tbxFleet2Schooner_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Bryg" x:Name="ckFleet2Brig" Width="150" Click="ckFleet2Brig_Click"/>
-                                <TextBox x:Name="tbxFleet2Brig" Text="0" IsEnabled="False" LostFocus="tbxFleet2Brig_LostFocus"/>
+                                <TextBox x:Name="tbxFleet2Brig" Text="0" IsEnabled="False" LostFocus="tbxFleet2Brig_LostFocus" TextChanged="tbxFleet2Brig_TextChanged" LostKeyboardFocus="tbxFleet2Brig_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Fregata" x:Name="ckFleet2Frigate" Width="150" Click="ckFleet2Frigate_Click"/>
-                                <TextBox x:Name="tbxFleet2Frigate" Text="0" IsEnabled="False" LostFocus="tbxFleet2Frigate_LostFocus"/>
+                                <TextBox x:Name="tbxFleet2Frigate" Text="0" IsEnabled="False" LostFocus="tbxFleet2Frigate_LostFocus" TextChanged="tbxFleet2Frigate_TextChanged" LostKeyboardFocus="tbxFleet2Frigate_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Ciężka fregata" x:Name="ckFleet2GreatFrigate" Width="150" Click="ckFleet2GreatFrigate_Click"/>
-                                <TextBox x:Name="tbxFleet2GreatFrigate" Text="0" IsEnabled="False" LostFocus="tbxFleet2GreatFrigate_LostFocus"/>
+                                <TextBox x:Name="tbxFleet2GreatFrigate" Text="0" IsEnabled="False" LostFocus="tbxFleet2GreatFrigate_LostFocus" TextChanged="tbxFleet2GreatFrigate_TextChanged" LostKeyboardFocus="tbxFleet2GreatFrigate_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -600,11 +600,11 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Liniowiec" x:Name="ckFleet2ShipOfLine" Width="150" Click="ckFleet2ShipOfLine_Click"/>
-                                <TextBox x:Name="tbxFleet2ShipOfLine" Text="0" IsEnabled="False" LostFocus="tbxFleet2ShipOfLine_LostFocus"/>
+                                <TextBox x:Name="tbxFleet2ShipOfLine" Text="0" IsEnabled="False" LostFocus="tbxFleet2ShipOfLine_LostFocus" TextChanged="tbxFleet2ShipOfLine_TextChanged" LostKeyboardFocus="tbxFleet2ShipOfLine_LostKeyboardFocus"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Eastindiaman" x:Name="ckFleet2Eastindiaman" Width="150" Click="ckFleet2Eastindiaman_Click"/>
-                                <TextBox x:Name="tbxFleet2Eastindiaman" Text="0" IsEnabled="False" LostFocus="tbxFleet2Eastindiaman_LostFocus"/>
+                                <TextBox x:Name="tbxFleet2Eastindiaman" Text="0" IsEnabled="False" LostFocus="tbxFleet2Eastindiaman_LostFocus" TextChanged="tbxFleet2Eastindiaman_TextChanged" LostKeyboardFocus="tbxFleet2Eastindiaman_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -613,7 +613,7 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Opancerzona fregata" x:Name="ckFleet2ArmoredFrigate" Width="150" Click="ckFleet2ArmoredFrigate_Click"/>
-                                <TextBox x:Name="tbxFleet2ArmoredFrigate" Text="0" IsEnabled="False" LostFocus="tbxFleet2ArmoredFrigate_LostFocus"/>
+                                <TextBox x:Name="tbxFleet2ArmoredFrigate" Text="0" IsEnabled="False" LostFocus="tbxFleet2ArmoredFrigate_LostFocus" TextChanged="tbxFleet2ArmoredFrigate_TextChanged" LostKeyboardFocus="tbxFleet2ArmoredFrigate_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -622,16 +622,16 @@
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal" Height="17">
                                 <CheckBox Content="Azjatycki okręt" x:Name="ckFleet2AsianShip" Width="150" Click="ckFleet2AsianShip_Click"/>
-                                <TextBox x:Name="tbxFleet2AsianShip" Text="0" IsEnabled="False" LostFocus="tbxFleet2AsianShip_LostFocus"/>
+                                <TextBox x:Name="tbxFleet2AsianShip" Text="0" IsEnabled="False" LostFocus="tbxFleet2AsianShip_LostFocus" TextChanged="tbxFleet2AsianShip_TextChanged" LostKeyboardFocus="tbxFleet2AsianShip_LostKeyboardFocus"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
-            <Button x:Name="btnLoadArmy2" Content="Załaduj armię" Grid.Column="0" Grid.Row="2" FontSize="9"/>
-            <Button x:Name="btnAddArmy2" Content="Dodaj do armii" Grid.Column="1" Grid.Row="2" FontSize="9"/>
-            <Button x:Name="btnSaveArmy2" Content="Zapisz armię" Grid.Column="2" Grid.Row="2" FontSize="9"/>
-            <Button x:Name="btnResetArmy2" Content="Zresetuj armię" Grid.Column="3" Grid.Row="2" FontSize="9"/>
+            <Button x:Name="btnLoadArmy2" Content="Załaduj armię" Grid.Column="0" Grid.Row="2" FontSize="9" Click="btnLoadArmy2_Click" IsEnabled="False"/>
+            <Button x:Name="btnAddArmy2" Content="Dodaj do armii" Grid.Column="1" Grid.Row="2" FontSize="9" Click="btnAddArmy2_Click" IsEnabled="False"/>
+            <Button x:Name="btnSaveArmy2" Content="Zapisz armię" Grid.Column="2" Grid.Row="2" FontSize="9" Click="btnSaveArmy2_Click"/>
+            <Button x:Name="btnResetArmy2" Content="Zresetuj armię" Grid.Column="3" Grid.Row="2" FontSize="9" IsEnabled="False"/>
         </Grid>
     </Grid>
 </Page>

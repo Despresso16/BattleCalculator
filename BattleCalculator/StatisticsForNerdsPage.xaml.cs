@@ -24,5 +24,6 @@ namespace BattleCalculator
         {
             InitializeComponent();
         }
+        //to do
     }
 }

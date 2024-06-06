@@ -36,7 +36,13 @@ namespace BattleCalculator
             resultPage.tbxTeam2DisplayList.Text = selectionPage.team2StringDisplayList;
             resultPage.tbxTeam1List.Text = selectionPage.team1StringList;
             resultPage.tbxTeam2List.Text = selectionPage.team2StringList;
+            resultPage.goToSelect += goingBackToSelection;
             frame.Content = resultPage;
+        }
+        private void goingBackToSelection(object? sender, EventArgs e)
+        {
+            SelectionPage selection = new SelectionPage();
+            frame.Content = selection;
         }
     }
     public class LandUnit //jednostki ladowe
